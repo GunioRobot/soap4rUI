@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5
+END
+RELEASE
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/RELEASE
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/Rakefile
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/COPYING
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/MIT-LICENSE
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/README
+END

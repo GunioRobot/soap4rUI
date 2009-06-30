@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/rsoapUI/!svn/ver/15/vendor/httpclient-2.1.4/lib/http-access2
+END
+http.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rsoapUI/!svn/ver/15/vendor/httpclient-2.1.4/lib/http-access2/http.rb
+END
+cookie.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rsoapUI/!svn/ver/15/vendor/httpclient-2.1.4/lib/http-access2/cookie.rb
+END

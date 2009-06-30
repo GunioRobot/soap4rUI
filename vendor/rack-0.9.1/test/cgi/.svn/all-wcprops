@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/test/cgi
+END
+test
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/test/cgi/test
+END
+lighttpd.conf
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/test/cgi/lighttpd.conf
+END
+test.ru
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/test/cgi/test.ru
+END
+test.fcgi
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/test/cgi/test.fcgi
+END

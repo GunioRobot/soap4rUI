@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/rsoapUI/!svn/ver/10/test/fixtures/client
+END
+defaultDriver.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/rsoapUI/!svn/ver/10/test/fixtures/client/defaultDriver.rb
+END
+default.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rsoapUI/!svn/ver/10/test/fixtures/client/default.rb
+END
+DiscountServiceClient.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/rsoapUI/!svn/ver/10/test/fixtures/client/DiscountServiceClient.rb
+END
+defaultMappingRegistry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rsoapUI/!svn/ver/10/test/fixtures/client/defaultMappingRegistry.rb
+END

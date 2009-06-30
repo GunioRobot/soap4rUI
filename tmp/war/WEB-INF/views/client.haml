@@ -1,0 +1,35 @@
+!!! Strict
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %style{ :type => 'text/css' }= sass :style
+    %title
+      client
+    %body
+      %hr
+        %h3 
+          WebClient Generated From Wsdl 
+        = @params[:method]
+      %div
+        %form{:action => '/update', :method => 'post'}  
+          /Store the old state/
+          %input{:type => :hidden, :name => :input, :value => @input.to_yaml}
+          %input{:type => :hidden, :name => :client, :value => @client}
+          %input{:type => :hidden, :name => :wsdl, :value => @wsdl}
+          %input{:type => :hidden, :name => :namespace, :value => @namespace}
+          %input{:type => :hidden, :name => :service_method, :value => @service_method}
+          %input{:type => :hidden, :id => :action, :name => :action, :value => ''}
+          %input{:type => :hidden, :id => :element, :name => :element, :value => ''}
+          
+          %h4= @input.class.to_s.gsub(@namespace+"::", '')
+          %table
+            - for @child in @input.instance_variables
+              - @parent = @input
+              - @ancestry = "@input"
+              = haml :haml_partial
+          %div
+            %input{:type => :text, :id => "endpoint-input", :name => "endpoint", :value => @endpoint}                
+            %input{:type => 'submit', :name => 'Submit',:value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"Submit\";"}
+          %div
+            %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}    
+            %input{:type => 'submit', :name => 'Save',:value => 'Save', :onclick => "document.getElementById(\"action\").value = \"Save\";"}
+            %input{:type => 'submit', :name => 'Load',:value => 'Load', :onclick => "document.getElementById(\"action\").value = \"Load\";"}            

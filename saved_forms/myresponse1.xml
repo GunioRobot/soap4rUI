@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+  <env:Body>
+    <DiscountServiceResponse>
+      <orderResponse>
+        <OrderID>1234</OrderID>
+        <QualifyType>QUALIFY_WITH_TENDER</QualifyType>
+        <OrderDate>03/18/2009 09:00</OrderDate>
+        <Channel>POS</Channel>
+        <Brand>Gap Outlet</Brand>
+        <Market>Canada</Market>
+        <OrderLineItems>
+          <SequenceNumber>0</SequenceNumber>
+          <Product>
+            <Brand>Gap Outlet</Brand>
+            <Sku>1230005014</Sku>
+            <ItemCorpNumber>1</ItemCorpNumber>
+            <ItemCompanyNumber>1</ItemCompanyNumber>
+            <ItemDivisionNumber>16</ItemDivisionNumber>
+            <ItemDepartmentNumber>168</ItemDepartmentNumber>
+            <ItemClassNumber>07</ItemClassNumber>
+            <ItemSubClassNumber>03</ItemSubClassNumber>
+            <MerchandiseType>7</MerchandiseType>
+          </Product>
+          <Price>
+            <NetPrice>39.99</NetPrice>
+            <DiscountPrice>33.82</DiscountPrice>
+          </Price>
+          <Quantity>1</Quantity>
+          <Awards>
+            <AwardID>223170</AwardID>
+            <PromotionCode>BWRHBBZD49L1</PromotionCode>
+            <AwardDiscountAmount>1.73</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 7 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223167</AwardID>
+            <PromotionCode>D6MTDMLLPBKJ</PromotionCode>
+            <AwardDiscountAmount>1.48</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 6 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223164</AwardID>
+            <PromotionCode>DG2FLLHHVW6W</PromotionCode>
+            <AwardDiscountAmount>1.23</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 5 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223162</AwardID>
+            <PromotionCode>BF1XL7L9DKJY</PromotionCode>
+            <AwardDiscountAmount>0.99</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 4 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223155</AwardID>
+            <PromotionCode>B6KXF6MT12RG</PromotionCode>
+            <AwardDiscountAmount>0.74</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 3 dollar</AwardDescription>
+          </Awards>
+          <Exclude></Exclude>
+        </OrderLineItems>
+        <OrderLineItems>
+          <SequenceNumber>1</SequenceNumber>
+          <Product>
+            <Brand>Gap Outlet</Brand>
+            <Sku>1230005015</Sku>
+            <ItemCorpNumber>01</ItemCorpNumber>
+            <ItemCompanyNumber>1</ItemCompanyNumber>
+            <ItemDivisionNumber>16</ItemDivisionNumber>
+            <ItemDepartmentNumber>163</ItemDepartmentNumber>
+            <ItemClassNumber>05</ItemClassNumber>
+            <ItemSubClassNumber>01</ItemSubClassNumber>
+            <MerchandiseType>7</MerchandiseType>
+          </Product>
+          <Price>
+            <NetPrice>45.99</NetPrice>
+            <DiscountPrice>38.89</DiscountPrice>
+          </Price>
+          <Quantity>1</Quantity>
+          <Awards>
+            <AwardID>223170</AwardID>
+            <PromotionCode>BWRHBBZD49L1</PromotionCode>
+            <AwardDiscountAmount>1.99</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 7 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223167</AwardID>
+            <PromotionCode>D6MTDMLLPBKJ</PromotionCode>
+            <AwardDiscountAmount>1.7</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 6 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223164</AwardID>
+            <PromotionCode>DG2FLLHHVW6W</PromotionCode>
+            <AwardDiscountAmount>1.42</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 5 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223162</AwardID>
+            <PromotionCode>BF1XL7L9DKJY</PromotionCode>
+            <AwardDiscountAmount>1.14</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 4 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223155</AwardID>
+            <PromotionCode>B6KXF6MT12RG</PromotionCode>
+            <AwardDiscountAmount>0.85</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 3 dollar</AwardDescription>
+          </Awards>
+          <Exclude></Exclude>
+        </OrderLineItems>
+        <OrderLineItems>
+          <SequenceNumber>2</SequenceNumber>
+          <Product>
+            <Brand>Gap Outlet</Brand>
+            <Sku>1230005016</Sku>
+            <ItemCorpNumber>01</ItemCorpNumber>
+            <ItemCompanyNumber>1</ItemCompanyNumber>
+            <ItemDivisionNumber>16</ItemDivisionNumber>
+            <ItemDepartmentNumber>163</ItemDepartmentNumber>
+            <ItemClassNumber>16</ItemClassNumber>
+            <ItemSubClassNumber>00</ItemSubClassNumber>
+            <MerchandiseType>7</MerchandiseType>
+          </Product>
+          <Price>
+            <NetPrice>15.97</NetPrice>
+            <PriceType>MARKDOWN</PriceType>
+            <DiscountPrice>13.51</DiscountPrice>
+          </Price>
+          <Quantity>1</Quantity>
+          <Awards>
+            <AwardID>223170</AwardID>
+            <PromotionCode>BWRHBBZD49L1</PromotionCode>
+            <AwardDiscountAmount>0.69</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 7 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223167</AwardID>
+            <PromotionCode>D6MTDMLLPBKJ</PromotionCode>
+            <AwardDiscountAmount>0.59</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 6 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223164</AwardID>
+            <PromotionCode>DG2FLLHHVW6W</PromotionCode>
+            <AwardDiscountAmount>0.49</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 5 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223162</AwardID>
+            <PromotionCode>BF1XL7L9DKJY</PromotionCode>
+            <AwardDiscountAmount>0.39</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 4 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223155</AwardID>
+            <PromotionCode>B6KXF6MT12RG</PromotionCode>
+            <AwardDiscountAmount>0.3</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 3 dollar</AwardDescription>
+          </Awards>
+          <Exclude></Exclude>
+        </OrderLineItems>
+        <OrderLineItems>
+          <SequenceNumber>3</SequenceNumber>
+          <Product>
+            <Brand>Gap Outlet</Brand>
+            <Sku>1230005014</Sku>
+            <ItemCorpNumber>1</ItemCorpNumber>
+            <ItemCompanyNumber>1</ItemCompanyNumber>
+            <ItemDivisionNumber>16</ItemDivisionNumber>
+            <ItemDepartmentNumber>168</ItemDepartmentNumber>
+            <ItemClassNumber>07</ItemClassNumber>
+            <ItemSubClassNumber>03</ItemSubClassNumber>
+            <MerchandiseType>7</MerchandiseType>
+          </Product>
+          <Price>
+            <NetPrice>59.99</NetPrice>
+            <DiscountPrice>50.72</DiscountPrice>
+          </Price>
+          <Quantity>1</Quantity>
+          <Awards>
+            <AwardID>223170</AwardID>
+            <PromotionCode>BWRHBBZD49L1</PromotionCode>
+            <AwardDiscountAmount>2.59</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 7 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223167</AwardID>
+            <PromotionCode>D6MTDMLLPBKJ</PromotionCode>
+            <AwardDiscountAmount>2.23</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 6 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223164</AwardID>
+            <PromotionCode>DG2FLLHHVW6W</PromotionCode>
+            <AwardDiscountAmount>1.86</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 5 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223162</AwardID>
+            <PromotionCode>BF1XL7L9DKJY</PromotionCode>
+            <AwardDiscountAmount>1.48</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 4 dollar</AwardDescription>
+          </Awards>
+          <Awards>
+            <AwardID>223155</AwardID>
+            <PromotionCode>B6KXF6MT12RG</PromotionCode>
+            <AwardDiscountAmount>1.11</AwardDiscountAmount>
+            <AwardDescription>Story 381 Transaction Level Reward Unique 3 dollar</AwardDescription>
+          </Awards>
+          <Exclude></Exclude>
+        </OrderLineItems>
+        <Promotions>
+          <SequenceNumber>0</SequenceNumber>
+          <PromotionCode>BB4FYG3YMZHT</PromotionCode>
+          <AppliedStatus>EXCEEDS_DISCOUNTS_ALLOWED</AppliedStatus>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>1</SequenceNumber>
+          <PromotionCode>MPKB7XM4MNPQ</PromotionCode>
+          <AppliedStatus>EXCEEDS_DISCOUNTS_ALLOWED</AppliedStatus>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>2</SequenceNumber>
+          <PromotionCode>B6KXF6MT12RG</PromotionCode>
+          <PromotionID>54893</PromotionID>
+          <DiscountReasonCode>521</DiscountReasonCode>
+          <AppliedStatus>CODE_APPLIED</AppliedStatus>
+          <ReceiptMessages>
+            <message>Story 381 TranEnglish </message>
+            <locale>en_CA</locale>
+          </ReceiptMessages>
+          <ReceiptMessages>
+            <message>Story 381 Trans French</message>
+            <locale>fr_CA</locale>
+          </ReceiptMessages>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>3</SequenceNumber>
+          <PromotionCode>BF1XL7L9DKJY</PromotionCode>
+          <PromotionID>54895</PromotionID>
+          <DiscountReasonCode>521</DiscountReasonCode>
+          <AppliedStatus>CODE_APPLIED</AppliedStatus>
+          <ReceiptMessages>
+            <message>Story 381 TranEnglish </message>
+            <locale>en_CA</locale>
+          </ReceiptMessages>
+          <ReceiptMessages>
+            <message>Story 381 Trans French</message>
+            <locale>fr_CA</locale>
+          </ReceiptMessages>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>4</SequenceNumber>
+          <PromotionCode>DG2FLLHHVW6W</PromotionCode>
+          <PromotionID>54897</PromotionID>
+          <DiscountReasonCode>521</DiscountReasonCode>
+          <AppliedStatus>CODE_APPLIED</AppliedStatus>
+          <ReceiptMessages>
+            <message>Story 381 TranEnglish </message>
+            <locale>en_CA</locale>
+          </ReceiptMessages>
+          <ReceiptMessages>
+            <message>Story 381 Trans French</message>
+            <locale>fr_CA</locale>
+          </ReceiptMessages>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>5</SequenceNumber>
+          <PromotionCode>D6MTDMLLPBKJ</PromotionCode>
+          <PromotionID>54899</PromotionID>
+          <DiscountReasonCode>521</DiscountReasonCode>
+          <AppliedStatus>CODE_APPLIED</AppliedStatus>
+          <ReceiptMessages>
+            <message>Story 381 TranEnglish </message>
+            <locale>en_CA</locale>
+          </ReceiptMessages>
+          <ReceiptMessages>
+            <message>Story 381 Trans French</message>
+            <locale>fr_CA</locale>
+          </ReceiptMessages>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+        <Promotions>
+          <SequenceNumber>6</SequenceNumber>
+          <PromotionCode>BWRHBBZD49L1</PromotionCode>
+          <PromotionID>54901</PromotionID>
+          <DiscountReasonCode>521</DiscountReasonCode>
+          <AppliedStatus>CODE_APPLIED</AppliedStatus>
+          <ReceiptMessages>
+            <message>Story 381 TranEnglish </message>
+            <locale>en_CA</locale>
+          </ReceiptMessages>
+          <ReceiptMessages>
+            <message>Story 381 Trans French</message>
+            <locale>fr_CA</locale>
+          </ReceiptMessages>
+          <PromoUsages></PromoUsages>
+        </Promotions>
+      </orderResponse>
+    </DiscountServiceResponse>
+  </env:Body>
+</env:Envelope>

@@ -1,0 +1,218 @@
+--- !ruby/object:MySoap::Interface617198716::DiscountServiceRequestType 
+orderRequest: !ruby/object:MySoap::Interface617198716::OrderType 
+  brand: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  channel: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  market: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  maxDiscountsAllowed: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  maxoccurs: 1
+  minoccurs: 1
+  orderDate: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  orderID: !str 
+    str: ""
+    "@maxoccurs": 1
+    "@minoccurs": 0
+  orderLineItems: 
+  - !ruby/object:MySoap::Interface617198716::OrderLineType 
+    awards: 
+    - !ruby/object:MySoap::Interface617198716::AwardType 
+      awardDescription: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      awardDiscountAmount: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      awardID: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      maxoccurs: 
+      minoccurs: 0
+      promotionCode: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+    exclude: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    manualDiscountApplied: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    maxoccurs: 
+    minoccurs: 0
+    price: !ruby/object:MySoap::Interface617198716::PriceInfoType 
+      currentPrice: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      discountPrice: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      maxoccurs: 1
+      minoccurs: 1
+      netPrice: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      priceType: 
+    product: !ruby/object:MySoap::Interface617198716::ProductInfoType 
+      brand: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemClassNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemCompanyNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemCorpNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemDepartmentNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemDivisionNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      itemSubClassNumber: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      maxoccurs: 1
+      merchandiseType: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      minoccurs: 1
+      sku: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      styleColor: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+    quantity: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 1
+    sequenceNumber: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 1
+  promotions: 
+  - !ruby/object:MySoap::Interface617198716::PromotionType 
+    appliedStatus: 
+    discountReasonCode: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    maxoccurs: 
+    minoccurs: 0
+    promoUsages: 
+    - !ruby/object:MySoap::Interface617198716::PromoUsageType 
+      brand: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      channel: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      maxoccurs: 
+      minoccurs: 0
+      storeId: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      transactionId: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      usageDateTime: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+    promotionCode: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 1
+    promotionID: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    qualifyingTenders: 
+    - !str 
+      str: ""
+      "@maxoccurs": 
+      "@minoccurs": 0
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface617198716::ReceiptMessageType 
+      locale: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      maxoccurs: 
+      message: !str 
+        str: ""
+        "@maxoccurs": 1
+        "@minoccurs": 0
+      minoccurs: 0
+    sequenceNumber: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 1
+  qualifyType: 
+  tenders: 
+  - !ruby/object:MySoap::Interface617198716::TenderInfoType 
+    creditCardHash: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    creditCardType: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+    maxoccurs: 
+    minoccurs: 0
+    tenderType: !str 
+      str: ""
+      "@maxoccurs": 1
+      "@minoccurs": 0
+requestDateTime: !str 
+  str: ""
+  "@maxoccurs": 1
+  "@minoccurs": 0
+requestType: !str 
+  str: ""
+  "@maxoccurs": 1
+  "@minoccurs": 0
+storeID: !str 
+  str: ""
+  "@maxoccurs": 1
+  "@minoccurs": 0

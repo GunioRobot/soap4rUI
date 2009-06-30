@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/lib
+END
+mocha_standalone.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/lib/mocha_standalone.rb
+END
+stubba.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/lib/stubba.rb
+END
+mocha.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/lib/mocha.rb
+END

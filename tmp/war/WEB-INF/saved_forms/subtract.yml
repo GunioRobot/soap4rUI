@@ -1,0 +1,215 @@
+--- 
+"@input.requestType": LIVE
+"@input.orderRequest.channel": POS
+"@input.orderRequest.orderLineItems.slice(0).product.itemCorpNumber": "01"
+"@input.storeID": ""
+"@input.orderRequest.orderLineItems.slice(1).price.netPrice": "75"
+"@input.orderRequest.orderLineItems.slice(1).product.itemCorpNumber": "01"
+"@input.orderRequest.orderLineItems.slice(2).product.itemClassNumber": "05"
+"@input.orderRequest.orderLineItems.slice(2).price.netPrice": "8.97"
+"@input.orderRequest.orderLineItems.slice(3).sequenceNumber": "3"
+"@input.orderRequest.orderLineItems.slice(2).product.itemSubClassNumber": "01"
+"@input.orderRequest.orderLineItems.slice(1).product.itemSubClassNumber": "01"
+"@input.orderRequest.orderLineItems.slice(3).product.itemClassNumber": "05"
+"@input.orderRequest.orderLineItems.slice(4).product.itemCompanyNumber": "1"
+"@input.orderRequest.orderLineItems.slice(0).sequenceNumber": "0"
+"@input.orderRequest.orderLineItems.slice(0).product.itemClassNumber": "05"
+"@input.orderRequest.orderLineItems.slice(1).product.itemDepartmentNumber": "163"
+"@input.orderRequest.orderLineItems.slice(5).product.itemSubClassNumber": ""
+"@input.orderRequest.orderLineItems.slice(2).product.brand": Gap
+"@input.orderRequest.orderLineItems.slice(3).product.sku": "1230005026"
+"@input.orderRequest.orderLineItems.slice(1).price.priceType": REGULAR
+"@input.orderRequest.orderLineItems.slice(1).product.itemDivisionNumber": "16"
+"@input.orderRequest.orderLineItems.slice(3).product.itemCompanyNumber": "1"
+"@input.orderRequest.orderLineItems.slice(3).price.netPrice": "75"
+"@input.orderRequest.orderLineItems.slice(0).product.itemDivisionNumber": "16"
+"@input.orderRequest.orderLineItems.slice(3).product.itemDepartmentNumber": "163"
+"@input.orderRequest.orderLineItems.slice(4).sequenceNumber": "4"
+"@input.requestDateTime": ""
+"@input.orderRequest.orderLineItems.slice(0).product.merchandiseType": "7"
+"@input.orderRequest.orderLineItems.slice(5).sequenceNumber": ""
+"@input.orderRequest.orderLineItems.slice(0).quantity": "1"
+"@input.orderRequest.orderLineItems.slice(5).product.itemCompanyNumber": ""
+"@input.orderRequest.orderLineItems.slice(4).product.brand": Gap
+"@input.orderRequest.orderLineItems.slice(3).price.priceType": REGULAR
+"@input.orderRequest.orderLineItems.slice(0).product.sku": "1230005024"
+"@input.orderRequest.orderLineItems.slice(5).product.itemDivisionNumber": ""
+"@input.orderRequest.orderLineItems.slice(2).quantity": "1"
+"@input.orderRequest.orderLineItems.slice(4).product.itemDivisionNumber": "16"
+"@input.orderRequest.orderLineItems.slice(5).price.priceType": ""
+"@input.orderRequest.orderLineItems.slice(4).product.itemClassNumber": "05"
+"@input.orderRequest.orderLineItems.slice(0).product.itemCompanyNumber": "1"
+"@input.orderRequest.orderLineItems.slice(3).product.itemCorpNumber": "01"
+"@input.orderRequest.orderDate": 04/18/2009 9:00
+"@input.orderRequest.orderLineItems.slice(5).quantity": ""
+endpoint: https://ws-mpc-store.vdev.gid.gap.com/DiscountServiceProvider-V1-0/services/DiscountService
+"@input.orderRequest.orderLineItems.slice(2).product.itemCompanyNumber": "1"
+"@input.orderRequest.orderLineItems.slice(4).product.merchandiseType": "7"
+"@input.orderRequest.orderLineItems.slice(1).product.brand": Gap
+service_method: applyDiscount
+"@input.orderRequest.orderLineItems.slice(0).product.itemDepartmentNumber": "163"
+"@input.orderRequest.orderLineItems.slice(1).product.merchandiseType": "7"
+"@input.orderRequest.orderLineItems.slice(5).product.itemCorpNumber": ""
+"@input.orderRequest.orderLineItems.slice(4).product.sku": "1230005024"
+"@input.orderRequest.orderLineItems.slice(0).product.itemSubClassNumber": "01"
+"@input.orderRequest.orderLineItems.slice(0).price.netPrice": "8.97"
+"@input.orderRequest.orderLineItems.slice(1).product.itemCompanyNumber": "1"
+"@input.orderRequest.orderLineItems.slice(1).sequenceNumber": "1"
+file_name: subtract
+"@input.orderRequest.orderLineItems.slice(2).sequenceNumber": "2"
+"@input.orderRequest.orderID": "1234"
+"@input.orderRequest.orderLineItems.slice(2).product.itemDepartmentNumber": "163"
+"@input.orderRequest.orderLineItems.slice(4).product.itemSubClassNumber": "01"
+"@input.orderRequest.orderLineItems.slice(1).product.sku": "1230005026"
+"@input.orderRequest.orderLineItems.slice(3).product.itemSubClassNumber": "01"
+"@input.orderRequest.orderLineItems.slice(2).product.merchandiseType": "7"
+namespace: MySoap::InterfaceOne
+"@input.orderRequest.orderLineItems.slice(2).product.itemCorpNumber": "01"
+"@input.orderRequest.orderLineItems.slice(1).quantity": "1"
+"@input.orderRequest.orderLineItems.slice(4).price.netPrice": "8.97"
+"@input.orderRequest.orderLineItems.slice(0).price.priceType": MARKDOWN
+client: /Users/sammyzahabi/Desktop/sinatra_on_gae/peyepr/generated_clients/discountService-V1-0
+"@input.orderRequest.promotions.slice(0).sequenceNumber": "0"
+"@input.orderRequest.orderLineItems.slice(5).price.netPrice": ""
+Save: Save
+"@input.orderRequest.orderLineItems.slice(2).product.itemDivisionNumber": "16"
+"@input.orderRequest.orderLineItems.slice(1).product.itemClassNumber": "05"
+"@input.orderRequest.orderLineItems.slice(2).price.priceType": MARKDOWN
+"@input.orderRequest.orderLineItems.slice(3).product.itemDivisionNumber": "16"
+"@input.orderRequest.orderLineItems.slice(3).product.brand": Gap
+"@input.orderRequest.orderLineItems.slice(5).product.merchandiseType": ""
+"@input.orderRequest.orderLineItems.slice(4).price.priceType": MARKDOWN
+action: Save
+"@input.orderRequest.promotions.slice(0).promotionCode": D198DJ6MYR6N
+input: !ruby/object:MySoap::InterfaceOne::DiscountServiceRequestType 
+  orderRequest: !ruby/object:MySoap::InterfaceOne::OrderType 
+    brand: Gap
+    channel: POS
+    market: CANADA
+    orderDate: 04/18/2009 9:00
+    orderID: "1234"
+    orderLineItems: 
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: "8.97"
+        priceType: MARKDOWN
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: Gap
+        itemClassNumber: "05"
+        itemCompanyNumber: "1"
+        itemCorpNumber: "01"
+        itemDepartmentNumber: "163"
+        itemDivisionNumber: "16"
+        itemSubClassNumber: "01"
+        merchandiseType: "7"
+        sku: "1230005024"
+      quantity: "1"
+      sequenceNumber: "0"
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: "75"
+        priceType: REGULAR
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: Gap
+        itemClassNumber: "05"
+        itemCompanyNumber: "1"
+        itemCorpNumber: "01"
+        itemDepartmentNumber: "163"
+        itemDivisionNumber: "16"
+        itemSubClassNumber: "01"
+        merchandiseType: "7"
+        sku: "1230005026"
+      quantity: "1"
+      sequenceNumber: "1"
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: "8.97"
+        priceType: MARKDOWN
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: Gap
+        itemClassNumber: "05"
+        itemCompanyNumber: "1"
+        itemCorpNumber: "01"
+        itemDepartmentNumber: "163"
+        itemDivisionNumber: "16"
+        itemSubClassNumber: "01"
+        merchandiseType: "7"
+        sku: "1230005024"
+      quantity: "1"
+      sequenceNumber: "2"
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: "75"
+        priceType: REGULAR
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: Gap
+        itemClassNumber: "05"
+        itemCompanyNumber: "1"
+        itemCorpNumber: "01"
+        itemDepartmentNumber: "163"
+        itemDivisionNumber: "16"
+        itemSubClassNumber: "01"
+        merchandiseType: "7"
+        sku: "1230005026"
+      quantity: "1"
+      sequenceNumber: "3"
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: "8.97"
+        priceType: MARKDOWN
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: Gap
+        itemClassNumber: "05"
+        itemCompanyNumber: "1"
+        itemCorpNumber: "01"
+        itemDepartmentNumber: "163"
+        itemDivisionNumber: "16"
+        itemSubClassNumber: "01"
+        merchandiseType: "7"
+        sku: "1230005024"
+      quantity: "1"
+      sequenceNumber: "4"
+    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+        netPrice: ""
+        priceType: ""
+      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+        brand: ""
+        itemClassNumber: ""
+        itemCompanyNumber: ""
+        itemCorpNumber: ""
+        itemDepartmentNumber: ""
+        itemDivisionNumber: ""
+        itemSubClassNumber: ""
+        merchandiseType: ""
+        sku: ""
+      quantity: ""
+      sequenceNumber: ""
+    promotions: 
+    - !ruby/object:MySoap::InterfaceOne::PromotionType 
+      promoUsages: 
+      - !ruby/object:MySoap::InterfaceOne::PromoUsageType {}
+
+      promotionCode: D198DJ6MYR6N
+      qualifyingTenders: 
+      - 
+      receiptMessages: 
+      - !ruby/object:MySoap::InterfaceOne::ReceiptMessageType {}
+
+      sequenceNumber: "0"
+  requestDateTime: ""
+  requestType: LIVE
+  storeID: ""
+"@input.orderRequest.orderLineItems.slice(4).quantity": "1"
+"@input.orderRequest.orderLineItems.slice(5).product.itemDepartmentNumber": ""
+"@input.orderRequest.market": CANADA
+"@input.orderRequest.orderLineItems.slice(2).product.sku": "1230005024"
+"@input.orderRequest.orderLineItems.slice(4).product.itemCorpNumber": "01"
+"@input.orderRequest.orderLineItems.slice(5).product.brand": ""
+"@input.orderRequest.orderLineItems.slice(5).product.sku": ""
+"@input.orderRequest.orderLineItems.slice(3).product.merchandiseType": "7"
+"@input.orderRequest.orderLineItems.slice(0).product.brand": Gap
+"@input.orderRequest.orderLineItems.slice(3).quantity": "1"
+"@input.orderRequest.orderLineItems.slice(4).product.itemDepartmentNumber": "163"
+"@input.orderRequest.brand": Gap
+"@input.orderRequest.orderLineItems.slice(5).product.itemClassNumber": ""

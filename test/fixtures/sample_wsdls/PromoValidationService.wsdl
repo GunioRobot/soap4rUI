@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:impl="http://provider.v1.promotion.services.gid.gap.com" xmlns:intf="http://provider.v1.promotion.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://provider.v1.promotion.services.gid.gap.com">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://provider.v1.promotion.services.gid.gap.com" xmlns:impl="http://provider.v1.promotion.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<complexType name="CreditCardValidationRequest">
+				<sequence>
+					<element name="brand" type="xsd:string"/>
+					<element name="channel" type="xsd:string"/>
+					<element name="promotionCode" nillable="true" type="xsd:string"/>
+					<element name="requestDateTime" type="xsd:string"/>
+					<element name="creditCardType" type="xsd:string"/>
+					<element name="creditCardSecureKey" type="xsd:string"/>
+					<element name="qualifyingPromoLevelId" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="CreditCardValidationRequest" nillable="true" type="impl:CreditCardValidationRequest"/>
+			<complexType name="ArrayOf_xsd_string">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_xsd_string" nillable="true" type="impl:ArrayOf_xsd_string"/>
+			<complexType name="PromotionUsage">
+				<sequence>
+					<element name="storeId" nillable="true" type="xsd:string"/>
+					<element name="transactionId" type="xsd:string"/>
+					<element name="usageDateTime" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="PromotionUsage" nillable="true" type="impl:PromotionUsage"/>
+			<complexType name="ArrayOf_PromotionUsage">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:PromotionUsage[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_PromotionUsage" nillable="true" type="impl:ArrayOf_PromotionUsage"/>
+			<complexType name="CreditCardValidationInfo">
+				<sequence>
+					<element name="validationStatus" type="xsd:string"/>
+					<element name="promotionUsageHistory" nillable="true" type="impl:ArrayOf_PromotionUsage"/>
+				</sequence>
+			</complexType>
+			<element name="CreditCardValidationInfo" nillable="true" type="impl:CreditCardValidationInfo"/>
+			<complexType name="CreditCardValidationResponse">
+				<sequence>
+					<element name="creditCardValidationInfo" nillable="true" type="impl:CreditCardValidationInfo"/>
+				</sequence>
+			</complexType>
+			<element name="CreditCardValidationResponse" nillable="true" type="impl:CreditCardValidationResponse"/>
+			<complexType name="PromotionServiceException">
+				<sequence>
+					<element name="message" nillable="true" type="xsd:string"/>
+					<element name="code" nillable="true" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="PromotionServiceException" nillable="true" type="impl:PromotionServiceException"/>
+			<complexType name="PromoValidationException">
+				<sequence>
+					<element name="message" nillable="true" type="xsd:string"/>
+					<element name="code" nillable="true" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="PromoValidationException" nillable="true" type="impl:PromoValidationException"/>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="validateCreditCardRequest">
+		<wsdl:part name="validationRequest" type="impl:CreditCardValidationRequest"/>
+	</wsdl:message>
+	<wsdl:message name="validateCreditCardResponse">
+		<wsdl:part name="validationResponse" type="impl:CreditCardValidationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="PromotionServiceException">
+		<wsdl:part name="fault" type="impl:PromotionServiceException"/>
+	</wsdl:message>
+	<wsdl:message name="PromoValidationException">
+		<wsdl:part name="fault" type="impl:PromoValidationException"/>
+	</wsdl:message>
+	<wsdl:portType name="PromoValidationServiceBean">
+		<wsdl:operation name="validateCreditCard" parameterOrder="validationRequest">
+			<wsdl:input message="impl:validateCreditCardRequest" name="validateCreditCardRequest"/>
+			<wsdl:output message="impl:validateCreditCardResponse" name="validateCreditCardResponse"/>
+			<wsdl:fault message="impl:PromotionServiceException" name="PromotionServiceException"/>
+			<wsdl:fault message="impl:PromoValidationException" name="PromoValidationException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PromoValidationServiceBeanSoapBinding" type="impl:PromoValidationServiceBean">
+		<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="validateCreditCard">
+			<wsdlsoap:operation/>
+			<wsdl:input>
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.promotion.services.gid.gap.com" use="encoded"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.promotion.services.gid.gap.com" use="encoded"/>
+			</wsdl:output>
+			<wsdl:fault name="PromotionServiceException">
+				<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="PromotionServiceException" use="encoded"/>
+			</wsdl:fault>
+			<wsdl:fault name="PromoValidationException">
+				<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="PromoValidationException" use="encoded"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PromoValidationServiceBeanService">
+		<wsdl:port binding="impl:PromoValidationServiceBeanSoapBinding" name="PromoValidationServiceBean">
+			<wsdlsoap:address location="http://localhost:9080/PromoValidationServiceProviderV1-0/services/PromoValidationServiceBean"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

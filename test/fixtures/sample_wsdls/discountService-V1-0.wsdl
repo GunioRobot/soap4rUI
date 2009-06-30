@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.gid.gap.com/discountService/v1"
+                  xmlns:faults="http://services.gid.gap.com/discountService/v1/faults"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://services.gid.gap.com/discountService/v1"
+                  xmlns:types="http://schemas.gid.gap.com/discountService/v1" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:java="http://schemas.xmlsoap.org/wsdl/java/">
+  <wsdl:types>
+
+    <xs:schema targetNamespace="http://schemas.gid.gap.com/discountService/v1"
+               xmlns:alive="http://schemas.gid.gap.com/servicealive/v1"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+               
+      <xs:import namespace="http://schemas.gid.gap.com/servicealive/v1"
+                 schemaLocation="ServiceAlive-v1.0.xsd"/>
+
+      <xs:complexType name="DiscountServiceRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" nillable="true" name="RequestDateTime" type="xs:string"/>
+          <xs:element name="StoreID" nillable="true" type="xs:string" minOccurs="0" />
+          <xs:element name="RequestType" nillable="true" type="xs:string" minOccurs="0" />
+          <xs:element minOccurs="1" name="orderRequest" nillable="true" type="types:OrderType"/>  
+        </xs:sequence>
+      </xs:complexType>   
+
+      <xs:complexType name="DiscountServiceResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="orderResponse" nillable="true" type="types:OrderType"/>  
+        </xs:sequence>
+      </xs:complexType>
+      
+      
+      <xs:complexType name="OrderType">
+        <xs:sequence>
+          <xs:element name="OrderID" type="xs:string" minOccurs="0"  nillable="true" /> 
+          <xs:element minOccurs="0" name="QualifyType" nillable="false" type="types:QualifyTypeEnum"/>     
+          <xs:element name="OrderDate" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="Channel" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="Brand" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="Region" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="Currency" type="xs:string" minOccurs="0" nillable="true" />
+          <xs:element name="OrderLineItems" type="types:OrderLineType" minOccurs="0" nillable="true" maxOccurs="unbounded"/>
+          <xs:element name="Promotions" type="types:PromotionType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="TenderTypes" minOccurs="0"  nillable="true" type="types:TenderInfoType" maxOccurs="unbounded"/>            
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="TenderInfoType">
+        <xs:sequence> 
+          <xs:element minOccurs="0" name="CreditCardHash" type="xs:string"/> 
+          <xs:element minOccurs="0" name="CreditCardType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      
+      <xs:complexType name="PromotionType">
+        <xs:sequence>
+        	<!-- input -->
+            <xs:element name="PromotionCode" type="xs:string"/>                          
+			<!-- output -->
+		    <xs:element minOccurs="0" name="PromotionID" type="xs:string"/> 
+		    <xs:element minOccurs="0" name="DiscountReasonCode" type="xs:string"/> 
+		    <xs:element minOccurs="0" name="AppliedStatus" nillable="false" type="types:AppliedStatusEnum"/>   
+            <xs:element name="ReceiptMessages" type="types:ReceiptMessageType" minOccurs="0" nillable="true" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType> 
+      
+      <xs:complexType name="ReceiptMessageType">
+        <xs:sequence> 
+          <xs:element minOccurs="0" name="message" type="xs:string"/> 
+          <xs:element minOccurs="0" name="locale" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      
+      <xs:simpleType name="QualifyTypeEnum">
+        <xs:restriction base="xs:string">
+			<xs:enumeration value="QUALIFY_WITHOUT_TENDER" />
+			<xs:enumeration value="QUALIFY_WITH_TENDER" /> 
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="AppliedStatusEnum">
+        <xs:restriction base="xs:string">
+			<xs:enumeration value="CODE_APPLIED" />
+			<xs:enumeration value="CODE_APPLIED_QUALIFY_WITHOUT_TENDER" /> 
+			<xs:enumeration value="CODE_INVALID_CHANNEL" /> 
+			<xs:enumeration value="CODE_NOT_EXIST" /> 
+			<xs:enumeration value="CODE_NOT_ACTIVE" /> 
+			<xs:enumeration value="CODE_EXPIRED" /> 
+			<xs:enumeration value="CODE_INVALID_STORE_MARKET" /> 
+			<xs:enumeration value="CODE_INVALID_BRAND" /> 
+			<xs:enumeration value="CODE_USAGE_LIMIT_EXCEEDED" /> 
+			<xs:enumeration value="CODE_INVALID_PRICE_TYPE" /> 
+			<xs:enumeration value="CODE_INVALID_MERCH" /> 
+			<xs:enumeration value="ELIGIBLE" /> 
+			<xs:enumeration value="CODE_THRESHOLD_NOT_MET" /> 			
+			<xs:enumeration value="CODE_CONDITION_NOT_MET" />
+			<xs:enumeration value="CARD_INVALID_TYPE" />
+			<xs:enumeration value="CARD_INVALID_TIER" />
+        </xs:restriction>
+      </xs:simpleType>
+ 
+      <xs:complexType name="OrderLineType">
+        <xs:sequence>
+ 		  <!-- input -->
+          <xs:element name="SequenceNumber" type="xs:int"/>
+          <xs:element name="Product" type="types:ProductInfoType"/> 
+          <xs:element name="Quantity" type="xs:int"/> 
+          <!-- output -->
+          <xs:element name="DiscountPrice" type="xs:decimal" nillable="false" minOccurs="0" />
+          <xs:element name="Awards" type="types:AwardType" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      
+      <xs:complexType name="AwardType">
+        <xs:sequence>
+          <xs:element name="AwardID" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="PromoID" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="AwardDiscountAmount" type="xs:decimal" nillable="true" minOccurs="0"/>
+          <xs:element name="AwardDescription" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType> 
+
+      <xs:complexType name="ProductInfoType">
+        <xs:sequence>
+            <xs:element name="Brand" type="xs:string" minOccurs="0" />
+            <xs:element name="Sku" type="xs:string" minOccurs="0" />
+			<xs:element name="ItemCorpNumber" type="xs:string" minOccurs="0" />
+			<xs:element name="ItemCompanyNumber" type="xs:string" minOccurs="0" />
+            <xs:element name="ItemDivisionNumber" type="xs:string" minOccurs="0" />
+			<xs:element name="ItemDepartmentNumber" type="xs:string" minOccurs="0" />
+			<xs:element name="ItemClassNumber" type="xs:string" minOccurs="0" />
+			<xs:element name="ItemSubClassNumber" type="xs:string" minOccurs="0" />			
+            <xs:element minOccurs="0" name="NetPrice" type="xs:decimal"/> 
+            <xs:element minOccurs="0" name="PriceType" nillable="false" type="types:PriceTypeEnum"/>                      
+            <xs:element minOccurs="0" name="MerchandiseType" nillable="false" type="xs:int"/>         
+        </xs:sequence>
+      </xs:complexType>
+      
+      
+      <xs:simpleType name="PriceTypeEnum">
+        <xs:restriction base="xs:string">
+			<xs:enumeration value="REGULAR" />
+			<xs:enumeration value="MARKDOWN" />
+			<xs:enumeration value="PROMOTION" /> 
+        </xs:restriction>
+      </xs:simpleType>      
+
+      <xs:element name="DiscountServiceRequest" type="types:DiscountServiceRequestType" />
+      <xs:element name="DiscountServiceResponse" type="types:DiscountServiceResponseType" />
+
+      <xs:element name="ServiceAliveRequest" type="alive:ServiceAliveRequestType" />
+      <xs:element name="ServiceAliveResponse" type="alive:ServiceAliveResponseType" />
+      <xs:element name="ServiceUnavailableFaultMessage" type="alive:ServiceUnavailableFaultMessageType" />
+
+    </xs:schema>
+
+    <xs:schema targetNamespace="http://services.gid.gap.com/discountService/v1/faults">
+      <xs:element name="DiscountServiceFaultMessage" nillable="true" type="xs:string" />
+    </xs:schema>
+        
+  </wsdl:types>
+  
+  <wsdl:message name="DiscountServiceRequest">
+    <wsdl:part name="input" element="types:DiscountServiceRequest" />
+  </wsdl:message>
+
+  <wsdl:message name="DiscountServiceResponse">
+    <wsdl:part name="output" element="types:DiscountServiceResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="DiscountServiceFault">
+    <wsdl:part name="message" element="faults:DiscountServiceFaultMessage" />
+  </wsdl:message>
+  
+  <wsdl:message name="ServiceAliveRequest">
+    <wsdl:part name="input" element="types:ServiceAliveRequest" />
+  </wsdl:message>
+  
+  <wsdl:message name="ServiceAliveResponse">
+    <wsdl:part name="output" element="types:ServiceAliveResponse" />
+  </wsdl:message>
+  
+  <wsdl:message name="ServiceUnavailableFault">
+    <wsdl:part name="message" element="types:ServiceUnavailableFaultMessage" />
+  </wsdl:message>
+    
+  <wsdl:portType name="DiscountServicePortType">
+  
+    <wsdl:operation name="serviceAlive">
+      <wsdl:input name="ServiceAliveRequest" message="tns:ServiceAliveRequest" />
+      <wsdl:output name="ServiceAliveResponse" message="tns:ServiceAliveResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="applyDiscount">
+      <wsdl:input name="DiscountServiceRequest" message="tns:DiscountServiceRequest" />
+      <wsdl:output name="DiscountServiceResponse" message="tns:DiscountServiceResponse" />
+      <wsdl:fault name="DiscountServiceFault" message="tns:DiscountServiceFault" />
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+
+  <wsdl:binding name="DiscountServiceSoapBinding" type="tns:DiscountServicePortType">
+  
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <wsdl:operation name="serviceAlive">
+    
+      <soap:operation soapAction="serviceAlive" style="document"/>
+      
+      <wsdl:input name="ServiceAliveRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      
+      <wsdl:output name="ServiceAliveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+    
+    <wsdl:operation name="applyDiscount">
+    
+      <soap:operation soapAction="applyDiscount" style="document"/>
+      
+      <wsdl:input name="DiscountServiceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      
+      <wsdl:output name="DiscountServiceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      
+      <wsdl:fault name="DiscountServiceFault">
+        <soap:fault name="DiscountServiceFault" use="literal" />
+      </wsdl:fault>
+      
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+
+  <wsdl:service name="DiscountService">
+  
+    <wsdl:port name="DiscountServicePort"
+               binding="tns:DiscountServiceSoapBinding">
+      <soap:address location="https://ws-mpc-store.vdev.gid.gap.com/DiscountServiceProvider-V1-0/services/DiscountService"/>
+    </wsdl:port>
+    <wsdl:port name="DiscountServicejavaPort" binding="tns:DiscountServiceSoapBinding" >
+		<java:address className="com.gap.gid.services.discountservice.v1.adapter.DiscountServiceJavaClient" />
+	</wsdl:port>   
+
+  </wsdl:service>
+
+</wsdl:definitions>
+

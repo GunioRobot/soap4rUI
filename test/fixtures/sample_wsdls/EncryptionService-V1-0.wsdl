@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.gid.gap.com/encryption/v1"
+                  xmlns:tns="http://services.gid.gap.com/encryption/v1"
+                  xmlns:types="http://schemas.gid.gap.com/encryption/v1"
+                  xmlns:alive="http://schemas.gid.gap.com/servicealive/v1"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:types>
+        <xs:schema targetNamespace="http://schemas.gid.gap.com/encryption/v1"
+                   xmlns:alive="http://schemas.gid.gap.com/servicealive/v1"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+            <xs:import namespace="http://schemas.gid.gap.com/servicealive/v1"
+                       schemaLocation="ServiceAlive-v1.0.xsd" />
+		    <xs:complexType name="VaultID">
+		    	<xs:sequence>
+		     		<xs:element name="ID" nillable="true" type="xs:string"/>
+		     		<xs:element name="dataType" nillable="true" type="xs:string"/>
+		    	</xs:sequence>
+		   	</xs:complexType>
+		   <xs:element name="GetVaultIDRequest">
+		    	<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="data" nillable="true" type="xs:string"/>
+		      			<xs:element name="dataType" nillable="true" type="xs:string"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+		   <xs:element name="GetVaultIDResponse">
+		   		<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="getVaultIDReturn" nillable="true" type="types:VaultID"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+		   <xs:element name="StoreRequest">
+		    	<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="data" nillable="true" type="xs:string"/>
+		      			<xs:element name="dataType" nillable="true" type="xs:string"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+		   <xs:element name="StoreResponse">
+		    	<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="storeReturn" nillable="true" type="types:VaultID"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+		   	<xs:element name="RetrieveRequest">
+		    	<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="id" nillable="true" type="types:VaultID"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+		   <xs:element name="RetrieveResponse">
+		   		<xs:complexType>
+		     		<xs:sequence>
+		      			<xs:element name="retrieveReturn" nillable="true" type="xs:string"/>
+		     		</xs:sequence>
+		    	</xs:complexType>
+		   </xs:element>
+
+			<xs:element name="ServiceAliveRequest" type="alive:ServiceAliveRequestType" />
+	        <xs:element name="ServiceAliveResponse" type="alive:ServiceAliveResponseType" />
+	        <xs:element name="ServiceUnavailableFaultMessage" type="alive:ServiceUnavailableFaultMessageType" />
+	    </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="ServiceAliveRequest">
+        <wsdl:part name="input" element="types:ServiceAliveRequest" />
+    </wsdl:message>
+    <wsdl:message name="ServiceAliveResponse">
+        <wsdl:part name="output" element="types:ServiceAliveResponse" />
+    </wsdl:message>
+    <wsdl:message name="ServiceUnavailableFault">
+        <wsdl:part name="message" element="types:ServiceUnavailableFaultMessage" />
+    </wsdl:message>
+
+   <wsdl:message name="RetrieveRequest">
+      <wsdl:part element="types:RetrieveRequest" name="input"/>
+   </wsdl:message>
+   <wsdl:message name="RetrieveResponse">
+      <wsdl:part element="types:RetrieveResponse" name="output"/>
+   </wsdl:message>
+
+   <wsdl:message name="StoreRequest">
+      <wsdl:part element="types:StoreRequest" name="input"/>
+   </wsdl:message>
+   <wsdl:message name="StoreResponse">
+      <wsdl:part element="types:StoreResponse" name="output"/>
+   </wsdl:message>
+
+   <wsdl:message name="GetVaultIDRequest">
+      <wsdl:part element="types:GetVaultIDRequest" name="input"/>
+   </wsdl:message>
+   <wsdl:message name="GetVaultIDResponse">
+      <wsdl:part element="types:GetVaultIDResponse" name="output"/>
+   </wsdl:message>
+
+   <wsdl:portType name="EncryptionServicePortType">
+        <wsdl:operation name="serviceAlive">
+            <wsdl:input name="ServiceAliveRequest" message="tns:ServiceAliveRequest"/>
+            <wsdl:output name="ServiceAliveResponse" message="tns:ServiceAliveResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="retrieve">
+         	<wsdl:input name="RetrieveRequest" message="tns:RetrieveRequest"/>
+         	<wsdl:output name="RetrieveResponse" message="tns:RetrieveResponse"/>
+         	<wsdl:fault name="ServiceUnavailableFault" message="tns:ServiceUnavailableFault" />
+        </wsdl:operation>
+
+        <wsdl:operation name="store">
+        	<wsdl:input name="StoreRequest" message="tns:StoreRequest"/>
+         	<wsdl:output name="StoreResponse" message="tns:StoreResponse"/>
+			<wsdl:fault name="ServiceUnavailableFault" message="tns:ServiceUnavailableFault" />			
+      	</wsdl:operation>
+
+      <wsdl:operation name="getVaultID">
+         <wsdl:input name="GetVaultIDRequest" message="tns:GetVaultIDRequest"/>
+         <wsdl:output name="GetVaultIDResponse" message="tns:GetVaultIDResponse"/>
+		<wsdl:fault name="ServiceUnavailableFault" message="tns:ServiceUnavailableFault" />		 
+      </wsdl:operation>
+   </wsdl:portType>
+
+   <wsdl:binding name="EncryptionServiceSoapBinding" type="tns:EncryptionServicePortType">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+ 	  <wsdl:operation name="serviceAlive">
+	        <soap:operation soapAction="serviceAlive" style="document"/>
+            <wsdl:input name="ServiceAliveRequest">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="ServiceAliveResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieve">
+         <soap:operation soapAction="retrieve" style="document"/>
+         <wsdl:input name="RetrieveRequest">
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="RetrieveResponse">
+            <soap:body use="literal"/>
+         </wsdl:output>
+            <wsdl:fault name="ServiceUnavailableFault">
+                <soap:fault name="ServiceUnavailableFault" use="literal" />
+            </wsdl:fault>
+ 	  </wsdl:operation>
+
+      <wsdl:operation name="store">
+         <soap:operation soapAction="store" style="document"/>
+         <wsdl:input name="StoreRequest">
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="StoreResponse">
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="ServiceUnavailableFault">
+            <soap:fault name="ServiceUnavailableFault" use="literal" />
+         </wsdl:fault>		 
+      </wsdl:operation>
+      
+      <wsdl:operation name="getVaultID">
+         <soap:operation soapAction="getVaultID" style="document"/>
+         <wsdl:input name="GetVaultIDRequest">
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="GetVaultIDResponse">
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="ServiceUnavailableFault">
+           <soap:fault name="ServiceUnavailableFault" use="literal" />
+         </wsdl:fault>		 
+      </wsdl:operation>
+   </wsdl:binding>
+
+   <wsdl:service name="EncryptionService">
+      <wsdl:port binding="tns:EncryptionServiceSoapBinding" name="EncryptionServicePortType">
+         <soap:address location="http://ws-vault.vdev.gid.gap.com/EncryptionProvider-V1-0/services/EncryptionService"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

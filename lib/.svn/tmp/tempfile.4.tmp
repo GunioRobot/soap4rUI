@@ -1,0 +1,214 @@
+require 'rubygems'
+require 'yaml'
+gem 'soap4r'
+#require 'diff/lcs' 
+require File.dirname(File.expand_path(__FILE__)) + '/soap4r2ruby_helpers'
+require File.dirname(File.expand_path(__FILE__)) + '/generator_helpers'
+require File.dirname(File.expand_path(__FILE__)) + '/save_load_convert_helpers'
+require 'soap/wsdlDriver'
+
+# this class is intended to take a folder where generated classes live
+# the optional module name added to keep the namespace clean
+# the the method defined in the wsdl 
+# and return a default empty ruby object representing the Model to be used to populate the form fields of the test client
+# fields that can occur more than once are arrays
+# somehow we need to tag the optional fields. 
+
+class Soap4r2Ruby
+  attr_accessor :root_node, :default_instance, :mapping_registry, :literal_mapping_registry
+  attr_accessor :service_method_descriptors, :port_type, :folder, :namespace, :driver_file, :default_endpoint, :service_method_names, :rpc_driver
+  def initialize(client_folder, i_namespace, wsdl)
+    @folder = client_folder
+    @namespace = i_namespace
+    @wsdl = wsdl
+    curr = Dir.pwd
+    Dir.chdir(@folder)
+    # $DEBUG = true=
+    @driver_file =(Dir.entries(@folder) - [".", "..", ".svn"]).select{|e| e.to_s.include?'Driver.rb'}.first
+    require @folder+"/"+@driver_file
+    Dir.chdir(curr)
+    
+    @factory = SOAP::WSDLDriverFactory.new(@wsdl)    
+    @port_type = @factory.wsdl.porttypes[0]
+    # @service_method_names = @port_type.operations.map{|op| op}    
+    # @service_method_names.uniq!
+
+    @rpc_driver = @factory.create_rpc_driver
+    @default_endpoint = @rpc_driver.endpoint_url
+    @service_method_descriptors = eval( namespace + '::' + @port_type.name.name)::Methods        
+    @service_method_names = @service_method_descriptors.map do |e| 
+      if e[0].class.to_s.include?('XSD::QName') 
+        e[0].name
+      else
+        e[0]        
+      end
+    end
+    driver = eval(@namespace+"::"+@port_type.name.name).new
+    @literal_mapping_registry = driver.literal_mapping_registry
+    @mapping_registry = driver.mapping_registry
+    # @service_methods = eval( ns + '::' + @port_type)::Methods    
+
+  end
+  
+
+  
+  def find_root_node_for_method(service_method_name)
+<<<<<<< .mine
+    driver = eval(@namespace+"::"+@port_type.name.name).new    
+    @mapping_registry = driver.mapping_registry
+    @literal_mapping_registry = driver.literal_mapping_registry
+    # sample of what the Methods constant looks like 
+    # Methods = [
+    #       [ "serviceAlive",
+    #         "serviceAlive",
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveRequest"]],
+    #           ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveResponse"]] ],
+    #         { :request_style =>  :document, :request_use =>  :literal,
+    #           :response_style => :document, :response_use => :literal,
+    #           :faults => {} }
+    #       ],
+    #       [ "applyDiscount",
+    #         "applyDiscount",
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+    #           ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceResponse"]] ],
+    #         { :request_style =>  :document, :request_use =>  :literal,
+    #           :response_style => :document, :response_use => :literal,
+    #           :faults => {"MySoap::InterfaceOne::DiscountServiceFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"http://services.gid.gap.com/discountService/v1", :namespace=>nil, :name=>"DiscountServiceFault"}} }
+    #       ]
+    #     ]
+    m = get_method_descriptor_for_name(service_method_name)
+
+    io_methods = m.select{|e| e.class == Array}.first
+    input = io_methods.select{|e| e.first == "in"}.first
+
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+
+    if input == nil || input.last == nil
+      #hack hack hack
+      root_node_name = m.last[:request_qname].name
+    else
+      root_node_name = input.last.last
+    end
+    # require 'ruby-debug'; debugger
+    # driver = eval(@namespace+"::"+@port_type).new
+=======
+    driver = eval(@namespace+"::"+@port_type.name.name).new    
+    @mapping_registry = driver.mapping_registry
+    @literal_mapping_registry = driver.literal_mapping_registry
+    # sample of what the Methods constant looks like 
+    # Methods = [
+    #       [ "serviceAlive",
+    #         "serviceAlive",
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveRequest"]],
+    #           ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveResponse"]] ],
+    #         { :request_style =>  :document, :request_use =>  :literal,
+    #           :response_style => :document, :response_use => :literal,
+    #           :faults => {} }
+    #       ],
+    #       [ "applyDiscount",
+    #         "applyDiscount",
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+    #           ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceResponse"]] ],
+    #         { :request_style =>  :document, :request_use =>  :literal,
+    #           :response_style => :document, :response_use => :literal,
+    #           :faults => {"MySoap::InterfaceOne::DiscountServiceFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"http://services.gid.gap.com/discountService/v1", :namespace=>nil, :name=>"DiscountServiceFault"}} }
+    #       ]
+    #     ]
+    m = get_method_descriptor_for_name(service_method_name)
+
+    io_methods = m.select{|e| e.class == Array}.first
+    input = io_methods.select{|e| e.first == "in"}.first
+
+    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+    root_node_name = input.last.last
+    
+    # require 'ruby-debug'; debugger
+    # driver = eval(@namespace+"::"+@port_type).new
+>>>>>>> .r35
+    # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
+
+    schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
+    @root_node = schemadef.last.class_for
+  end
+  
+<<<<<<< .mine
+  def get_method_descriptor_for_name(service_method_name)
+    @service_method_descriptors.select do |e| 
+      if (e[0].class.to_s.include?('XSD::QName'))
+        e[0].name == service_method_name
+      else
+        puts e[0].class
+        e[0] == service_method_name
+      end
+    end.first
+  end
+    # 
+    # def find_root_node_for_method(service_method_name)
+    #   m = @port_type.operations.select{|e| e.operationname.name == service_method_name}.first
+    #   root_node_name = m.input.name.name 
+    #   # driver = eval(@namespace+"::"+@port_type.name.name).new
+    #   # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
+    #   schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
+    #   @root_node = schemadef.last.class_for
+    # end
+  
+=======
+  def get_method_descriptor_for_name(service_method_name)
+    @service_method_descriptors.select do |e| 
+      if (e[0].class.to_s.include?('XSD::QName'))
+        e[0].name == service_method_name
+      else
+        e[0] == service_method_name
+      end
+    end.first
+  end
+    # 
+    # def find_root_node_for_method(service_method_name)
+    #   m = @port_type.operations.select{|e| e.operationname.name == service_method_name}.first
+    #   root_node_name = m.input.name.name 
+    #   # driver = eval(@namespace+"::"+@port_type.name.name).new
+    #   # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
+    #   schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
+    #   @root_node = schemadef.last.class_for
+    # end
+  
+>>>>>>> .r35
+  def build_default_input_instance_for_method(service_method_name)
+    root_node = find_root_node_for_method(service_method_name)
+    build_default_input_instance_for_root_node(root_node)  
+  end    
+  
+  def build_default_input_instance_for_root_node(root_node)
+    driver = eval(@namespace+"::"+@port_type.name.name).new
+    schemadef = driver.literal_mapping_registry.schema_definition_from_class root_node
+    args = schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
+    @default_instance = eval(root_node.name).new(*args)    
+    # for each of the instance variables in this object
+    # get the type of the object
+    # tag min and max values on the object.
+    # if a simple type instantiate the object. (primitives) 
+    # if a complex type recursively instantiate elements of that object 
+    
+  end
+  
+  def build_default_instance_for_element_and_schemadef(e, schemadef)
+    if(::SOAP.constants.grep(/^SOAP/).include?(e.mapped_class.to_s.gsub('::SOAP','')))
+      #simple types - (no subelements)
+      object = ""
+    elsif (e.mapped_class.ancestors.include?(String))
+      #enums - (grab the first constant as the default value)
+      object = ""
+    else
+      #complex types
+      sub_schemadef = Soap4r2RubyHelpers::get_schemadef_for_type_name(e.mapped_class, @mapping_registry, @literal_mapping_registry)
+      sub_args = sub_schemadef.last.elements.entries.map{|s| build_default_instance_for_element_and_schemadef(s, sub_schemadef)}
+      object = e.mapped_class.new(*sub_args)
+    end
+    Soap4r2RubyHelpers::tag_minoccurs_maxoccurs(object, e.minoccurs, e.maxoccurs)
+    if object.maxoccurs != 1
+      object = [object]
+    end  
+    object
+  end
+  
+end

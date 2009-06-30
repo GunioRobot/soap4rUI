@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/LICENSE
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/Rakefile
+END
+README.rdoc
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/README.rdoc
+END
+sinatra.gemspec
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/sinatra.gemspec
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/AUTHORS
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/CHANGES
+END

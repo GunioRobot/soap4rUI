@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 24
+/rsoapUI/!svn/ver/30/lib
+END
+soap4r2ruby_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/22/lib/soap4r2ruby_helpers.rb
+END
+save_load_convert_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/rsoapUI/!svn/ver/22/lib/save_load_convert_helpers.rb
+END
+sinatra_app_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/41/lib/sinatra_app_helpers.rb
+END
+generator_helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/rsoapUI/!svn/ver/38/lib/generator_helpers.rb
+END
+soap4r2ruby.rb
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/rsoapUI/!svn/ver/39/lib/soap4r2ruby.rb
+END

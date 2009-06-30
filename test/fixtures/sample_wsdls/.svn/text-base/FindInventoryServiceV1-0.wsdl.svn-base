@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://provider.v1.findInventory.services.gid.gap.com" xmlns:impl="http://provider.v1.findInventory.services.gid.gap.com" xmlns:intf="http://provider.v1.findInventory.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://dto.v1.findInventory.services.gid.gap.com" xmlns:tns3="http://dto.yantraimpl.services.common.gid.gap.com" xmlns:tns4="http://exception.provider.v1.findInventory.services.gid.gap.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://dto.v1.findInventory.services.gid.gap.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://provider.v1.findInventory.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns3="http://dto.yantraimpl.services.common.gid.gap.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.yantraimpl.services.common.gid.gap.com"/>
+   <import namespace="http://provider.v1.findInventory.services.gid.gap.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="FindInventoryRequestDTO">
+    <sequence>
+     <element name="promiseObj" nillable="true" type="tns2:PromiseDTO"/>
+     <element name="envObj" nillable="true" type="tns3:EnvironmentDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="PromiseDTO">
+    <sequence>
+     <element name="sellerOrgCode" nillable="true" type="xsd:string"/>
+     <element name="promiseLines" nillable="true" type="impl:ArrayOf_tns2_PromiseLineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="PromiseLineDTO">
+    <sequence>
+     <element name="isOrderable" nillable="true" type="xsd:string"/>
+     <element name="itemID" nillable="true" type="xsd:string"/>
+     <element name="lineId" type="xsd:int"/>
+     <element name="requiredQty" type="xsd:double"/>
+     <element name="brandName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="FindInventoryRequestDTO" nillable="true" type="tns2:FindInventoryRequestDTO"/>
+   <complexType name="FindInventoryResponseDTO">
+    <sequence>
+     <element name="itemList" nillable="true" type="tns2:ItemListDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ItemListDTO">
+    <sequence>
+     <element name="availableItems" nillable="true" type="impl:ArrayOf_tns2_AvailableItemDTO"/>
+     <element name="unavailableItems" nillable="true" type="impl:ArrayOf_tns2_UnavailableItemDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="AvailableItemDTO">
+    <sequence>
+     <element name="brandName" nillable="true" type="xsd:string"/>
+     <element name="itemID" nillable="true" type="xsd:string"/>
+     <element name="lineID" type="xsd:int"/>
+     <element name="onOrder" nillable="true" type="xsd:string"/>
+     <element name="quantity" type="xsd:double"/>
+     <element name="shipDate" nillable="true" type="xsd:dateTime"/>
+     <element name="shipNode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UnavailableItemDTO">
+    <sequence>
+     <element name="brandName" nillable="true" type="xsd:string"/>
+     <element name="assignedQty" type="xsd:double"/>
+     <element name="itemID" nillable="true" type="xsd:string"/>
+     <element name="lineID" type="xsd:int"/>
+     <element name="requiredQty" type="xsd:double"/>
+     <element name="unavailableQty" type="xsd:double"/>
+     <element name="unavailableReason" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="FindInventoryResponseDTO" nillable="true" type="tns2:FindInventoryResponseDTO"/>
+  </schema>
+  <schema targetNamespace="http://provider.v1.findInventory.services.gid.gap.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://dto.v1.findInventory.services.gid.gap.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.v1.findInventory.services.gid.gap.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_PromiseLineDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PromiseLineDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_AvailableItemDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:AvailableItemDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UnavailableItemDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:UnavailableItemDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <element name="isServiceAliveReturn" type="xsd:boolean"/>
+  </schema>
+  <schema targetNamespace="http://dto.yantraimpl.services.common.gid.gap.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EnvironmentDTO">
+    <sequence>
+     <element name="progId" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://exception.provider.v1.findInventory.services.gid.gap.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="FindInventoryServiceException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="FindInventoryServiceException" nillable="true" type="tns4:FindInventoryServiceException"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="findInventoryResponse">
+
+      <wsdl:part name="findInventoryReturn" type="tns2:FindInventoryResponseDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isServiceAliveRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="findInventoryRequest">
+
+      <wsdl:part name="findInvReqObj" type="tns2:FindInventoryRequestDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isServiceAliveResponse">
+
+      <wsdl:part name="isServiceAliveReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="FindInventoryServiceException">
+
+      <wsdl:part name="fault" type="tns4:FindInventoryServiceException"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FindInventoryServiceBean">
+
+      <wsdl:operation name="findInventory" parameterOrder="findInvReqObj">
+
+         <wsdl:input message="impl:findInventoryRequest" name="findInventoryRequest"/>
+
+         <wsdl:output message="impl:findInventoryResponse" name="findInventoryResponse"/>
+
+         <wsdl:fault message="impl:FindInventoryServiceException" name="FindInventoryServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isServiceAlive">
+
+         <wsdl:input message="impl:isServiceAliveRequest" name="isServiceAliveRequest"/>
+
+         <wsdl:output message="impl:isServiceAliveResponse" name="isServiceAliveResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FindInventoryServiceBeanSoapBinding" type="impl:FindInventoryServiceBean">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="findInventory">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findInventoryRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.findInventory.services.gid.gap.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findInventoryResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.findInventory.services.gid.gap.com" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FindInventoryServiceException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="FindInventoryServiceException" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isServiceAlive">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isServiceAliveRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.findInventory.services.gid.gap.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isServiceAliveResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.findInventory.services.gid.gap.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FindInventoryServiceBeanService">
+
+      <wsdl:port binding="impl:FindInventoryServiceBeanSoapBinding" name="FindInventoryServiceBean">
+
+         <wsdlsoap:address location="http://ws-inventory.vdev.gid.gap.com/FindInventoryServiceV1-0/services/FindInventoryServiceBean"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

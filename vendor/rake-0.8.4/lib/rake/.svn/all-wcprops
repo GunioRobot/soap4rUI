@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake
+END
+classic_namespace.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/classic_namespace.rb
+END
+packagetask.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/packagetask.rb
+END
+repaired_system.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/repaired_system.rb
+END
+ruby182_test_unit_fix.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/ruby182_test_unit_fix.rb
+END
+clean.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/clean.rb
+END
+testtask.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/testtask.rb
+END
+win32.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/win32.rb
+END
+runtest.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/runtest.rb
+END
+gempackagetask.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/gempackagetask.rb
+END
+rake_test_loader.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/rake_test_loader.rb
+END
+tasklib.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/tasklib.rb
+END
+rdoctask.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/rsoapUI/!svn/ver/15/vendor/rake-0.8.4/lib/rake/rdoctask.rb
+END

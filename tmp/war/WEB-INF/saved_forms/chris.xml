@@ -1,0 +1,15 @@
+<soapenv:Envelope
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:v1="http://schemas.gid.gap.com/promotionservice/v1">
+  <soapenv:Header/>
+  <soapenv:Body>
+     <v1:PromotionSearchRequest>
+        <!--Optional:-->
+        <View>OMS</View>
+        <Criteria>
+           <Code>1324321</Code>
+
+        </Criteria>
+     </v1:PromotionSearchRequest>
+  </soapenv:Body>
+</soapenv:Envelope>

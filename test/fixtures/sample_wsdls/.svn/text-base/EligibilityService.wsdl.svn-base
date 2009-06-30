@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:impl="http://provider.v1.promotion.services.gid.gap.com" xmlns:intf="http://provider.v1.promotion.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://provider.v1.promotion.services.gid.gap.com">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://provider.v1.promotion.services.gid.gap.com" xmlns:impl="http://provider.v1.promotion.services.gid.gap.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<complexType name="EligibilityRequest">
+				<sequence>
+					<element name="brand" type="xsd:string"/>
+					<element name="channel" type="xsd:string"/>
+					<element name="storeMarket" type="xsd:string"/>
+					<element name="promotionCode" nillable="true" type="xsd:string"/>
+					<element name="requestDateTime" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="EligibilityRequest" nillable="true" type="impl:EligibilityRequest"/>
+			<complexType name="ReceiptMessage">
+				<sequence>
+					<element name="language" type="xsd:string"/>
+					<element name="message" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="ReceiptMessage" nillable="true" type="impl:ReceiptMessage"/>
+			<complexType name="ArrayOf_ReceiptMessage">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:ReceiptMessage[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_ReceiptMessage" nillable="true" type="impl:ArrayOf_ReceiptMessage"/>
+			<complexType name="DiscountInfo">
+				<sequence>
+					<element name="awardId" type="soapenc:integer"/>
+					<element name="discountType" type="xsd:string"/>
+					<element name="discountAmount" type="soapenc:double"/>
+				</sequence>
+			</complexType>
+			<element name="DiscountInfo" nillable="true" type="impl:DiscountInfo"/>
+			<complexType name="ArrayOf_DiscountInfo">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:DiscountInfo[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_DiscountInfo" nillable="true" type="impl:ArrayOf_DiscountInfo"/>
+			<complexType name="ArrayOf_xsd_string">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_xsd_string" nillable="true" type="impl:ArrayOf_xsd_string"/>
+			<complexType name="TenderTypeStatus">
+				<sequence>
+					<element name="tenderType" type="xsd:string"/>
+					<element name="qualificationRequired" type="boolean"/>
+				</sequence>
+			</complexType>
+			<element name="TenderTypeStatus" nillable="true" type="impl:TenderTypeStatus"/>
+			<complexType name="ArrayOf_TenderTypeStatus">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:TenderTypeStatus[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_TenderTypeStatus" nillable="true" type="impl:ArrayOf_TenderTypeStatus"/>
+			<complexType name="QualificationRules">
+				<sequence>
+					<element name="transactionThreshold" type="soapenc:double"/>
+					<element name="tenderTypeStatus" nillable="true" type="impl:ArrayOf_TenderTypeStatus"/>
+					<element name="promoLevelId" type="string"/>
+				</sequence>
+			</complexType>
+			<element name="QualificationRules" nillable="true" type="impl:QualificationRules"/>
+			<complexType name="PromotionLevel">
+				<sequence>
+					<element name="qualificationRules" type="impl:QualificationRules"/>
+					<element name="discountInfo" type="impl:DiscountInfo"/>
+				</sequence>
+			</complexType>
+			<element name="PromotionLevel" nillable="true" type="impl:PromotionLevel"/>
+			<complexType name="ArrayOf_PromotionLevel">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:PromotionLevel[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_PromotionLevel" nillable="true" type="impl:ArrayOf_PromotionLevel"/>
+			<complexType name="PromotionUsage">
+				<sequence>
+					<element name="storeId" nillable="true" type="xsd:string"/>
+					<element name="transactionId" type="xsd:string"/>
+					<element name="usageDateTime" type="xsd:string"/>
+					<element name="brandId" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="PromotionUsage" nillable="true" type="impl:PromotionUsage"/>
+			<complexType name="ArrayOf_PromotionUsage">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:PromotionUsage[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_PromotionUsage" nillable="true" type="impl:ArrayOf_PromotionUsage"/>
+			<complexType name="EligibilityInfo">
+				<sequence>
+					<element name="eligible" type="soapenc:boolean"/>
+					<element name="promotionCode" nillable="true" type="xsd:string"/>
+					<element name="promotionId" nillable="true" type="soapenc:integer"/>
+					<element name="promotionDescription" nillable="true" type="xsd:string"/>
+					<element name="discountReasonCode" type="xsd:string"/>
+					<element name="receiptMessages" type="impl:ArrayOf_ReceiptMessage"/>
+					<element name="eligibilityStatus" type="xsd:string"/>
+					<element name="usageHistories" nillable="true" type="impl:ArrayOf_PromotionUsage"/>
+					<element name="promotionLevels" type="impl:ArrayOf_PromotionLevel"/>
+					<element name="ccUsageIndicator" nillable="true" type="soapenc:boolean"/>
+				</sequence>
+			</complexType>
+			<element name="EligibilityInfo" nillable="true" type="impl:EligibilityInfo"/>
+			<complexType name="ArrayOf_EligibilityInfo">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="impl:EligibilityInfo[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<element name="ArrayOf_EligibilityInfo" nillable="true" type="impl:ArrayOf_EligibilityInfo"/>
+			<complexType name="EligibilityResponse">
+				<sequence>
+					<element name="eligibilityInfos" nillable="true" type="impl:ArrayOf_EligibilityInfo"/>
+				</sequence>
+			</complexType>
+			<element name="EligibilityResponse" nillable="true" type="impl:EligibilityResponse"/>
+			<complexType name="PromotionServiceException">
+				<sequence>
+					<element name="message" nillable="true" type="xsd:string"/>
+					<element name="code" nillable="true" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="PromotionServiceException" nillable="true" type="impl:PromotionServiceException"/>
+			<complexType name="EligibilityException">
+				<sequence>
+					<element name="message" nillable="true" type="xsd:string"/>
+					<element name="code" nillable="true" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<element name="EligibilityException" nillable="true" type="impl:EligibilityException"/>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="getEligibilityForCodeRequest">
+		<wsdl:part name="eligibilityRequest" type="impl:EligibilityRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getEligibilityForCodeResponse">
+		<wsdl:part name="eligibilityResponse" type="impl:EligibilityResponse"/>
+	</wsdl:message>
+	<wsdl:message name="PromotionServiceException">
+		<wsdl:part name="fault" type="impl:PromotionServiceException"/>
+	</wsdl:message>
+	<wsdl:message name="EligibilityException">
+		<wsdl:part name="fault" type="impl:EligibilityException"/>
+	</wsdl:message>
+	<wsdl:portType name="EligibilityServiceBean">
+		<wsdl:operation name="getEligibilityForCode" parameterOrder="eligibilityRequest">
+			<wsdl:input message="impl:getEligibilityForCodeRequest" name="getEligibilityForCodeRequest"/>
+			<wsdl:output message="impl:getEligibilityForCodeResponse" name="getEligibilityForCodeResponse"/>
+			<wsdl:fault message="impl:PromotionServiceException" name="PromotionServiceException"/>
+			<wsdl:fault message="impl:EligibilityException" name="EligibilityException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="EligibilityServiceBeanSoapBinding" type="impl:EligibilityServiceBean">
+		<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getEligibilityForCode">
+			<wsdlsoap:operation/>
+			<wsdl:input>
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.promotion.services.gid.gap.com" use="encoded"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://provider.v1.promotion.services.gid.gap.com" use="encoded"/>
+			</wsdl:output>
+			<wsdl:fault name="PromotionServiceException">
+				<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="PromotionServiceException" use="encoded"/>
+			</wsdl:fault>
+			<wsdl:fault name="EligibilityException">
+				<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EligibilityException" use="encoded"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="EligibilityServiceBeanService">
+		<wsdl:port binding="impl:EligibilityServiceBeanSoapBinding" name="EligibilityServiceBean">
+			<wsdlsoap:address location="http://localhost:9080/EligibilityServiceProviderV1-0/services/EligibilityServiceBean"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

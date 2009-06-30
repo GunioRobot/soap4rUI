@@ -1,0 +1,57 @@
+todo:  
+  - get all demo xmls working
+
+  -submission bugs (soap faults should be displayed)
+  -cleanup temporary files
+  -serve this as web app (finalize on war or ruby web server) (rake task)
+  -create a java exectuable that works for mac osx and windows xp (rake task)
+    java -cp "ruby-processing/app.rb:ruby-processing/exporters/applet_exporter.rb:ruby-processing/exporters/application_exporter.rb:ruby-processing/exporters/base_exporter.rb:ruby-processing/exporters/creator.rb:ruby-processing/helpers/numeric.rb:ruby-processing/helpers/string.rb:ruby-processing/runner.rb:ruby-processing/runners/base.rb:ruby-processing/runners/live.rb:ruby-processing/runners/run.rb:ruby-processing/runners/watch.rb:ruby-processing.rb:sand_chaser.rb:core/core.jar:core/jruby-complete.jar:jogl.jar:opengl.jar" org.jruby.Main ruby-processing/runners/run.rb sand_chaser.rb
+
+  -findInventory ServiceAlive bug (think this is due to a malformed wsdl method def)
+  -findInventory array build default instance with Array of complextype bug
+  -ICmfindInventory build default instance with SchemaSequenceDefinition bug
+
+  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
+  
+  -receipt messages bug missing on load.
+  -min max occurs disappears on reload. 
+  -make enums work as select boxes need to figure a way to make nil preserve the enum type dynamically  
+  
+  - bug for backslashes for local files on windows systems
+
+  -mouse over table highlight
+  -create a quick driver to generate ruby tests
+  -create a gui to do a visual diff of expected responses vs actual responses. 
+  -google / amazon / ebay working examples 
+  -loading bug - needs to build default instance then populate it.    
+done: 
+  - manually create and submit an xml
+  -fix on restart of server having to go back to the method selector page.
+  -make sure the appliedStatus is returned correctly from the server
+  -result display bugs -may already be fixed with the array of simple types fix
+  -appliedstatus bug result display bug enum must get text
+  -findInventory service name bug
+  -coloring of sub tables
+  -qualifingTenders visibility bug  
+  -(service name methods bug)
+  -patch jruby openssl hex digit
+  -patch jruby yaml load
+  -run the app via jruby (collect all the gem dependencies)
+  -store minoccurs maxoccurs in marshaller (alternative was to look it up at runtime from schemadef)
+  -fix namespace issue for generated code with same name
+  -save service descriptor locally so that tests are really unit tests.
+  -add a button to save the response xml for later comparison 
+  -the response should be displayed on the screen.
+  -ui generate a ui that indents subelements correctly. 
+  -convert from obj to xml and from xml to obj 
+  -the submit button should gather all the inputs from the form and generate the request and send it to the server defined in the endpoint. 
+  -optional fields should be marked as such
+  -there should be a save button that allows you to store the request for later
+  -there should be a load button to load a previously saved request.
+  -the add button should send a request to the server and the response should reflect this change
+  -map from soap4r object graph to form fields
+  -translate from form fields and data to a soap4r object representing the tree.
+  -fields that can occur more than once should have an "add field" button next to them to duplicate the input forms.  
+  -create a default empty instance of a soap4r object from the wsdl
+  -accept a local(saved on hard drive) or remote (http:) copy of the wsdl and give a drop down of all methods the service handles.
+  -after selecting a method a web form should be generated according to the required and optional fields.

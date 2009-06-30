@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rsoapUI/!svn/ver/36/generated_clients/GoogleSearch
+END
+GoogleSearchDriver.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rsoapUI/!svn/ver/5/generated_clients/GoogleSearch/GoogleSearchDriver.rb
+END
+GoogleSearch.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/rsoapUI/!svn/ver/5/generated_clients/GoogleSearch/GoogleSearch.rb
+END
+GoogleSearchServiceClient.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/rsoapUI/!svn/ver/5/generated_clients/GoogleSearch/GoogleSearchServiceClient.rb
+END
+GoogleSearchMappingRegistry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/5/generated_clients/GoogleSearch/GoogleSearchMappingRegistry.rb
+END

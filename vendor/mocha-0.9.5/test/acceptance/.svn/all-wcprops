@@ -1,0 +1,227 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance
+END
+stubbing_non_public_any_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_public_any_instance_method_test.rb
+END
+stubbing_method_unnecessarily_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_method_unnecessarily_test.rb
+END
+stubbing_on_non_mock_object_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_on_non_mock_object_test.rb
+END
+mocha_test_result_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/mocha_test_result_test.rb
+END
+stubbing_error_backtrace_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_error_backtrace_test.rb
+END
+acceptance_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/acceptance_test_helper.rb
+END
+standalone_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/standalone_test.rb
+END
+mock_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/mock_test.rb
+END
+minitest_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/minitest_test.rb
+END
+stubbing_non_existent_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_existent_instance_method_test.rb
+END
+stubbing_non_existent_class_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_existent_class_method_test.rb
+END
+stub_class_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_class_method_test.rb
+END
+expected_invocation_count_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/expected_invocation_count_test.rb
+END
+mocha_example_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/mocha_example_test.rb
+END
+states_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/states_test.rb
+END
+mocked_methods_dispatch_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/mocked_methods_dispatch_test.rb
+END
+stubbing_non_existent_any_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_existent_any_instance_method_test.rb
+END
+optional_parameters_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/optional_parameters_test.rb
+END
+stubbing_non_public_class_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_public_class_method_test.rb
+END
+return_value_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/return_value_test.rb
+END
+bug_21563_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/bug_21563_test.rb
+END
+stub_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_test.rb
+END
+stubba_test_result_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubba_test_result_test.rb
+END
+failure_messages_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/failure_messages_test.rb
+END
+bug_21465_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/bug_21465_test.rb
+END
+stubba_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubba_test.rb
+END
+stub_everything_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_everything_test.rb
+END
+stub_module_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_module_method_test.rb
+END
+parameter_matcher_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/parameter_matcher_test.rb
+END
+bug_18914_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/bug_18914_test.rb
+END
+partial_mocks_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/partial_mocks_test.rb
+END
+stubba_example_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubba_example_test.rb
+END
+stub_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_instance_method_test.rb
+END
+mock_with_initializer_block_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/mock_with_initializer_block_test.rb
+END
+stub_any_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stub_any_instance_method_test.rb
+END
+sequence_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/sequence_test.rb
+END
+stubbing_non_public_instance_method_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/rsoapUI/!svn/ver/15/vendor/mocha-0.9.5/test/acceptance/stubbing_non_public_instance_method_test.rb
+END

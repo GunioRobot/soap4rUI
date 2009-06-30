@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views
+END
+foo_layout.haml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo_layout.haml
+END
+foo.haml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo.haml
+END
+foo_layout.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo_layout.erb
+END
+foo.builder
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo.builder
+END
+foo.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo.erb
+END
+foo.sass
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/compat/views/foo.sass
+END

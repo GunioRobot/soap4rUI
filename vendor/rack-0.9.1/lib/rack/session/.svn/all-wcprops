@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/lib/rack/session
+END
+memcache.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/lib/rack/session/memcache.rb
+END
+cookie.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/lib/rack/session/cookie.rb
+END
+pool.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/rsoapUI/!svn/ver/15/vendor/rack-0.9.1/lib/rack/session/pool.rb
+END

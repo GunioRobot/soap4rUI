@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results
+END
+very_basic.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/very_basic.xhtml
+END
+original_engine.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/original_engine.xhtml
+END
+partial_layout.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/partial_layout.xhtml
+END
+just_stuff.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/just_stuff.xhtml
+END
+nuke_outer_whitespace.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/nuke_outer_whitespace.xhtml
+END
+tag_parsing.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/tag_parsing.xhtml
+END
+helpful.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/helpful.xhtml
+END
+whitespace_handling.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/whitespace_handling.xhtml
+END
+standard.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/standard.xhtml
+END
+helpers.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/helpers.xhtml
+END
+eval_suppressed.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/eval_suppressed.xhtml
+END
+filters.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/filters.xhtml
+END
+nuke_inner_whitespace.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/nuke_inner_whitespace.xhtml
+END
+list.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/list.xhtml
+END
+render_layout.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/render_layout.xhtml
+END
+content_for_layout.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/content_for_layout.xhtml
+END
+partials.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/partials.xhtml
+END
+silent_script.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/rsoapUI/!svn/ver/15/vendor/haml-2.0.9/test/haml/results/silent_script.xhtml
+END

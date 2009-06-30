@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/lib/sinatra/test
+END
+unit.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/lib/sinatra/test/unit.rb
+END
+bacon.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/lib/sinatra/test/bacon.rb
+END
+spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/lib/sinatra/test/spec.rb
+END
+rspec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rsoapUI/!svn/ver/15/vendor/sinatra-0.9.1.1/lib/sinatra/test/rspec.rb
+END

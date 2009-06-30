@@ -1,0 +1,234 @@
+--- !ruby/object:MySoap::Interface998110382::DiscountServiceResponseType 
+orderResponse: !ruby/object:MySoap::Interface998110382::OrderType 
+  brand: Gap Outlet
+  channel: POS
+  market: Canada
+  orderDate: 03/18/2009 09:00
+  orderID: "1234"
+  orderLineItems: 
+  - !ruby/object:MySoap::Interface998110382::OrderLineType 
+    awards: 
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 7 dollar
+      awardDiscountAmount: "2.75"
+      awardID: "223170"
+      promotionCode: BWRHBBZD49L1
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 6 dollar
+      awardDiscountAmount: "2.35"
+      awardID: "223167"
+      promotionCode: D6MTDMLLPBKJ
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 5 dollar
+      awardDiscountAmount: "1.96"
+      awardID: "223164"
+      promotionCode: DG2FLLHHVW6W
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 4 dollar
+      awardDiscountAmount: "1.57"
+      awardID: "223162"
+      promotionCode: BF1XL7L9DKJY
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 3 dollar
+      awardDiscountAmount: "1.18"
+      awardID: "223155"
+      promotionCode: B6KXF6MT12RG
+    exclude: false
+    price: !ruby/object:MySoap::Interface998110382::PriceInfoType 
+      discountPrice: "30.18"
+      netPrice: "39.99"
+    product: !ruby/object:MySoap::Interface998110382::ProductInfoType 
+      brand: Gap Outlet
+      itemClassNumber: "07"
+      itemCompanyNumber: "1"
+      itemCorpNumber: "1"
+      itemDepartmentNumber: "168"
+      itemDivisionNumber: "16"
+      itemSubClassNumber: "03"
+      merchandiseType: "7"
+      sku: "1230005014"
+    quantity: 1
+    sequenceNumber: 0
+  - !ruby/object:MySoap::Interface998110382::OrderLineType 
+    awards: 
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 7 dollar
+      awardDiscountAmount: "3.15"
+      awardID: "223170"
+      promotionCode: BWRHBBZD49L1
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 6 dollar
+      awardDiscountAmount: "2.71"
+      awardID: "223167"
+      promotionCode: D6MTDMLLPBKJ
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 5 dollar
+      awardDiscountAmount: "2.26"
+      awardID: "223164"
+      promotionCode: DG2FLLHHVW6W
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 4 dollar
+      awardDiscountAmount: "1.8"
+      awardID: "223162"
+      promotionCode: BF1XL7L9DKJY
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 3 dollar
+      awardDiscountAmount: "1.35"
+      awardID: "223155"
+      promotionCode: B6KXF6MT12RG
+    exclude: false
+    price: !ruby/object:MySoap::Interface998110382::PriceInfoType 
+      discountPrice: "34.72"
+      netPrice: "45.99"
+    product: !ruby/object:MySoap::Interface998110382::ProductInfoType 
+      brand: Gap Outlet
+      itemClassNumber: "05"
+      itemCompanyNumber: "1"
+      itemCorpNumber: "01"
+      itemDepartmentNumber: "163"
+      itemDivisionNumber: "16"
+      itemSubClassNumber: "01"
+      merchandiseType: "7"
+      sku: "1230005015"
+    quantity: 1
+    sequenceNumber: 1
+  - !ruby/object:MySoap::Interface998110382::OrderLineType 
+    awards: 
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 7 dollar
+      awardDiscountAmount: "1.1"
+      awardID: "223170"
+      promotionCode: BWRHBBZD49L1
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 6 dollar
+      awardDiscountAmount: "0.94"
+      awardID: "223167"
+      promotionCode: D6MTDMLLPBKJ
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 5 dollar
+      awardDiscountAmount: "0.78"
+      awardID: "223164"
+      promotionCode: DG2FLLHHVW6W
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 4 dollar
+      awardDiscountAmount: "0.63"
+      awardID: "223162"
+      promotionCode: BF1XL7L9DKJY
+    - !ruby/object:MySoap::Interface998110382::AwardType 
+      awardDescription: Story 381 Transaction Level Reward Unique 3 dollar
+      awardDiscountAmount: "0.47"
+      awardID: "223155"
+      promotionCode: B6KXF6MT12RG
+    exclude: false
+    price: !ruby/object:MySoap::Interface998110382::PriceInfoType 
+      discountPrice: "12.05"
+      netPrice: "15.97"
+      priceType: !str:MySoap::Interface998110382::PriceTypeEnum MARKDOWN
+    product: !ruby/object:MySoap::Interface998110382::ProductInfoType 
+      brand: Gap Outlet
+      itemClassNumber: "16"
+      itemCompanyNumber: "1"
+      itemCorpNumber: "01"
+      itemDepartmentNumber: "163"
+      itemDivisionNumber: "16"
+      itemSubClassNumber: "00"
+      merchandiseType: "7"
+      sku: "1230005016"
+    quantity: 1
+    sequenceNumber: 2
+  promotions: 
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum EXCEEDS_DISCOUNTS_ALLOWED
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: BB4FYG3YMZHT
+    sequenceNumber: 0
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum EXCEEDS_DISCOUNTS_ALLOWED
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: MPKB7XM4MNPQ
+    sequenceNumber: 1
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum CODE_APPLIED
+    discountReasonCode: "521"
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: B6KXF6MT12RG
+    promotionID: "54893"
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: en_CA
+      message: "Story 381 TranEnglish "
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: fr_CA
+      message: Story 381 Trans French
+    sequenceNumber: 2
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum CODE_APPLIED
+    discountReasonCode: "521"
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: BF1XL7L9DKJY
+    promotionID: "54895"
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: en_CA
+      message: "Story 381 TranEnglish "
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: fr_CA
+      message: Story 381 Trans French
+    sequenceNumber: 3
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum CODE_APPLIED
+    discountReasonCode: "521"
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: DG2FLLHHVW6W
+    promotionID: "54897"
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: en_CA
+      message: "Story 381 TranEnglish "
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: fr_CA
+      message: Story 381 Trans French
+    sequenceNumber: 4
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum CODE_APPLIED
+    discountReasonCode: "521"
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: D6MTDMLLPBKJ
+    promotionID: "54899"
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: en_CA
+      message: "Story 381 TranEnglish "
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: fr_CA
+      message: Story 381 Trans French
+    sequenceNumber: 5
+  - !ruby/object:MySoap::Interface998110382::PromotionType 
+    appliedStatus: !str:MySoap::Interface998110382::AppliedStatusEnum CODE_APPLIED
+    discountReasonCode: "521"
+    promoUsages: 
+    - !ruby/object:MySoap::Interface998110382::PromoUsageType {}
+
+    promotionCode: BWRHBBZD49L1
+    promotionID: "54901"
+    receiptMessages: 
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: en_CA
+      message: "Story 381 TranEnglish "
+    - !ruby/object:MySoap::Interface998110382::ReceiptMessageType 
+      locale: fr_CA
+      message: Story 381 Trans French
+    sequenceNumber: 6
+  qualifyType: !str:MySoap::Interface998110382::QualifyTypeEnum QUALIFY_WITH_TENDER
