@@ -1,5 +1,0 @@
---- !ruby/object:MySoap::InterfaceOne::DiscountServiceRequestType 
-orderRequest: !ruby/object:MySoap::InterfaceOne::OrderType 
-  brand: !str 
-    str: ""
-
