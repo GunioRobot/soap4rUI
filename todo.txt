@@ -1,6 +1,8 @@
 todo:  
+  - upload feature
+  - fix for booleans
+  - fix for nillable false minoccurs = 0
   - get all demo xmls working
-
   -submission bugs (soap faults should be displayed)
   -cleanup temporary files
   -serve this as web app (finalize on war or ruby web server) (rake task)
