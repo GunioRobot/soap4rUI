@@ -2,10 +2,8 @@
 - field = @parent.instance_variable_get(@child)
 - field_type = field.class
 - field_name = @child
-- #if this is a collection then iterate over the elements/
-- #if this object is one of our domain's complex types iterate over the instance variables/
-- #simple types should be text input fields/    
 %tr
+- #if this is a collection then iterate over the elements/
 -if (field_type == Array) 
   - array = field
   - ancestry = @ancestry + ".#{@child.gsub('@','')}"
@@ -33,6 +31,7 @@
                       %small [optional]
                
 - else  
+  - #if this object is one of our domain's complex types iterate over the instance variables/
   - if (field_type.to_s.include?(@namespace+'::'))
     %td
       = "#{field_name.gsub('@','')}"# is a complexType:#{field_type}"#, parent is #{@parent.class.to_s}"    
@@ -48,12 +47,13 @@
           - for @child in @parent.instance_variables
             = haml :haml_partial
   - else
+    - #simple types should be text input fields/                
     - if !field_name.include?('@minoccurs') && !field_name.include?('@maxoccurs') 
       %td
         %pre
           = "#{field_name.gsub('@','')}"# is a simpleType #{field_type}"#, parent is #{@parent.class.to_s}"
       %td
-        %input{ :name => "#{@ancestry}.#{field_name.gsub('@','')}", :type => :text, :value => field}
+        %input{ :name => "#{@ancestry}.#{field_name.gsub('@','')}", :type => :text, :value => field.to_s}
         - if field.minoccurs == 0
           %small [optional]
 - #restore the scope/

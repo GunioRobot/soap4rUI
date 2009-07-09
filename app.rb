@@ -78,7 +78,7 @@ post '/update' do
     # SaveLoadConvertHelpers::save_request_as_yaml(@params,"saved_forms/"+@params["file_name"]+".yml")  
     SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/responses/"+@params["file_name"], @client, @namespace, @wsdl)
     haml :client  
-  elsif @params[:action] == 'Load'
+  elsif @params[:action] == 'LoadRequest'
     #@params = SaveLoadConvertHelpers::load_request_from_yaml("saved_forms/"+@params["file_name"]+".yml")
     @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests"+@params["file_name"], @client, @namespace, @wsdl)
     @input = @params['input']

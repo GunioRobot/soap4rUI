@@ -32,11 +32,9 @@
           %div
             %label
               filename: 
-              %small 
-                (defaults to .xml extension)
               %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}  
             %input{:type => 'submit', :name => 'SaveRequest',:value => 'SaveRequest', :onclick => "document.getElementById(\"action\").value = \"SaveRequest\";"}
-            %input{:type => 'submit', :name => 'Load',:value => 'Load', :onclick => "document.getElementById(\"action\").value = \"Load\";"}            
+            %input{:type => 'submit', :name => 'LoadRequest',:value => 'LoadRequest', :onclick => "document.getElementById(\"action\").value = \"LoadRequest\";"}            
           %div
             %label
               fileupload: 

@@ -1,6 +1,5 @@
 todo:  
   - add nillable to the attributes of each element
-  - fix for booleans
   - fix for nillable false minoccurs = 0
   - nil PromotionId, AppliedStatus, and QualifyType bugs. 
   - get all demo xmls working
@@ -27,6 +26,7 @@ todo:
   -create a gui to do a visual diff of expected responses vs actual responses. 
   -google / amazon / ebay working examples 
 done: 
+  - fix for booleans
   -submission bugs (soap faults should be displayed)
   - fix for errors requiring a restard due to chdir
   - upload feature
