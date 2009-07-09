@@ -7,6 +7,9 @@ gem 'soap4r'
 
 require File.dirname(File.expand_path(__FILE__))+'/lib/sinatra_app_helpers'
 
+
+#on restart clear out the generated clients
+%x{rake maintenance:clean}
 #start page to select the wsdl
 get '/**' do
   haml :choose_wsdl
