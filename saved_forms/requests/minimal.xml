@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+  <env:Body>
+    <DiscountServiceRequest>
+      <StoreID>1</StoreID>
+      <RequestType>LIVE</RequestType>
+      <orderRequest>
+        <OrderID>1</OrderID>
+        <QualifyType>QUALIFY_WITH_TENDER</QualifyType>
+        <OrderDate>09/09/2009 09:00</OrderDate>
+        <Channel>POS</Channel>
+        <Brand>Gap</Brand>
+        <Market>USA</Market>
+        <OrderLineItems>
+          <SequenceNumber>0</SequenceNumber>
+          <Product>
+            <Brand>Gap</Brand>
+            <MerchandiseType>7</MerchandiseType>
+            <StyleColor>1234567</StyleColor>
+          </Product>
+          <Price>
+            <NetPrice>50.00</NetPrice>
+            <PriceType>MARKDOWN</PriceType>
+            <IsPromotional>false</IsPromotional>
+          </Price>
+          <Quantity>1</Quantity>
+          <Awards>
+            <AwardMethod>FIXED_PRICE</AwardMethod>
+          </Awards>
+          <IsLineItemExcluded>false</IsLineItemExcluded>
+        </OrderLineItems>
+        <Promotions>
+          <SequenceNumber>0</SequenceNumber>
+          <PromotionCode>MYCODE123</PromotionCode>
+          <ReceiptMessages></ReceiptMessages>
+          <PromoUsages></PromoUsages>
+          <QualifyingTenders xsi:nil="true"></QualifyingTenders>
+        </Promotions>
+        <Tenders></Tenders>
+      </orderRequest>
+    </DiscountServiceRequest>
+  </env:Body>
+</env:Envelope>
