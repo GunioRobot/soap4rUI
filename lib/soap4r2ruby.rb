@@ -21,12 +21,15 @@ class Soap4r2Ruby
     @namespace = i_namespace
     @wsdl = wsdl
     curr = Dir.pwd
-    Dir.chdir(@folder)
-    # $DEBUG = true=
-    @driver_file =(Dir.entries(@folder) - [".", "..", ".svn"]).select{|e| e.to_s.include?'Driver.rb'}.first
-    require @folder+"/"+@driver_file
-    Dir.chdir(curr)
-    
+    begin
+      Dir.chdir(@folder)
+      # $DEBUG = true=
+      @driver_file =(Dir.entries(@folder) - [".", "..", ".svn"]).select{|e| e.to_s.include?'Driver.rb'}.first
+      require @folder+"/"+@driver_file
+    ensure
+      Dir.chdir curr
+    end  
+        
     @factory = SOAP::WSDLDriverFactory.new(@wsdl)    
     @port_type = @factory.wsdl.porttypes[0]
     # @service_method_names = @port_type.operations.map{|op| op}    

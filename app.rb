@@ -7,11 +7,8 @@ gem 'soap4r'
 
 require File.dirname(File.expand_path(__FILE__))+'/lib/sinatra_app_helpers'
 
-
-#on restart clear out the generated clients
-%x{rake maintenance:clean}
-#start page to select the wsdl
 get '/**' do
+  #start page to select the wsdl
   haml :choose_wsdl
 end
 
@@ -48,6 +45,11 @@ post '/build' do
   haml :client
 end
 
+post '/upload_file' do
+  require 'ruby-debug';debugger
+  haml :client
+end
+
 post '/update' do
   @client = @params[:client]
   @wsdl = @params[:wsdl]
@@ -68,14 +70,21 @@ post '/update' do
     #@result = File.open("test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
     # content_type 'text/xml', :charset => 'utf-8'
     haml :result
-  elsif @params[:action] == 'Save'
+  elsif @params[:action] == 'SaveRequest'
     # SaveLoadConvertHelpers::save_request_as_yaml(@params,"saved_forms/"+@params["file_name"]+".yml")  
-    SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/"+@params["file_name"]+".xml", @client, @namespace, @wsdl)
-    haml :client
+    SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
+    haml :client  
+  elsif @params[:action] == 'SaveResponse'
+    # SaveLoadConvertHelpers::save_request_as_yaml(@params,"saved_forms/"+@params["file_name"]+".yml")  
+    SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/responses/"+@params["file_name"], @client, @namespace, @wsdl)
+    haml :client  
   elsif @params[:action] == 'Load'
     #@params = SaveLoadConvertHelpers::load_request_from_yaml("saved_forms/"+@params["file_name"]+".yml")
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/"+@params["file_name"]+".xml", @client, @namespace, @wsdl)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests"+@params["file_name"], @client, @namespace, @wsdl)
     @input = @params['input']
+    haml :client
+  elsif @params[:action] == 'Upload'
+    File.open("saved_forms/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
     haml :client
   elsif @params[:action] == 'Add'
     @input = SinatraAppHelpers::create_element(@input, @params[:element])

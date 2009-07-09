@@ -6,23 +6,26 @@ module SinatraAppHelpers
   def self.update(params)
     folder = params['client']
     curr = Dir.pwd
-    Dir.chdir(folder)
-    driver_file =(Dir.entries(folder) - [".", "..", ".svn"]).select{|e| e.to_s.include?'Driver.rb'}.first
-    require folder+"/"+driver_file
-    Dir.chdir(curr)
-    @input = YAML.load params['input'] #prepopulate with original values
-    (params.keys - ["input", :splat, "namespace", "client", "action", "Submit", "Save", "Load", "file_name"]).sort.each do |e|      
-      es = e.to_array
-      #since yaml turns everything to strings make sure occurences turn back into Numbers properly
-      # to_i on nil gives zero not nil
-      if((es.include?('.minoccurs') || es.include?('.maxoccurs')) and (eval("params[e]") != ''))
-        eval("#{es} = params[e].to_i")
-      else
-        eval("#{es} = params[e]")
-      end 
+    begin
+      Dir.chdir(folder)
+      driver_file =(Dir.entries(folder) - [".", "..", ".svn"]).select{|e| e.to_s.include?'Driver.rb'}.first
+      require folder+"/"+driver_file
+    ensure
+      Dir.chdir curr
     end
-    params['input'] = @input #restore updated values
-    params
+      @input = YAML.load params['input'] #prepopulate with original values
+      (params.keys - ["input", :splat, "namespace", "client", "action", "Submit", "Save", "Load", "file_name"]).sort.each do |e|      
+        es = e.to_array
+        #since yaml turns everything to strings make sure occurences turn back into Numbers properly
+        # to_i on nil gives zero not nil
+        if((es.include?('.minoccurs') || es.include?('.maxoccurs')) and (eval("params[e]") != ''))
+          eval("#{es} = params[e].to_i")
+        else
+          eval("#{es} = params[e]")
+        end 
+      end
+      params['input'] = @input #restore updated values
+      params
   end
   
   def self.create_element(input, element)

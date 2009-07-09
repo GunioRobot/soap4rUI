@@ -10,7 +10,7 @@
           WebClient Generated From Wsdl 
         = @params[:method]
       %div
-        %form{:action => '/update', :method => 'post'}  
+        %form{ :enctype => "multipart/form-data", :method => "post", :action => "update" }
           /Store the old state/
           %input{:type => :hidden, :name => :input, :value => @input.to_yaml}
           %input{:type => :hidden, :name => :client, :value => @client}
@@ -34,6 +34,13 @@
               filename: 
               %small 
                 (defaults to .xml extension)
-              %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}    
-            %input{:type => 'submit', :name => 'Save',:value => 'Save', :onclick => "document.getElementById(\"action\").value = \"Save\";"}
+              %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}  
+            %input{:type => 'submit', :name => 'SaveRequest',:value => 'SaveRequest', :onclick => "document.getElementById(\"action\").value = \"SaveRequest\";"}
             %input{:type => 'submit', :name => 'Load',:value => 'Load', :onclick => "document.getElementById(\"action\").value = \"Load\";"}            
+          %div
+            %label
+              fileupload: 
+              %input{ :name => "datafile", :size => "40", :type => "file" }
+            %input{:type => 'submit', :name => 'Upload',:value => 'Upload', :onclick => "document.getElementById(\"action\").value = \"Upload\";"}
+
+

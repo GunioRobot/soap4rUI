@@ -1,10 +1,13 @@
 todo:  
-  - upload feature
+  - add nillable to the attributes of each element
   - fix for booleans
   - fix for nillable false minoccurs = 0
+  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
   - get all demo xmls working
-  -submission bugs (soap faults should be displayed)
-  -cleanup temporary files
+  - bug for backslashes for local files on windows systems
+  -loading bug - needs to build default instance then populate it.    
+  -cleanup temporary files on startup
+  
   -serve this as web app (finalize on war or ruby web server) (rake task)
   -create a java exectuable that works for mac osx and windows xp (rake task)
     java -cp "ruby-processing/app.rb:ruby-processing/exporters/applet_exporter.rb:ruby-processing/exporters/application_exporter.rb:ruby-processing/exporters/base_exporter.rb:ruby-processing/exporters/creator.rb:ruby-processing/helpers/numeric.rb:ruby-processing/helpers/string.rb:ruby-processing/runner.rb:ruby-processing/runners/base.rb:ruby-processing/runners/live.rb:ruby-processing/runners/run.rb:ruby-processing/runners/watch.rb:ruby-processing.rb:sand_chaser.rb:core/core.jar:core/jruby-complete.jar:jogl.jar:opengl.jar" org.jruby.Main ruby-processing/runners/run.rb sand_chaser.rb
@@ -13,21 +16,22 @@ todo:
   -findInventory array build default instance with Array of complextype bug
   -ICmfindInventory build default instance with SchemaSequenceDefinition bug
 
-  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
   
   -receipt messages bug missing on load.
   -min max occurs disappears on reload. 
   -make enums work as select boxes need to figure a way to make nil preserve the enum type dynamically  
   
-  - bug for backslashes for local files on windows systems
 
   -mouse over table highlight
   -create a quick driver to generate ruby tests
   -create a gui to do a visual diff of expected responses vs actual responses. 
   -google / amazon / ebay working examples 
-  -loading bug - needs to build default instance then populate it.    
 done: 
-  - manually create and submit an xml
+  -submission bugs (soap faults should be displayed)
+  - fix for errors requiring a restard due to chdir
+  - upload feature
+  - remove implicit .xml file extension
+  -manually create and submit an xml
   -fix on restart of server having to go back to the method selector page.
   -make sure the appliedStatus is returned correctly from the server
   -result display bugs -may already be fixed with the array of simple types fix

@@ -6,29 +6,32 @@ module GeneratorHelpers
   ## helpers
   def self.generate_ruby_classes(folder_name, namespace, wsdl)
     curr = Dir.pwd
-    self.cleanup_generated_ruby_classes(folder_name)
-    Dir.mkdir folder_name
-    Dir.chdir folder_name
-    i = WSDL::SOAP::WSDL2Ruby.new
-    i.instance_variable_set("@name", 'default')
-    i.instance_variable_set("@location", wsdl)
-    opt = {}
-    opt["force"] = true
-    opt['classdef'] = nil
-    opt['mapping_registry'] = nil
-    opt['driver'] = nil
-    opt['classdef_filename'] = '.rb'
-    opt["module_path"] = namespace
-    i.instance_variable_set("@opt", opt)
-    i.run
-    #  
-    # command = "wsdl2ruby.rb --module_path #{namespace} --wsdl #{wsdl} --classdef --mapping_registry --driver --force"
-    # require 'ruby-debug';debugger   
-    # result = %x{command}
-    make_unique_name_for_generated_ruby_classes(Dir.pwd)
-    driver_file = Dir.entries(Dir.pwd).grep(/Driver.rb/).first
-    Dir.chdir curr
-    driver_file
+    begin
+      self.cleanup_generated_ruby_classes(folder_name)
+      Dir.mkdir folder_name
+      Dir.chdir folder_name
+      i = WSDL::SOAP::WSDL2Ruby.new
+      i.instance_variable_set("@name", 'default')
+      i.instance_variable_set("@location", wsdl)
+      opt = {}
+      opt["force"] = true
+      opt['classdef'] = nil
+      opt['mapping_registry'] = nil
+      opt['driver'] = nil
+      opt['classdef_filename'] = '.rb'
+      opt["module_path"] = namespace
+      i.instance_variable_set("@opt", opt)
+      i.run
+      #  
+      # command = "wsdl2ruby.rb --module_path #{namespace} --wsdl #{wsdl} --classdef --mapping_registry --driver --force"
+      # require 'ruby-debug';debugger   
+      # result = %x{command}
+      make_unique_name_for_generated_ruby_classes(Dir.pwd)
+      driver_file = Dir.entries(Dir.pwd).grep(/Driver.rb/).first
+    ensure
+      Dir.chdir curr
+      driver_file
+    end
   end
 
   def self.make_unique_name_for_generated_ruby_classes(folder_name)
