@@ -2,8 +2,9 @@ require 'rubygems'
 require 'rake'
 
 class FailedCleanException < Exception;end
+class FailedTestException < Exception;end
 
-task :default => 'maintenance:all'
+task :default => 'test:all'
 
 namespace :maintenance do
   current_dir = File.dirname(__FILE__)
@@ -21,4 +22,20 @@ namespace :maintenance do
    
  desc "run a full clean"
  task :all => [ :clean ]
+end
+
+namespace :test do
+
+ desc "run the test suite"
+ task :run do
+   test_result = %x{ruby test/ts_master.rb}
+     print test_result
+     if test_result.match(/error/i)
+       puts "test failed"
+       throw FailedTestException.new
+     end
+   end
+   
+ desc "run all tests"
+ task :all => [ :run ]
 end
