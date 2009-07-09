@@ -45,11 +45,6 @@ post '/build' do
   haml :client
 end
 
-post '/upload_file' do
-  require 'ruby-debug';debugger
-  haml :client
-end
-
 post '/update' do
   @client = @params[:client]
   @wsdl = @params[:wsdl]
@@ -80,11 +75,13 @@ post '/update' do
     haml :client  
   elsif @params[:action] == 'LoadRequest'
     #@params = SaveLoadConvertHelpers::load_request_from_yaml("saved_forms/"+@params["file_name"]+".yml")
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests"+@params["file_name"], @client, @namespace, @wsdl)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
     @input = @params['input']
     haml :client
   elsif @params[:action] == 'Upload'
-    File.open("saved_forms/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
+    File.open("saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests/#{@params['datafile'][:filename]}", @client, @namespace, @wsdl)
+    @input = @params['input']
     haml :client
   elsif @params[:action] == 'Add'
     @input = SinatraAppHelpers::create_element(@input, @params[:element])

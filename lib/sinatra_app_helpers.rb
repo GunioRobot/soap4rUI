@@ -1,5 +1,6 @@
 require File.dirname(File.expand_path(__FILE__)) + '/soap4r2ruby'
 require 'wsdl/soap/wsdl2ruby'
+require 'yaml'
 
 module SinatraAppHelpers
 
@@ -20,6 +21,8 @@ module SinatraAppHelpers
         # to_i on nil gives zero not nil
         if((es.include?('.minoccurs') || es.include?('.maxoccurs')) and (eval("params[e]") != ''))
           eval("#{es} = params[e].to_i")
+        elsif(eval("params[e]") == '')
+          eval("#{es} = nil")
         else
           eval("#{es} = params[e]")
         end 

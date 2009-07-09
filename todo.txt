@@ -1,7 +1,5 @@
 todo:  
-  - add nillable to the attributes of each element
-  - fix for nillable false minoccurs = 0
-  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
+  - investigate awardMethodENum bug
   - get all demo xmls working
   - bug for backslashes for local files on windows systems
   -loading bug - needs to build default instance then populate it.    
@@ -26,6 +24,9 @@ todo:
   -create a gui to do a visual diff of expected responses vs actual responses. 
   -google / amazon / ebay working examples 
 done: 
+  - add nillable to the attributes of each element
+  - fix for nillable false minoccurs = 0
+  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
   - fix for booleans
   -submission bugs (soap faults should be displayed)
   - fix for errors requiring a restard due to chdir
