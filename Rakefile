@@ -2,7 +2,6 @@ require 'rubygems'
 require 'rake'
 
 class FailedCleanException < Exception;end
-class FailedTestException < Exception;end
 
 task :default => 'test:all'
 
@@ -26,16 +25,22 @@ end
 
 namespace :test do
 
- desc "run the test suite"
- task :run do
-   test_result = %x{ruby test/ts_master.rb}
-     print test_result
-     if test_result.match(/error/i)
-       puts "test failed"
-       throw FailedTestException.new
-     end
-   end
+  desc "run the test suite"
+  task :run do
+    %x{ruby test/ts_master.rb}
+  end
    
  desc "run all tests"
  task :all => [ :run ]
+end
+
+namespace :server do
+  desc "run the app"
+  task :run do
+    %x{ruby app.rb }
+  end
+
+  task :open do
+    %x{open http://localhost:4567}
+  end
 end

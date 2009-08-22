@@ -1,5 +1,6 @@
 todo:  
   - investigate awardMethodENum bug
+  - demo video
   - get all demo xmls working
   - bug for backslashes for local files on windows systems
   -loading bug - needs to build default instance then populate it.    
