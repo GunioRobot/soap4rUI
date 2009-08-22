@@ -25,7 +25,7 @@ action: Save
 "@input.orderRequest.tenders.slice(0).creditCardType": ""
 "@input.orderRequest.promotions.slice(0).receiptMessages.slice(0).locale": ""
 file_name: params_latest.yaml
-client: /Users/sammyzahabi/Desktop/sinatra_on_gae/peyepr/generated_clients/discountService-V1-0
+client: "client_namespace"
 "@input.orderRequest.orderLineItems.slice(0).product.itemCompanyNumber": ""
 "@input.orderRequest.orderLineItems.slice(0).price.priceType": ""
 "@input.orderRequest.promotions.slice(0).receiptMessages.slice(0).message": ""

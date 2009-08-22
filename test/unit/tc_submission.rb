@@ -7,9 +7,9 @@ class TC_Submission < Test::Unit::TestCase
 
 
   def setup
-    @client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/client_namespace"
-    @test_client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/test_client"
-    @wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @client_folder = Dir.pwd + "/test/fixtures/client_namespace"
+    @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     
     @namespace = "MySoap::InterfaceOne"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
@@ -34,7 +34,7 @@ class TC_Submission < Test::Unit::TestCase
   def test_send_request_default_endpoint
     #create the sample input
     @input = {}
-    @input= YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml"))
+    @input= YAML.load(File.open(Dir.pwd + "/test/fixtures/params/input.yaml"))
     endpoint = nil
     service_method = "applyDiscount"
     namespace = 'MySoap::InterfaceOne'

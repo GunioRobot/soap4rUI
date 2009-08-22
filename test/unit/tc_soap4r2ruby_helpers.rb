@@ -4,9 +4,9 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/soap4r2ruby'
 class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
   
   def setup
-    @client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/latest_client"
+    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")     
     
@@ -112,7 +112,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
    def test_min_max_tagger
      schemadef = Soap4r2RubyHelpers::get_schemadef_for_type_name(eval(@namespace+'::DiscountServiceRequestType'), @tool.mapping_registry, @tool.literal_mapping_registry)
      #load the object
-     xml = File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
+     xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
      obj = SaveLoadConvertHelpers::xml2obj(@tool, xml)
     assert_not_nil(obj)
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, obj.class)

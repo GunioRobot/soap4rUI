@@ -5,10 +5,10 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_ServiceMethodsAndNames < Test::Unit::TestCase
   
   def setup
-    @test_client_folder1 = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/temp_EncryptionService-V1-0"
-    @test_client_folder2 = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/temp_latest_discountService-V1-0"
-    @wsdl1 = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/EncryptionService-V1-0.wsdl"
-    @wsdl2 = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @test_client_folder1 = Dir.pwd + "/test/fixtures/temp_EncryptionService-V1-0"
+    @test_client_folder2 = Dir.pwd + "/test/fixtures/temp_latest_discountService-V1-0"
+    @wsdl1 = Dir.pwd + "/test/fixtures/sample_wsdls/EncryptionService-V1-0.wsdl"
+    @wsdl2 = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     @namespace1 = "MySoap::Interface"
     @namespace2 = "MySoap::Interface"
   end

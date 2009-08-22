@@ -5,19 +5,19 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_Mpc1ServiceNames < Test::Unit::TestCase
   
   def setup
-    @settlement = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/PromotionSettlementService.wsdl"
-    @validation = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/PromoValidationService.wsdl"
-    @usage = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/PromotionUsageService-V1-0.wsdl"
-    @eligibility = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/EligibilityService.wsdl"
-    @discount = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
-    @google = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/GoogleSearch.wsdl"
+    @settlement = Dir.pwd + "/test/fixtures/sample_wsdls/PromotionSettlementService.wsdl"
+    @validation = Dir.pwd + "/test/fixtures/sample_wsdls/PromoValidationService.wsdl"
+    @usage = Dir.pwd + "/test/fixtures/sample_wsdls/PromotionUsageService-V1-0.wsdl"
+    @eligibility = Dir.pwd + "/test/fixtures/sample_wsdls/EligibilityService.wsdl"
+    @discount = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @google = Dir.pwd + "/test/fixtures/sample_wsdls/GoogleSearch.wsdl"
 
-    @old_discount = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl" 
-    @lcm_inventory = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/IcmFindInventoryService-V1-0.wsdl"
-    @find_inventory = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/FindInventoryServiceV1-0.wsdl"
+    @old_discount = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl" 
+    @lcm_inventory = Dir.pwd + "/test/fixtures/sample_wsdls/IcmFindInventoryService-V1-0.wsdl"
+    @find_inventory = Dir.pwd + "/test/fixtures/sample_wsdls/FindInventoryServiceV1-0.wsdl"
     
     
-    @test_client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/temp_test_client"
+    @test_client_folder = Dir.pwd + "/test/fixtures/temp_test_client"
     @namespace = "MySoap::Interface"
   end  
   

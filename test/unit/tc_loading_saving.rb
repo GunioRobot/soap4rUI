@@ -7,10 +7,10 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_LoadingSaving < Test::Unit::TestCase
   
   def setup
-    @client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/latest_client"
-    @test_client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/test_client"
+    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
+    @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
@@ -32,7 +32,8 @@ class TC_LoadingSaving < Test::Unit::TestCase
   end
   def test_update_from_marshalled_yaml
     @params = {}#YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/params.yaml"))
-    @params['input'] = File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml")
+    @params['input'] = File.open(Dir.pwd + "/test/fixtures/params/input.yaml")
+    @params['client'] = Dir.pwd + '/test/fixtures/client_namespace'
     @result = nil
     @result = SinatraAppHelpers::update(@params)
     assert_not_nil(@result)
@@ -46,7 +47,8 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
   def test_update_from_marshalled_yaml_with_form_elements
     @params = {}
-    @params= YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/params_latest.yaml"))
+    @params= YAML.load(File.open(Dir.pwd + "/test/fixtures/params/params_latest.yaml"))
+    @params['client'] = Dir.pwd + '/test/fixtures/client_namespace'
     @result = nil
     @result = SinatraAppHelpers::update(@params)
     assert_not_nil(@result)
@@ -60,7 +62,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
   def test_save_request_to_yaml
     #load a request example
-    @input = YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml"))
+    @input = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/input.yaml"))
     @input.orderRequest.promotions[0].discountReasonCode="something"
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
@@ -74,7 +76,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
   def test_load_request_from_yaml
     #create the sample input
-    @input = YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml"))
+    @input = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/input.yaml"))
     @input.orderRequest.promotions[0].discountReasonCode="something"
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
@@ -95,7 +97,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
   def test_load_request_from_xml
     #create the sample input
-    myfile = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml"
+    myfile = Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml"
     @input = SaveLoadConvertHelpers::load_request_xml(myfile, @client_folder, @namespace, @wsdl)
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
@@ -117,7 +119,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
   def test_save_request_as_xml
     #load a request example
-    xml = (File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml")).readlines.to_s
+    xml = (File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml")).readlines.to_s
     @input = SaveLoadConvertHelpers::xml2obj(@tool, xml)
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)

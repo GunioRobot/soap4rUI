@@ -4,9 +4,9 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/soap4r2ruby'
 class TC_Soap4r2ruby < Test::Unit::TestCase
   
   def setup
-    @client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/latest_client"
+    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     
   end
   

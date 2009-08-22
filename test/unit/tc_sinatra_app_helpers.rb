@@ -5,10 +5,10 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def setup
-    @client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/latest_client"
-    @test_client_folder = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/test_client"
+    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
+    @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
@@ -50,7 +50,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
     
 
   def test_create_new_element_on_add
-    @input = YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml"))
+    @input = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/input.yaml"))
     @input.orderRequest.promotions[0].discountReasonCode="something"
     @action = "@input.orderRequest.promotions"
     assert_equal("something", @input.orderRequest.promotions[0].discountReasonCode)
@@ -71,7 +71,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   end
   
   def test_remove_element
-    @input = YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/input.yaml"))
+    @input = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/input.yaml"))
     @input.orderRequest.promotions[0].discountReasonCode="something"
     @action = "@input.orderRequest.promotions"
     @result = SinatraAppHelpers::create_element(@input, @action)
@@ -107,7 +107,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   end
   
   def test_wsdl2ruby_generator
-    wsdl = File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     driver_file = GeneratorHelpers::generate_ruby_classes(@test_client_folder, @namespace, wsdl)
     assert_not_nil(driver_file)
     # assert(driver_file.to_s =~ /default[0-9]+Driver.rb/)
@@ -117,7 +117,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def test_convert_instance_to_xml
     #load the object
-    expected_xml = File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
+    expected_xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
     expected_obj = SaveLoadConvertHelpers::xml2obj(@tool, expected_xml)    
 
     #test the object has what it needs
@@ -150,14 +150,14 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def test_convert_xml_to_instance
     expected_result = ""
-    xml = File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
+    xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType,@tool.default_instance.class)
     result = SaveLoadConvertHelpers::xml2obj(@tool, xml)
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, result.class)
   end
   
   def test_update_nil_enums   
-    @params = YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/params2.yaml"))
+    @params = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/params2.yaml"))
     @params = SinatraAppHelpers::update @params
     @input = @params['input']
     assert_not_nil(@input)
