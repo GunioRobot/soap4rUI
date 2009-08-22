@@ -158,6 +158,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def test_update_nil_enums   
     @params = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/params2.yaml"))
+    @params['client']= Dir.pwd + '/test/fixtures/latest_client' 
     @params = SinatraAppHelpers::update @params
     @input = @params['input']
     assert_not_nil(@input)

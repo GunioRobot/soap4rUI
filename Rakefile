@@ -30,7 +30,7 @@ namespace :test do
     %x{ruby test/ts_master.rb}
   end
    
- desc "run all tests"
+ desc "run all test tasks"
  task :all => [ :run ]
 end
 
