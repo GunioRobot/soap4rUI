@@ -16,6 +16,7 @@ Dir.chdir(curr)
 class TS_Master
   def self.suite
     suite = Test::Unit::TestSuite.new
+    suite << TCBuildDefaultInstance.suite
     suite << TC_Soap4r2ruby.suite
     suite << TC_LoadingSaving.suite
     suite << TC_Submission.suite

@@ -1,5 +1,5 @@
-require 'default.rb'
-require 'defaultMappingRegistry.rb'
+require 'default1.rb'
+require 'defaultMappingRegistry1.rb'
 require 'soap/rpc/driver'
 
 module MySoap::InterfaceOne

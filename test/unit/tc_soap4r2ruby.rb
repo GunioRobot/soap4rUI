@@ -5,7 +5,7 @@ class TC_Soap4r2ruby < Test::Unit::TestCase
   
   def setup
     @client_folder = Dir.pwd + "/test/fixtures/latest_client"
-    @namespace = "MySoap::InterfaceOne"
+    @namespace = "MySoap::InterfaceTwo"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     
   end

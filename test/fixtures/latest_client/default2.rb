@@ -1,13 +1,13 @@
 require 'xsd/qname'
 
-module MySoap; module InterfaceOne
+module MySoap; module InterfaceTwo
 
 
 # {http://schemas.gid.gap.com/discountService/v1}DiscountServiceRequestType
 #   requestDateTime - SOAP::SOAPString
 #   storeID - SOAP::SOAPString
 #   requestType - SOAP::SOAPString
-#   orderRequest - MySoap::InterfaceOne::OrderType
+#   orderRequest - MySoap::InterfaceTwo::OrderType
 class DiscountServiceRequestType
   attr_accessor :requestDateTime
   attr_accessor :storeID
@@ -23,7 +23,7 @@ class DiscountServiceRequestType
 end
 
 # {http://schemas.gid.gap.com/discountService/v1}DiscountServiceResponseType
-#   orderResponse - MySoap::InterfaceOne::OrderType
+#   orderResponse - MySoap::InterfaceTwo::OrderType
 class DiscountServiceResponseType
   attr_accessor :orderResponse
 
@@ -34,14 +34,14 @@ end
 
 # {http://schemas.gid.gap.com/discountService/v1}OrderType
 #   orderID - SOAP::SOAPString
-#   qualifyType - MySoap::InterfaceOne::QualifyTypeEnum
+#   qualifyType - MySoap::InterfaceTwo::QualifyTypeEnum
 #   orderDate - SOAP::SOAPString
 #   channel - SOAP::SOAPString
 #   brand - SOAP::SOAPString
 #   market - SOAP::SOAPString
-#   orderLineItems - MySoap::InterfaceOne::OrderLineType
-#   promotions - MySoap::InterfaceOne::PromotionType
-#   tenders - MySoap::InterfaceOne::TenderInfoType
+#   orderLineItems - MySoap::InterfaceTwo::OrderLineType
+#   promotions - MySoap::InterfaceTwo::PromotionType
+#   tenders - MySoap::InterfaceTwo::TenderInfoType
 #   maxDiscountsAllowed - SOAP::SOAPInt
 class OrderType
   attr_accessor :orderID
@@ -90,9 +90,9 @@ end
 #   promotionCode - SOAP::SOAPString
 #   promotionID - SOAP::SOAPString
 #   discountReasonCode - SOAP::SOAPString
-#   appliedStatus - MySoap::InterfaceOne::AppliedStatusEnum
-#   receiptMessages - MySoap::InterfaceOne::ReceiptMessageType
-#   promoUsages - MySoap::InterfaceOne::PromoUsageType
+#   appliedStatus - MySoap::InterfaceTwo::AppliedStatusEnum
+#   receiptMessages - MySoap::InterfaceTwo::ReceiptMessageType
+#   promoUsages - MySoap::InterfaceTwo::PromoUsageType
 #   qualifyingTenders - SOAP::SOAPString
 class PromotionType
   attr_accessor :sequenceNumber
@@ -153,10 +153,10 @@ end
 
 # {http://schemas.gid.gap.com/discountService/v1}OrderLineType
 #   sequenceNumber - SOAP::SOAPInt
-#   product - MySoap::InterfaceOne::ProductInfoType
-#   price - MySoap::InterfaceOne::PriceInfoType
+#   product - MySoap::InterfaceTwo::ProductInfoType
+#   price - MySoap::InterfaceTwo::PriceInfoType
 #   quantity - SOAP::SOAPInt
-#   awards - MySoap::InterfaceOne::AwardType
+#   awards - MySoap::InterfaceTwo::AwardType
 #   exclude - SOAP::SOAPBoolean
 #   manualDiscountApplied - SOAP::SOAPInt
 class OrderLineType
@@ -238,7 +238,7 @@ end
 # {http://schemas.gid.gap.com/discountService/v1}PriceInfoType
 #   currentPrice - SOAP::SOAPDecimal
 #   netPrice - SOAP::SOAPDecimal
-#   priceType - MySoap::InterfaceOne::PriceTypeEnum
+#   priceType - MySoap::InterfaceTwo::PriceTypeEnum
 #   discountPrice - SOAP::SOAPDecimal
 class PriceInfoType
   attr_accessor :currentPrice

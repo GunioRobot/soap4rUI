@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'defaultDriver.rb'
+require 'defaultDriver0.rb'
 
 endpoint_url = ARGV.shift
 obj = DiscountServicePortType.new(endpoint_url)

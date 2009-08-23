@@ -5,7 +5,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
   
   def setup
     @client_folder = Dir.pwd + "/test/fixtures/latest_client"
-    @namespace = "MySoap::InterfaceOne"
+    @namespace = "MySoap::InterfaceTwo"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")     
@@ -115,7 +115,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
      xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
      obj = SaveLoadConvertHelpers::xml2obj(@tool, xml)
     assert_not_nil(obj)
-    assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, obj.class)
+    assert_equal(MySoap::InterfaceTwo::DiscountServiceRequestType, obj.class)
     assert_nil(obj.minoccurs)
     assert_nil(obj.maxoccurs)
     assert_equal(1,obj.orderRequest.minoccurs)
@@ -123,7 +123,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
         
     obj = Soap4r2RubyHelpers::min_max_tagger(obj, @tool)    
     assert_not_nil(obj)
-    assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, obj.class)
+    assert_equal(MySoap::InterfaceTwo::DiscountServiceRequestType, obj.class)
     assert_nil(obj.minoccurs)
     assert_nil(obj.maxoccurs)
     assert_equal(1,obj.orderRequest.minoccurs)
@@ -131,7 +131,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
   end  
   
     def test_min_max_empty_no_complex_types
-      obj = MySoap::InterfaceOne::DiscountServiceRequestType.new("now", 1, "LIVE", nil)
+      obj = MySoap::InterfaceTwo::DiscountServiceRequestType.new("now", 1, "LIVE", nil)
       assert_not_nil(obj)
       assert_equal("now", obj.requestDateTime)
       assert_equal(1, obj.storeID)
@@ -155,7 +155,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
     end
     
     def test_min_max_empty_with_complex_type
-      obj = MySoap::InterfaceOne::DiscountServiceRequestType.new("now", 1, "LIVE", MySoap::InterfaceOne::OrderType.new)
+      obj = MySoap::InterfaceTwo::DiscountServiceRequestType.new("now", 1, "LIVE", MySoap::InterfaceTwo::OrderType.new)
       assert_not_nil(obj)
       assert_equal("now", obj.requestDateTime)
       assert_equal(1, obj.storeID)
@@ -173,21 +173,21 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
       assert_equal("LIVE", obj.requestType)
       assert_equal(0, obj.requestType.minoccurs)
       assert_equal(1, obj.requestType.maxoccurs) 
-      assert_equal(MySoap::InterfaceOne::OrderType, obj.orderRequest.class)
+      assert_equal(MySoap::InterfaceTwo::OrderType, obj.orderRequest.class)
       assert_equal(1, obj.orderRequest.minoccurs)
       assert_equal(1, obj.orderRequest.maxoccurs)
     end
     
     def test_min_max_empty_with_complex_type_and_subtypes 
-      order = MySoap::InterfaceOne::OrderType.new(123, nil, nil, nil, nil, nil, [], [], [], nil)
-      obj = MySoap::InterfaceOne::DiscountServiceRequestType.new("now", 1, "LIVE", order)
+      order = MySoap::InterfaceTwo::OrderType.new(123, nil, nil, nil, nil, nil, [], [], [], nil)
+      obj = MySoap::InterfaceTwo::DiscountServiceRequestType.new("now", 1, "LIVE", order)
       assert_not_nil(obj)
       assert_equal("now", obj.requestDateTime)
       assert_equal(1, obj.storeID)
       assert_equal("LIVE", obj.requestType)        
       assert_equal(nil, obj.requestType.minoccurs)
       assert_equal(nil, obj.requestType.maxoccurs)
-      assert_equal(MySoap::InterfaceOne::OrderType, obj.orderRequest.class)
+      assert_equal(MySoap::InterfaceTwo::OrderType, obj.orderRequest.class)
       assert_equal(nil, obj.orderRequest.minoccurs)
       assert_equal(nil, obj.orderRequest.maxoccurs)
       assert_equal(123, obj.orderRequest.orderID)
@@ -204,7 +204,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
       assert_equal("LIVE", obj.requestType)
       assert_equal(0, obj.requestType.minoccurs)
       assert_equal(1, obj.requestType.maxoccurs) 
-      assert_equal(MySoap::InterfaceOne::OrderType, obj.orderRequest.class)
+      assert_equal(MySoap::InterfaceTwo::OrderType, obj.orderRequest.class)
       assert_equal(1, obj.orderRequest.minoccurs)
       assert_equal(1, obj.orderRequest.maxoccurs)
       assert_equal(123, obj.orderRequest.orderID)
@@ -213,19 +213,19 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
     end
      
      def test_min_max_empty_with_complex_type_and_subtypes_and_arrays
-       promo1 = MySoap::InterfaceOne::PromotionType.new(1, "promotionCode1", 1, nil, nil, nil, nil)
-       promo2 = MySoap::InterfaceOne::PromotionType.new(2, "promotionCode2", 2, nil, nil, nil, nil)
-       promo3 = MySoap::InterfaceOne::PromotionType.new(3, "promotionCode3", 3, nil, nil, nil, nil)
+       promo1 = MySoap::InterfaceTwo::PromotionType.new(1, "promotionCode1", 1, nil, nil, nil, nil)
+       promo2 = MySoap::InterfaceTwo::PromotionType.new(2, "promotionCode2", 2, nil, nil, nil, nil)
+       promo3 = MySoap::InterfaceTwo::PromotionType.new(3, "promotionCode3", 3, nil, nil, nil, nil)
        promotions = [promo1, promo2, promo3]
-       order = MySoap::InterfaceOne::OrderType.new(123, nil, nil, nil, nil, nil, [], promotions, [], nil)
-       obj = MySoap::InterfaceOne::DiscountServiceRequestType.new("now", 1, "LIVE", order)
+       order = MySoap::InterfaceTwo::OrderType.new(123, nil, nil, nil, nil, nil, [], promotions, [], nil)
+       obj = MySoap::InterfaceTwo::DiscountServiceRequestType.new("now", 1, "LIVE", order)
        assert_not_nil(obj)
        assert_equal("now", obj.requestDateTime)
        assert_equal(1, obj.storeID)
        assert_equal("LIVE", obj.requestType)        
        assert_equal(nil, obj.requestType.minoccurs)
        assert_equal(nil, obj.requestType.maxoccurs)
-       assert_equal(MySoap::InterfaceOne::OrderType, obj.orderRequest.class)
+       assert_equal(MySoap::InterfaceTwo::OrderType, obj.orderRequest.class)
        assert_equal(nil, obj.orderRequest.minoccurs)
        assert_equal(nil, obj.orderRequest.maxoccurs)
        assert_equal(123, obj.orderRequest.orderID)
@@ -255,7 +255,7 @@ class TC_Soap4r2rubyHelpers < Test::Unit::TestCase
        assert_equal("LIVE", obj.requestType)
        assert_equal(0, obj.requestType.minoccurs)
        assert_equal(1, obj.requestType.maxoccurs) 
-       assert_equal(MySoap::InterfaceOne::OrderType, obj.orderRequest.class)
+       assert_equal(MySoap::InterfaceTwo::OrderType, obj.orderRequest.class)
        assert_equal(1, obj.orderRequest.minoccurs)
        assert_equal(1, obj.orderRequest.maxoccurs)
        assert_equal(123, obj.orderRequest.orderID)

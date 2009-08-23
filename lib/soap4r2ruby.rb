@@ -115,30 +115,33 @@ class Soap4r2Ruby
   end    
   
   def build_default_input_instance_for_root_node(root_node)
-    driver = eval(@namespace+"::"+@port_type.name.name).new
-    schemadef = driver.literal_mapping_registry.schema_definition_from_class root_node
-    args = schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
-    @default_instance = eval(root_node.name).new(*args)    
-    # for each of the instance variables in this object
-    # get the type of the object
-    # tag min and max values on the object.
-    # if a simple type instantiate the object. (primitives) 
-    # if a complex type recursively instantiate elements of that object 
-    
+    if(::SOAP.constants.grep(/^SOAP/).include?(root_node.to_s.gsub('::SOAP','')))
+      root_node.new
+    else
+      driver = eval(@namespace+"::"+@port_type.name.name).new
+      schemadef = driver.literal_mapping_registry.schema_definition_from_class root_node
+      args = schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
+      @default_instance = eval(root_node.name).new(*args)    
+    end
   end
   
   def build_default_instance_for_element_and_schemadef(e, schemadef)
+      # for each of the instance variables in this object
+      # get the type of the object
+      # tag min and max values on the object.
+      # if a simple type instantiate the object. (primitives) 
+      # if a complex type recursively instantiate elements of that object 
     if (e.class == SOAP::Mapping::SchemaSequenceDefinition)
       #todo implement this
       object = [nil]
     elsif (::SOAP.constants.grep(/^SOAP/).include?(e.mapped_class.to_s.gsub('::SOAP','')))
       #simple types - (no subelements)
+      # default to empty ruby string
       object = ""
     elsif (e.mapped_class.ancestors.include?(String))
       #enums - (grab the first constant as the default value)
       object = nil#e.mapped_class.class_eval((e.mapped_class.constants - ['Enumerator'])[0])
     elsif (e.mapped_class.ancestors.include?(Array))
-      # require 'ruby-debug';debugger
       # args -schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
       #todo implement this
       object = [nil]

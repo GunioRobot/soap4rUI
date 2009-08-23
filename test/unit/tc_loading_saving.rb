@@ -7,10 +7,10 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_LoadingSaving < Test::Unit::TestCase
   
   def setup
-    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
+    @client_folder = Dir.pwd + "/test/fixtures/client_namespace"
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl"
     
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
@@ -48,11 +48,14 @@ class TC_LoadingSaving < Test::Unit::TestCase
   def test_update_from_marshalled_yaml_with_form_elements
     @params = {}
     @params= YAML.load(File.open(Dir.pwd + "/test/fixtures/params/params_latest.yaml"))
-    @params['client'] = Dir.pwd + '/test/fixtures/client_namespace'
+    @params['client'] = Dir.pwd + '/test/fixtures/latest_client'
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @tool = Soap4r2Ruby.new(@params['client'], @params['namespace'], @wsdl)
+    @tool.build_default_input_instance_for_method("applyDiscount")
     @result = nil
     @result = SinatraAppHelpers::update(@params)
     assert_not_nil(@result)
-    assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @result['input'].class)
+    assert_equal(MySoap::InterfaceTwo::DiscountServiceRequestType, @result['input'].class)
     assert_not_nil(@result['input'].orderRequest)
     assert_not_nil(@result['input'].orderRequest.minoccurs)
     assert_equal(1, @result['input'].orderRequest.minoccurs)

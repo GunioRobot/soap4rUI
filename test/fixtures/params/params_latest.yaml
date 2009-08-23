@@ -10,7 +10,7 @@
 "@input.orderRequest.orderLineItems.slice(0).price.currentPrice": ""
 "@input.orderRequest.orderID": ""
 "@input.orderRequest.promotions.slice(0).promoUsages.slice(0).brand": ""
-namespace: MySoap::InterfaceOne
+namespace: MySoap::InterfaceTwo
 "@input.orderRequest.orderLineItems.slice(0).awards.slice(0).awardDiscountAmount": ""
 service_method: applyDiscount
 action: Save
@@ -44,8 +44,8 @@ client: "client_namespace"
 "@input.orderRequest.promotions.slice(0).sequenceNumber": ""
 Save: Save
 input: |-
-  --- !ruby/object:MySoap::InterfaceOne::DiscountServiceRequestType 
-  orderRequest: !ruby/object:MySoap::InterfaceOne::OrderType 
+  --- !ruby/object:MySoap::InterfaceTwo::DiscountServiceRequestType 
+  orderRequest: !ruby/object:MySoap::InterfaceTwo::OrderType 
     brand: !str 
       str: ""
       "@maxoccurs": 1
@@ -73,9 +73,9 @@ input: |-
       "@maxoccurs": 1
       "@minoccurs": 0
     orderLineItems: 
-    - !ruby/object:MySoap::InterfaceOne::OrderLineType 
+    - !ruby/object:MySoap::InterfaceTwo::OrderLineType 
       awards: 
-      - !ruby/object:MySoap::InterfaceOne::AwardType 
+      - !ruby/object:MySoap::InterfaceTwo::AwardType 
         awardDescription: !str 
           str: ""
           "@maxoccurs": 1
@@ -104,7 +104,7 @@ input: |-
         "@minoccurs": 0
       maxoccurs: 
       minoccurs: 0
-      price: !ruby/object:MySoap::InterfaceOne::PriceInfoType 
+      price: !ruby/object:MySoap::InterfaceTwo::PriceInfoType 
         currentPrice: !str 
           str: ""
           "@maxoccurs": 1
@@ -123,7 +123,7 @@ input: |-
           str: ""
           "@maxoccurs": 1
           "@minoccurs": 0
-      product: !ruby/object:MySoap::InterfaceOne::ProductInfoType 
+      product: !ruby/object:MySoap::InterfaceTwo::ProductInfoType 
         brand: !str 
           str: ""
           "@maxoccurs": 1
@@ -175,7 +175,7 @@ input: |-
         "@maxoccurs": 1
         "@minoccurs": 1
     promotions: 
-    - !ruby/object:MySoap::InterfaceOne::PromotionType 
+    - !ruby/object:MySoap::InterfaceTwo::PromotionType 
       appliedStatus: !str 
         str: ""
         "@maxoccurs": 1
@@ -187,7 +187,7 @@ input: |-
       maxoccurs: 
       minoccurs: 0
       promoUsages: 
-      - !ruby/object:MySoap::InterfaceOne::PromoUsageType 
+      - !ruby/object:MySoap::InterfaceTwo::PromoUsageType 
         brand: !str 
           str: ""
           "@maxoccurs": 1
@@ -224,7 +224,7 @@ input: |-
         "@maxoccurs": 
         "@minoccurs": 0
       receiptMessages: 
-      - !ruby/object:MySoap::InterfaceOne::ReceiptMessageType 
+      - !ruby/object:MySoap::InterfaceTwo::ReceiptMessageType 
         locale: !str 
           str: ""
           "@maxoccurs": 1
@@ -244,7 +244,7 @@ input: |-
       "@maxoccurs": 1
       "@minoccurs": 0
     tenders: 
-    - !ruby/object:MySoap::InterfaceOne::TenderInfoType 
+    - !ruby/object:MySoap::InterfaceTwo::TenderInfoType 
       creditCardHash: !str 
         str: ""
         "@maxoccurs": 1

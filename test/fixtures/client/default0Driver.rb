@@ -1,8 +1,6 @@
 require 'default.rb'
-require 'defaultMappingRegistry.rb'
+require 'defaultMappingRegistry0.rb'
 require 'soap/rpc/driver'
-
-module MySoap::InterfaceOne
 
 class DiscountServicePortType < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://ws-mpc-store.vdev.gid.gap.com/DiscountServiceProvider-V1-0/services/DiscountService"
@@ -22,7 +20,7 @@ class DiscountServicePortType < ::SOAP::RPC::Driver
         ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"MySoap::InterfaceOne::DiscountServiceFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"http://services.gid.gap.com/discountService/v1", :namespace=>nil, :name=>"DiscountServiceFault"}} }
+        :faults => {"DiscountServiceFault"=>{:namespace=>nil, :ns=>"http://services.gid.gap.com/discountService/v1", :encodingstyle=>"document", :name=>"DiscountServiceFault", :use=>"literal"}} }
     ]
   ]
 
@@ -55,5 +53,3 @@ private
   end
 end
 
-
-end

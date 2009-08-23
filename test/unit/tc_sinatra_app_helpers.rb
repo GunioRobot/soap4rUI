@@ -5,10 +5,10 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def setup
-    @client_folder = Dir.pwd + "/test/fixtures/latest_client"
+    @client_folder = Dir.pwd + "/test/fixtures/client_namespace"
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
-    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
+    @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl"
     
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
@@ -158,16 +158,21 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   
   def test_update_nil_enums   
     @params = YAML.load(File.open(Dir.pwd + "/test/fixtures/params/params2.yaml"))
-    @params['client']= Dir.pwd + '/test/fixtures/latest_client' 
+    @params['client']= Dir.pwd + "/test/fixtures/latest_client"
+    @params['namespace'] = "MySoap::InterfaceTwo"
+    @params['wsdl'] = Dir.pwd + "/test/fixtures/sample_wsdls/latest-discountService-V1-0.wsdl"
     @params = SinatraAppHelpers::update @params
     @input = @params['input']
     assert_not_nil(@input)
     assert_not_nil(@input.orderRequest)
-    assert_equal(false, @input.orderRequest.respond_to?("qualifyType"))
+    assert_equal(true, @input.orderRequest.respond_to?("qualifyType"))
+    assert_equal(nil, @input.orderRequest.qualifyType)
     assert_not_nil(@input.orderRequest.promotions)
     assert_equal(1, @input.orderRequest.promotions.size)
-    assert_equal(false, @input.orderRequest.promotions[0].respond_to?("appliedStatus"))
-    assert_equal(false, @input.orderRequest.promotions[0].respond_to?("promotionID"))
+    assert_equal(true, @input.orderRequest.promotions[0].respond_to?("appliedStatus"))
+    assert_equal(nil, @input.orderRequest.promotions[0].appliedStatus)
+    assert_equal(true, @input.orderRequest.promotions[0].respond_to?("promotionID"))    
+    assert_equal(nil, @input.orderRequest.promotions[0].promotionID)
   end
   
 end
