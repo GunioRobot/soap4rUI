@@ -72,12 +72,16 @@ class Soap4r2Ruby
     #           :faults => {"MySoap::InterfaceOne::DiscountServiceFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"http://services.gid.gap.com/discountService/v1", :namespace=>nil, :name=>"DiscountServiceFault"}} }
     #       ]
     #     ]
-    m = get_method_descriptor_for_name(service_method_name)
+    m = Soap4r2RubyHelpers::get_method_descriptor_for_name(service_method_name, @service_method_descriptors)
 
+    
     io_methods = m.select{|e| e.class == Array}.first
-    input = io_methods.select{|e| e.first == "in"}.first
+    # io methods look something like this
+    # [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+    # or
+    # [["in", "key", ["::SOAP::SOAPString"]], ["in", "url", ["::SOAP::SOAPString"]], ["retval", "return", ["::SOAP::SOAPBase64"]]]
 
-    #         [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+    input = io_methods.select{|e| e.first == "in"}.first
 
     if input == nil || input.last == nil
       #hack hack hack
@@ -88,22 +92,13 @@ class Soap4r2Ruby
     # driver = eval(@namespace+"::"+@port_type).new
     # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
     schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
-    @root_node = schemadef.last.class_for
+    if(schemadef.class == Array)
+      @root_node = schemadef.last.class_for
+    else
+      @root_node = schemadef
+    end  
   end
   
-  def get_method_descriptor_for_name(service_method_name)
-    @service_method_descriptors.select do |e| 
-      element = e[1]
-      if element == nil or element == ""
-        element = e[0]
-      end
-      if (element.class.to_s.include?('XSD::QName'))
-        element.name == service_method_name
-      else
-        element == service_method_name
-      end
-    end.first
-  end
     # 
     # def find_root_node_for_method(service_method_name)
     #   m = @port_type.operations.select{|e| e.operationname.name == service_method_name}.first

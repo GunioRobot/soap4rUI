@@ -74,13 +74,11 @@ module Soap4r2RubyHelpers
   
   def self.get_schemadef_for_class_name(node_name, mapping_registry, literal_mapping_registry)
     search_path = ["@type_schema_definition", "@class_elename_schema_definition", "@elename_schema_definition", "@class_schema_definition"]
-    all = []
     search_path.each do |path|
       [mapping_registry, literal_mapping_registry].each do |registry|
         schemadef = registry.instance_eval(path).select do |k,v| 
           v.elename != nil
         end.select do |k, v| 
-          all += [v.elename.name]
           v.elename.name == node_name
         end.first
         if schemadef != nil
@@ -88,7 +86,11 @@ module Soap4r2RubyHelpers
         end  
       end
     end
-    puts all.uniq
+    #if the node itself is a simple SOAP defined type return it  
+    if (eval(node_name) !=nil)
+      return eval(node_name)
+    end
+    #if you ever get here finally throw a not found exception
     throw Exception.new("can't find schemadef for #{node_name}")
   end
    
@@ -106,7 +108,12 @@ module Soap4r2RubyHelpers
         end
       end
     end
-    nil
+    #if the node itself is a simple SOAP defined type return it  
+    if eval"#{node_name}" !=nil
+      return eval"#{node_name}"
+    end
+    #if you ever get here finally throw a not found exception
+    throw Exception.new("can't find schemadef for #{node_name}")
   end
   
   def self.get_type_from_name_and_schemadef(name, schemadef)
@@ -126,4 +133,11 @@ module Soap4r2RubyHelpers
       e[e.size-3]
     end
   end
+  
+  def self.get_method_descriptor_for_name(service_method_name, service_method_descriptors)
+    service_method_descriptors.select do |e| 
+      service_method_name == e[e.size-3]
+    end.first
+  end
+  
 end  

@@ -95,9 +95,9 @@ class TC_Mpc1ServiceNames < Test::Unit::TestCase
       assert_equal("doGetCachedPage", result.service_method_names[0].first)       
       assert_equal("doSpellingSuggestion", result.service_method_names[1].first)       
       assert_equal("doGoogleSearch", result.service_method_names[2].first)      
-      assert_equal("a", result.find_root_node_for_method("doGetCachedPage"))
-      assert_equal("a", result.find_root_node_for_method("doSpellingSuggestion"))
-      assert_equal("a", result.find_root_node_for_method("doGoogleSearch")) 
+      assert_equal(SOAP::SOAPString, result.find_root_node_for_method("doGetCachedPage"))
+      assert_equal(SOAP::SOAPString, result.find_root_node_for_method("doSpellingSuggestion"))
+      assert_equal(SOAP::SOAPString, result.find_root_node_for_method("doGoogleSearch")) 
     end
   
   def test_service_methods_and_names_for_old_discount
