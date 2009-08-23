@@ -6,16 +6,18 @@ require File.dirname(File.expand_path(__FILE__)) + '/generator_helpers'
 require File.dirname(File.expand_path(__FILE__)) + '/save_load_convert_helpers'
 require 'soap/wsdlDriver'
 
-# this class is intended to take a folder where generated classes live
-# the optional module name added to keep the namespace clean
-# the the method defined in the wsdl 
-# and return a default empty ruby object representing the Model to be used to populate the form fields of the test client
-# fields that can occur more than once are arrays
-# somehow we need to tag the optional fields. 
+# this class is intended to take a folder where wsdl2ruby generated classes live 
+# the optional module name added to keep the namespace uniq and clean
+# the wsdl used to create those classes 
+# as parameters to the init
+# then return a default empty ruby object representing the Model to be used to populate the form fields of the test client
+# fields that can occur more than once are arrays based on maxoccurs
+# it will also tag the optional fields fields based on minoccurs 
 
 class Soap4r2Ruby
   attr_accessor :root_node, :default_instance, :mapping_registry, :literal_mapping_registry
-  attr_accessor :service_method_descriptors, :port_type, :folder, :namespace, :driver_file, :default_endpoint, :service_method_names, :rpc_driver
+  attr_accessor :service_method_descriptors, :port_type, :folder, :namespace, :driver_file 
+  attr_accessor :default_endpoint, :service_method_names, :rpc_driver
   def initialize(client_folder, i_namespace, wsdl)
     @folder = client_folder
     @namespace = i_namespace
@@ -37,25 +39,14 @@ class Soap4r2Ruby
 
     @rpc_driver = @factory.create_rpc_driver
     @default_endpoint = @rpc_driver.endpoint_url
-    @service_method_descriptors = eval( namespace + '::' + @port_type.name.name)::Methods   
-    @service_method_names = @service_method_descriptors.map do |e| 
-      element = e[1]
-      if element == nil or element == ""
-        element = e[0]
-      end
-      if element.class.to_s.include?('XSD::QName') 
-        element.name
-      else
-        element        
-      end
-    end
+    @service_method_descriptors = eval( namespace + '::' + @port_type.name.name)::Methods
+    @service_method_names = Soap4r2RubyHelpers::find_service_method_names(@service_method_descriptors)
     driver = eval(@namespace+"::"+@port_type.name.name).new
     @literal_mapping_registry = driver.literal_mapping_registry
     @mapping_registry = driver.mapping_registry
     # @service_methods = eval( ns + '::' + @port_type)::Methods    
 
   end
-  
 
   
   def find_root_node_for_method(service_method_name)
@@ -96,7 +87,6 @@ class Soap4r2Ruby
     end
     # driver = eval(@namespace+"::"+@port_type).new
     # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
-
     schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
     @root_node = schemadef.last.class_for
   end

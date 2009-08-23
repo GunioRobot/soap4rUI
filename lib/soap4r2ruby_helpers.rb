@@ -74,11 +74,13 @@ module Soap4r2RubyHelpers
   
   def self.get_schemadef_for_class_name(node_name, mapping_registry, literal_mapping_registry)
     search_path = ["@type_schema_definition", "@class_elename_schema_definition", "@elename_schema_definition", "@class_schema_definition"]
+    all = []
     search_path.each do |path|
       [mapping_registry, literal_mapping_registry].each do |registry|
         schemadef = registry.instance_eval(path).select do |k,v| 
           v.elename != nil
         end.select do |k, v| 
+          all += [v.elename.name]
           v.elename.name == node_name
         end.first
         if schemadef != nil
@@ -86,7 +88,8 @@ module Soap4r2RubyHelpers
         end  
       end
     end
-    nil
+    puts all.uniq
+    throw Exception.new("can't find schemadef for #{node_name}")
   end
    
   def self.get_schemadef_for_type_name(node_name, mapping_registry, literal_mapping_registry)
@@ -118,4 +121,9 @@ module Soap4r2RubyHelpers
     schemadef.last.elements.select{|e| e.elename.name.downcase == name.downcase}.first.maxoccurs
   end
   
+  def self.find_service_method_names(service_method_descriptors)
+    service_method_descriptors.map do |e| 
+      e[e.size-3]
+    end
+  end
 end  

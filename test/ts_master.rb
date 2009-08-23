@@ -27,4 +27,3 @@ class TS_Master
     return suite
   end
 end
-#Test::Unit::UI::Console::TestRunner.run(TS_Master)
