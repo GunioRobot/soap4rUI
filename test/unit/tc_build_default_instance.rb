@@ -26,10 +26,12 @@ class TCBuildDefaultInstance < Test::Unit::TestCase
     GeneratorHelpers::generate_ruby_classes(@test_client_folder, @namespace, @google)
     result = Soap4r2Ruby.new(@test_client_folder, @namespace, @google)
     assert_not_nil(result)
-    assert_equal(SOAP::SOAPString, result.find_root_node_for_method("doGoogleSearch"))
-    assert_equal(SOAP::SOAPString,result.build_default_input_instance_for_root_node(SOAP::SOAPString).class)
-    assert_equal(nil,result.build_default_input_instance_for_root_node(SOAP::SOAPString).data)
-    
+    root_node = result.find_root_node_for_method("doGoogleSearch")
+    expected_root_node = eval(@namespace)::DoGoogleSearch
+    assert_equal(expected_root_node, root_node)
+    assert_equal(expected_root_node,result.build_default_input_instance_for_root_node(expected_root_node).class)
+    assert_equal(true,result.build_default_input_instance_for_root_node(expected_root_node).respond_to?("key"))
+    assert_equal(nil,result.build_default_input_instance_for_root_node(expected_root_node).key)
   end
   
   def test_build_default_input_instance_for_root_node_when_complex_type

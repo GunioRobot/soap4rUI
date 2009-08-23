@@ -140,4 +140,43 @@ module Soap4r2RubyHelpers
     end.first
   end
   
+  def self.create_attr_accessors(array)
+    #        <part name="key"            type="xsd:string"/>
+    #    <part name="q"              type="xsd:string"/>
+    #    <part name="start"          type="xsd:int"/>
+    #    <part name="maxResults"     type="xsd:int"/>
+    #    <part name="filter"         type="xsd:boolean"/>
+    #    <part name="restrict"       type="xsd:string"/>
+    #    <part name="safeSearch"     type="xsd:boolean"/>
+    #    <part name="lr"             type="xsd:string"/>
+    #    <part name="ie"             type="xsd:string"/>
+    #    <part name="oe"             type="xsd:string"/>
+    result = "attr_accessor "
+     ((array.size)-1).times do |i|
+      result += ':'+array[i][1]+','
+    end
+    result += ':'+array.last[1]+';'
+  end
+  
+  def self.create_initializer(array)
+    #        <part name="key"            type="xsd:string"/>
+    #    <part name="q"              type="xsd:string"/>
+    #    <part name="start"          type="xsd:int"/>
+    #    <part name="maxResults"     type="xsd:int"/>
+    #    <part name="filter"         type="xsd:boolean"/>
+    #    <part name="restrict"       type="xsd:string"/>
+    #    <part name="safeSearch"     type="xsd:boolean"/>
+    #    <part name="lr"             type="xsd:string"/>
+    #    <part name="ie"             type="xsd:string"/>
+    #    <part name="oe"             type="xsd:string"/>
+    result = "def initialize("
+     ((array.size)-1).times do |i|
+      result += array[i][1]+','
+    end
+    result += array.last[1]+')'
+     ((array.size)-1).times do |i|
+      result += '@'+array[i][1]+'='+array[i][1]+';'
+    end
+    result += '@'+array.last[1]+'='+array.last[1]+';end;'
+  end
 end  

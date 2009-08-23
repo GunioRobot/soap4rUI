@@ -56,6 +56,24 @@ class TC_Submission < Test::Unit::TestCase
     # require 'ruby-debug';debugger
     eval(namespace+"::"+port_name).expects(:new).returns(driver_mock)
     driver_mock.expects('wiredump_dev=')
+    tool_mock.expects(:service_method_descriptors).with().returns([
+    [ "serviceAlive",
+      "serviceAlive",
+      [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveRequest"]],
+        ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "ServiceAliveResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "applyDiscount",
+      "applyDiscount",
+      [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
+        ["out", "output", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"MySoap::Interface::DiscountServiceFault"=>{:ns=>"http://services.gid.gap.com/discountService/v1", :encodingstyle=>"document", :namespace=>nil, :use=>"literal", :name=>"DiscountServiceFault"}} }
+    ]
+  ])
     driver_mock.expects(:send).with(service_method, @input).returns("success")
     #simulate sending the request
     @result = SinatraAppHelpers::send_request(@input,service_method, client, namespace, @wsdl, endpoint)

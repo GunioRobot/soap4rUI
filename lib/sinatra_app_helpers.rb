@@ -54,11 +54,19 @@ module SinatraAppHelpers
     # driver.wiredump_dev = STDERR
     # @result = driver.send(service_method,input)
     #take the form fields and create a wsdl request.
-    port_type = Soap4r2Ruby.new(client, namespace, wsdl).port_type
+    driver = Soap4r2Ruby.new(client, namespace, wsdl)
+    port_type = driver.port_type
     obj = eval(namespace+"::"+port_type.name.name).send(:new, endpoint)
 	  obj.wiredump_dev = STDERR
+    m = Soap4r2RubyHelpers::get_method_descriptor_for_name(service_method, driver.service_method_descriptors)
+    io_methods = m.select{|e| e.class == Array}.first
+    inputs = io_methods.select{|e| e.first == "in"}.map{|e| e[1]}
     # obj.wiredump_dev = File.new("err.log", "w+")
-    @result = obj.send(service_method,input)
+    if input.class.constants.include?("RUNTIME_GEN")
+      @result = obj.send(service_method,*(inputs.map{|e| input.instance_variable_get("@"+e)}))      
+    else
+      @result = obj.send(service_method,input)      
+    end
     # require 'ruby-debug'; debugger
     # errors = File.open("err.log", "w+").readlines
     # if (errors.size!=0)

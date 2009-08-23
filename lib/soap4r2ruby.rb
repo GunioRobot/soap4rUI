@@ -74,30 +74,83 @@ class Soap4r2Ruby
     #     ]
     m = Soap4r2RubyHelpers::get_method_descriptor_for_name(service_method_name, @service_method_descriptors)
 
-    
     io_methods = m.select{|e| e.class == Array}.first
     # io methods look something like this
     # [ ["in", "input", ["::SOAP::SOAPElement", "http://schemas.gid.gap.com/discountService/v1", "DiscountServiceRequest"]],
     # or
     # [["in", "key", ["::SOAP::SOAPString"]], ["in", "url", ["::SOAP::SOAPString"]], ["retval", "return", ["::SOAP::SOAPBase64"]]]
 
-    input = io_methods.select{|e| e.first == "in"}.first
-
-    if input == nil || input.last == nil
-      #hack hack hack
-      root_node_name = m.last[:request_qname].name
+    inputs = io_methods.select{|e| e.first == "in"}
+    if inputs.size == 1  
+      input = inputs.first
+      if input == nil || input.last == nil
+        #hack hack hack
+        root_node_name = m.last[:request_qname].name
+      else
+        root_node_name = input.last.last
+      end
+      # driver = eval(@namespace+"::"+@port_type).new
+      # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
+      schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
+      if(schemadef.class == Array)
+        @root_node = schemadef.last.class_for
+      else
+        @root_node = schemadef
+      end
     else
-      root_node_name = input.last.last
+      # this is a multipart message so 
+      # create a class in this namespace that has instance variables for each part
+      #basically it should take on the following form
+      #module MySoap; module Interface
+      #
+      #
+      ## {urn:GoogleSearch}GoogleSearchResult
+      ##   documentFiltering - SOAP::SOAPBoolean
+      ##   searchComments - SOAP::SOAPString
+      ##   estimatedTotalResultsCount - SOAP::SOAPInt
+      ##   estimateIsExact - SOAP::SOAPBoolean
+      ##   resultElements - MySoap::Interface::ResultElementArray
+      ##   searchQuery - SOAP::SOAPString
+      ##   startIndex - SOAP::SOAPInt
+      ##   endIndex - SOAP::SOAPInt
+      ##   searchTips - SOAP::SOAPString
+      ##   directoryCategories - MySoap::Interface::DirectoryCategoryArray
+      ##   searchTime - SOAP::SOAPDouble
+      #class GoogleSearchResult
+      #  attr_accessor :documentFiltering
+      #  attr_accessor :searchComments
+      #  attr_accessor :estimatedTotalResultsCount
+      #  attr_accessor :estimateIsExact
+      #  attr_accessor :resultElements
+      #  attr_accessor :searchQuery
+      #  attr_accessor :startIndex
+      #  attr_accessor :endIndex
+      #  attr_accessor :searchTips
+      #  attr_accessor :directoryCategories
+      #  attr_accessor :searchTime
+      #
+      #  def initialize(documentFiltering = nil, searchComments = nil, estimatedTotalResultsCount = nil, estimateIsExact = nil, resultElements = nil, searchQuery = nil, startIndex = nil, endIndex = nil, searchTips = nil, directoryCategories = nil, searchTime = nil)
+      #    @documentFiltering = documentFiltering
+      #    @searchComments = searchComments
+      #    @estimatedTotalResultsCount = estimatedTotalResultsCount
+      #    @estimateIsExact = estimateIsExact
+      #    @resultElements = resultElements
+      #    @searchQuery = searchQuery
+      #    @startIndex = startIndex
+      #    @endIndex = endIndex
+      #    @searchTips = searchTips
+      #    @directoryCategories = directoryCategories
+      #    @searchTime = searchTime
+      #  end
+      #end
+      #end
+      #end
+      class_name = m[m.size-3].gsub(/^[a-z]|\s+[a-z]/) { |a| a.upcase }
+      newclass_def = "class #{class_name}; RUNTIME_GEN = true; NUM_INSTANCE_VARS = #{inputs.size}; #{Soap4r2RubyHelpers::create_attr_accessors(inputs)}; #{Soap4r2RubyHelpers::create_initializer(inputs)};end"
+      (eval(@namespace)).module_eval(newclass_def)
+      @root_node = (eval(@namespace+'::'+class_name))
     end
-    # driver = eval(@namespace+"::"+@port_type).new
-    # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
-    schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
-    if(schemadef.class == Array)
-      @root_node = schemadef.last.class_for
-    else
-      @root_node = schemadef
-    end  
-  end
+   end
   
     # 
     # def find_root_node_for_method(service_method_name)
@@ -115,14 +168,19 @@ class Soap4r2Ruby
   end    
   
   def build_default_input_instance_for_root_node(root_node)
-    if(::SOAP.constants.grep(/^SOAP/).include?(root_node.to_s.gsub('::SOAP','')))
-      root_node.new
+    driver = eval(@namespace+"::"+@port_type.name.name).new
+    if(root_node.constants.include?("RUNTIME_GEN")) 
+      args = []
+      root_node.const_get("NUM_INSTANCE_VARS").times do
+        args += [nil]
+      end
+      @default_instance = root_node.new(*args)
     else
-      driver = eval(@namespace+"::"+@port_type.name.name).new
-      schemadef = driver.literal_mapping_registry.schema_definition_from_class root_node
+      schemadef = driver.literal_mapping_registry.schema_definition_from_class(root_node)
       args = schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
-      @default_instance = eval(root_node.name).new(*args)    
-    end
+      @default_instance = eval(root_node.name).new(*args)
+    end  
+    
   end
   
   def build_default_instance_for_element_and_schemadef(e, schemadef)
