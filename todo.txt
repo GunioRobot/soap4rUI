@@ -8,8 +8,8 @@ todo:
   -create a java exectuable that works for mac osx and windows xp (rake task)
     java -cp "ruby-processing/app.rb:ruby-processing/exporters/applet_exporter.rb:ruby-processing/exporters/application_exporter.rb:ruby-processing/exporters/base_exporter.rb:ruby-processing/exporters/creator.rb:ruby-processing/helpers/numeric.rb:ruby-processing/helpers/string.rb:ruby-processing/runner.rb:ruby-processing/runners/base.rb:ruby-processing/runners/live.rb:ruby-processing/runners/run.rb:ruby-processing/runners/watch.rb:ruby-processing.rb:sand_chaser.rb:core/core.jar:core/jruby-complete.jar:jogl.jar:opengl.jar" org.jruby.Main ruby-processing/runners/run.rb sand_chaser.rb
 
-  -findInventory array build default instance with Array of complextype bug
   -ICmfindInventory build default instance with SchemaSequenceDefinition bug
+  -findInventory array build default instance with Array of complextype bug
 
   
   -receipt messages bug missing on load.
