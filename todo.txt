@@ -1,5 +1,13 @@
 todo:  
+  - ssl passwords
+  - proxy support
+  - local save
+  - remove other loads and saves
   - demo video
+  - Enums should give a select box.
+  - empty request. service alive without type
+  - amazon request response success
+  - fault's should have a better ui.
   - bug for backslashes for local files on windows systems
   -loading bug optional fields missing should build default instance then populate it.    
   -cleanup temporary files on startup
@@ -22,6 +30,7 @@ todo:
   -create a gui to do a visual diff of expected responses vs actual responses. 
   -google / amazon / ebay working examples 
 done: 
+  - upload wsdl
   -findInventory ServiceAlive bug (think this is due to a malformed wsdl method def) (confirmed bad wsdl)
   - get all demo xmls working
   - investigate awardMethodENum bug

@@ -18,12 +18,16 @@ post '/generate' do
   @folder_name = nil
   @driver_file = nil
   @client = nil
+  if @params[:action] == 'Upload'
+    File.open("saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
+    @params[:wsdl] = Dir.pwd.to_s + "/saved_forms/requests/#{@params['datafile'][:filename]}"
+  end
   @wsdl = @params[:wsdl]
   @ast = nil
   @curr = Dir.pwd
   @namespace ="MySoap::Interface" + rand(Time.now.to_i).to_s
   @folder_name = "generated_clients/" + (File.basename(@params[:wsdl].gsub('.wsdl',''))) + "_" + Time.now.to_i.to_s + "_"  + rand(Time.now.to_i).to_s
-  
+  puts @folder_name, @namespace, @params[:wsdl]
   @driver_file = GeneratorHelpers::generate_ruby_classes(@folder_name, @namespace, @params[:wsdl])
 
   @client = @curr + "/" + @folder_name

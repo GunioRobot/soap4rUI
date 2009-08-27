@@ -6,7 +6,17 @@
       choose your wsdl
     %body
       %h3 
-        enter the http:// wsdl address
-      %form{:action => '/generate', :method => 'post'}
-        %input{:type => 'text', :id => "wsdl-input",:name => 'wsdl'}
-        %input{:type => 'submit', :value => 'Submit'}
+        rSoapUI
+      %form{ :enctype => "multipart/form-data", :action => '/generate', :method => 'post'}
+        %input{:type => :hidden, :id => :action, :name => :action, :value => ''}
+        %div
+          Enter the wsdl address "http://**" 
+        %div  
+          %input{:type => 'text', :id => "wsdl-input",:name => 'wsdl'}
+          %input{:type => 'submit', :value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"HTTP\";"}
+        %div
+          or file upload:
+        %div   
+          %input{ :name => "datafile", :size => "40", :type => "file" }
+          %input{:type => 'submit', :name => 'Upload',:value => 'Upload', :onclick => "document.getElementById(\"action\").value = \"Upload\";"}
+      
