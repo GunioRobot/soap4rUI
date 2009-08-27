@@ -33,12 +33,23 @@
             %label
               filename: 
               %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}  
-            %input{:type => 'submit', :name => 'SaveRequest',:value => 'SaveRequest', :onclick => "document.getElementById(\"action\").value = \"SaveRequest\";"}
-            %input{:type => 'submit', :name => 'LoadRequest',:value => 'LoadRequest', :onclick => "document.getElementById(\"action\").value = \"LoadRequest\";"}            
+            %input{:type => 'submit', :name => 'SaveRequestAs',:value => 'SaveRequestAs', :onclick => "document.getElementById(\"action\").value = \"SaveRequest\";"}
           %div
             %label
-              fileupload: 
+              file upload: 
               %input{ :name => "datafile", :size => "40", :type => "file" }
             %input{:type => 'submit', :name => 'Upload',:value => 'Upload', :onclick => "document.getElementById(\"action\").value = \"Upload\";"}
-
-
+          %div
+            %h4 
+              previously saved requests:
+            %table 
+              - for file in @saved_requests
+                %tr
+                  %td
+                    %a{:title => "saved_forms/requests/#{file}", :href => "saved_forms/requests/#{file}"} download
+                  %td
+                    %input{:type => 'submit', :name => 'LoadRequest',:value => 'LoadRequest', :onclick => "document.getElementById(\"action\").value = \"LoadRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %td
+                    %input{:type => 'submit', :name => 'DeleteRequest',:value => 'DeleteRequest', :onclick => "document.getElementById(\"action\").value = \"DeleteRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %td
+                    = file

@@ -31,4 +31,18 @@
               filename: 
               %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}    
             %input{:type => 'submit', :name => 'SaveResponse',:value => 'SaveResponse', :onclick => "document.getElementById(\"action\").value = \"SaveResponse\";"}
+          %div
+            %h4 
+              previously saved responses:
+            %table 
+              - for file in @saved_responses
+                %tr
+                  %td
+                    %a{:title => "saved_forms/responses/#{file}", :href => "saved_forms/responses/#{file}"} download
+                  %td
+                    %input{:type => 'submit', :name => 'LoadResponse',:value => 'LoadResponse', :onclick => "document.getElementById(\"action\").value = \"LoadResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %td
+                    %input{:type => 'submit', :name => 'DeleteResponse',:value => 'DeleteResponse', :onclick => "document.getElementById(\"action\").value = \"DeleteResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %td
+                    = file
           

@@ -23,6 +23,19 @@ module SaveLoadConvertHelpers
     File.open(file, "w+").syswrite(SaveLoadConvertHelpers::obj2xml(driver, obj))
   end  
 
+  def self.del_request_xml(file)
+    #ensure we aren't being hacked with different file names or folder names.
+    file.gsub!('\\','')
+    file.gsub!('/','')
+    File.delete("public/saved_forms/requests/"  + file)
+  end  
+  
+  def self.del_response_xml(file)
+    #ensure we aren't being hacked with different file names or folder names.
+    file.gsub!('\\','')
+    file.gsub!('/','')
+    File.delete("public/saved_forms/responses/"  + file)
+  end  
 
   def self.obj2xml(driver, obj)
     name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name

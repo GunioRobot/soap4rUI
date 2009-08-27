@@ -19,15 +19,14 @@ post '/generate' do
   @driver_file = nil
   @client = nil
   if @params[:action] == 'Upload'
-    File.open("saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
-    @params[:wsdl] = Dir.pwd.to_s + "/saved_forms/requests/#{@params['datafile'][:filename]}"
+    File.open("public/saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
+    @params[:wsdl] = Dir.pwd.to_s + "/public/saved_forms/requests/#{@params['datafile'][:filename]}"
   end
   @wsdl = @params[:wsdl]
   @ast = nil
   @curr = Dir.pwd
   @namespace ="MySoap::Interface" + rand(Time.now.to_i).to_s
-  @folder_name = "generated_clients/" + (File.basename(@params[:wsdl].gsub('.wsdl',''))) + "_" + Time.now.to_i.to_s + "_"  + rand(Time.now.to_i).to_s
-  puts @folder_name, @namespace, @params[:wsdl]
+  @folder_name = "public/generated_clients/" + (File.basename(@params[:wsdl].gsub('.wsdl',''))) + "_" + Time.now.to_i.to_s + "_"  + rand(Time.now.to_i).to_s
   @driver_file = GeneratorHelpers::generate_ruby_classes(@folder_name, @namespace, @params[:wsdl])
 
   @client = @curr + "/" + @folder_name
@@ -46,6 +45,8 @@ post '/build' do
   
   @input = tool.build_default_input_instance_for_method(@params[:method]) 
   @endpoint = tool.default_endpoint
+  @saved_requests = Dir.entries(Dir.pwd + "/public/saved_forms/requests/").grep(/\.xml$/)
+  @saved_responses = Dir.entries(Dir.pwd + "/public/saved_forms/responses/").grep(/\.xml$/)
   haml :client
 end
 
@@ -57,42 +58,36 @@ post '/update' do
   @endpoint = @params[:endpoint]
   @params = SinatraAppHelpers::update @params
   @input = @params['input']
-  
+  @saved_requests = Dir.entries(Dir.pwd + "/public/saved_forms/requests/").grep(/\.xml$/)
+  @saved_responses = Dir.entries(Dir.pwd + "/public/saved_forms/responses/").grep(/\.xml$/)
+    
   if @params[:action] == 'Submit'
     @input = SinatraAppHelpers::send_request(@input,@service_method, @client, @namespace, @wsdl, @endpoint)
-    # tool = Soap4r2Ruby.new(@params[:client],@params[:namespace])
-    # port_type = tool.port_type
-    # driver_file = tool.driver_file
-    # @result = SaveLoadConvertHelpers::obj2xml(@client, driver_file, @namespace, port_type, response)
-    # puts @result
-        # require 'ruby-debug'; debugger
-    #@result = File.open("test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
-    # content_type 'text/xml', :charset => 'utf-8'
-    haml :result
+    return haml :result
   elsif @params[:action] == 'SaveRequest'
-    # SaveLoadConvertHelpers::save_request_as_yaml(@params,"saved_forms/"+@params["file_name"]+".yml")  
-    SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
-    haml :client  
+    SaveLoadConvertHelpers::save_request_xml(@input, "public/saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
+  elsif @params[:action] == 'DeleteRequest'
+    SaveLoadConvertHelpers::del_request_xml(@params["file_name"])
   elsif @params[:action] == 'SaveResponse'
-    # SaveLoadConvertHelpers::save_request_as_yaml(@params,"saved_forms/"+@params["file_name"]+".yml")  
-    SaveLoadConvertHelpers::save_request_xml(@input, "saved_forms/responses/"+@params["file_name"], @client, @namespace, @wsdl)
-    haml :client  
+    SaveLoadConvertHelpers::save_request_xml(@input, "public/saved_forms/responses/"+@params["file_name"], @client, @namespace, @wsdl)
+    return haml :result
+  elsif @params[:action] == 'DeleteResponse'
+    SaveLoadConvertHelpers::del_response_xml(@params["file_name"])
+    return haml :result
   elsif @params[:action] == 'LoadRequest'
-    #@params = SaveLoadConvertHelpers::load_request_from_yaml("saved_forms/"+@params["file_name"]+".yml")
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
     @input = @params['input']
-    haml :client
   elsif @params[:action] == 'Upload'
-    File.open("saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("saved_forms/requests/#{@params['datafile'][:filename]}", @client, @namespace, @wsdl)
+    File.open("public/saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/#{@params['datafile'][:filename]}", @client, @namespace, @wsdl)
     @input = @params['input']
-    haml :client
   elsif @params[:action] == 'Add'
     @input = SinatraAppHelpers::create_element(@input, @params[:element])
-    haml :client
   elsif @params[:action] == 'Del'
     @input = SinatraAppHelpers::remove_element(@input, @params[:element])
-    haml :client  
-  end  
+  end
+    @saved_requests = Dir.entries(Dir.pwd + "/public/saved_forms/requests/").grep(/\.xml$/)
+    @saved_responses = Dir.entries(Dir.pwd + "/public/saved_forms/responses/").grep(/\.xml$/)
+    haml :client
 end
 

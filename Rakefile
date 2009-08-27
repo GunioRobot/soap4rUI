@@ -7,7 +7,7 @@ task :default => 'test:all'
 
 namespace :maintenance do
   current_dir = File.dirname(__FILE__)
-  client_dir = "#{current_dir}/generated_clients"
+  client_dir = "#{current_dir}/public/generated_clients"
 
  desc "clean out the generated clients directory"
  task :clean do
