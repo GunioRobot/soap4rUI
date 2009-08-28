@@ -13,10 +13,21 @@
           Enter the wsdl address "http://**" 
         %div  
           %input{:type => 'text', :id => "wsdl-input",:name => 'wsdl'}
-          %input{:type => 'submit', :value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"HTTP\";"}
+          %input{:type => 'submit', :value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"Submit\";"}
         %div
           or file upload:
         %div   
           %input{ :name => "datafile", :size => "40", :type => "file" }
           %input{:type => 'submit', :name => 'Upload',:value => 'Upload', :onclick => "document.getElementById(\"action\").value = \"Upload\";"}
-      
+        %div
+          %h4 
+            previously saved wsdls:
+          %table 
+            - for url in @saved_wsdls
+              %tr
+                %td
+                  %input{:type => 'submit', :name => 'LoadWsdl',:value => 'LoadWsdl', :onclick => "document.getElementById(\"action\").value = \"LoadWsdl\";document.getElementById(\"wsdl-input\").value = \"#{url}\""}            
+                %td
+                  %input{:type => 'submit', :name => 'DeleteWsdl',:value => 'DeleteWsdl', :onclick => "document.getElementById(\"action\").value = \"DeleteWsdl\";document.getElementById(\"wsdl-input\").value = \"#{url}\""}            
+                %td
+                  = url      
