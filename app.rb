@@ -49,6 +49,7 @@ post '/generate' do
   elsif @params[:action] == 'Submit'
     update_saved_forms
     @saved_wsdls += [@params[:wsdl].to_s]
+    @saved_wsdls.uniq!
     save_wsdls
   end
   @wsdl = @params[:wsdl]
