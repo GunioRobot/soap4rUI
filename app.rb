@@ -89,7 +89,8 @@ post '/update' do
   @endpoint = @params[:endpoint]
   @params = SinatraAppHelpers::update @params
   @input = @params['input']
-
+  update_saved_forms
+  
   if @params[:action] == 'Submit'
     @input = SinatraAppHelpers::send_request(@input,@service_method, @client, @namespace, @wsdl, @endpoint)
     return haml :result
