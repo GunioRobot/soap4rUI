@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+  <env:Body>
+    <DiscountServiceRequest>
+      <orderRequest>
+        <QualifyType>QUALIFY_WITH_TENDER</QualifyType>
+        <Brand>Gap</Brand>
+        <OrderLineItems>
+          <SequenceNumber></SequenceNumber>
+          <Product></Product>
+          <Price>
+            <PriceType>OVERRIDE</PriceType>
+          </Price>
+          <Quantity></Quantity>
+          <Awards>
+            <AwardMethod>PERCENT_OFF</AwardMethod>
+          </Awards>
+        </OrderLineItems>
+        <Promotions>
+          <SequenceNumber></SequenceNumber>
+          <PromotionCode></PromotionCode>
+          <AppliedStatus>CODE_NOT_EXIST</AppliedStatus>
+          <ReceiptMessages></ReceiptMessages>
+          <PromoUsages></PromoUsages>
+          <QualifyingTenders></QualifyingTenders>
+          <PromotionType>TRANSACTION</PromotionType>
+        </Promotions>
+        <Tenders></Tenders>
+      </orderRequest>
+    </DiscountServiceRequest>
+  </env:Body>
+</env:Envelope>

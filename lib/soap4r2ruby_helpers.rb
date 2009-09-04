@@ -4,7 +4,40 @@ gem 'soap4r'
 # this class is used to fetch the wsdl2ruby generated info
 # examples of info this class returns are LiteralRegistry, EncodedRegistry, Method names schema info etc. 
 
-class Object; attr_accessor :minoccurs, :maxoccurs; end
+
+require 'dl/struct'
+
+module Internal
+  extend DL::Importable
+
+  typealias "VALUE", nil, nil, nil, "unsigned long"
+  typealias "ID", nil, nil, nil, "unsigned long"
+
+  Basic = ["long flags", "VALUE klass"]
+
+  RBasic = struct Basic
+
+  RObject = struct(Basic + ["st_table *iv_tbl"])
+  
+  FL_FREEZE = 1 << 10
+end
+
+
+class Object
+  attr_accessor :minoccurs, :maxoccurs;
+  
+  def immediate?
+    [Fixnum, Symbol, NilClass, TrueClass, FalseClass].any?{|klass| klass === self}
+  end
+
+  def unfreeze
+    return self if immediate?
+
+    Internal::RObject.new(DL::PtrData.new(self.object_id * 2)).flags &= ~ Internal::FL_FREEZE
+    self
+  end
+end
+
   
 class String
   def to_array
@@ -180,26 +213,24 @@ module Soap4r2RubyHelpers
     result += '@'+array.last[1]+'='+array.last[1]+';end;'
   end
   
-  def self.mergeDefaultInstanceWithUnMarshalledValues(default_instance, unmarshalled_instance)
-    if (unmarshalled_instance == nil && default_instance != nil)
-      unmarshalled_instance = default_instance
-    end
-    unmarshalled_instance.minoccurs = default_instance.minoccurs
-    unmarshalled_instance.maxoccurs = default_instance.maxoccurs    
+  def self.mergeDefaultInstanceWithUnMarshalledValues(default_instance, unmarshalled_instance)        
+    #handle Array
     if(unmarshalled_instance.class == Array && default_instance.class == Array)
       unmarshalled_instance.each do |e|
         e = mergeDefaultInstanceWithUnMarshalledValues(default_instance.first, e)
       end
     end
-    if(unmarshalled_instance.class == String && default_instance.class.ancestors[2] == Enumerable)
-      puts "const getting #{unmarshalled_instance} at top level"
+
+    #handle Enum
+    if(unmarshalled_instance.class == String && default_instance.class.ancestors[2] == Enumerable && default_instance.class.ancestors[1] == String)
       if unmarshalled_instance == "" or unmarshalled_instance == nil
         unmarshalled_instance = (default_instance.class.constants - ['Enumerator'])[0]
       else  
         unmarshalled_instance = default_instance.class.const_get(unmarshalled_instance)
       end
     end
-      
+    
+    #handle Complex Type
     (default_instance.instance_variables- ["@minoccurs", "@maxoccurs"]).each do |i|
       sub_unmarshalled = unmarshalled_instance.instance_variable_get(i)
       sub_default = default_instance.instance_variable_get(i)
@@ -214,7 +245,7 @@ module Soap4r2RubyHelpers
         end
       end
       
-      if(sub_unmarshalled.class == String && sub_default.class.ancestors[2] == Enumerable)
+      if(sub_unmarshalled.class == String && sub_default.class.ancestors[2] == Enumerable && default_instance.class.ancestors[1] == String)
         if sub_unmarshalled == "" or sub_unmarshalled == nil
           sub_unmarshalled = (sub_default.class.constants - ['Enumerator'])[0]
         else  
@@ -226,6 +257,18 @@ module Soap4r2RubyHelpers
       end
       unmarshalled_instance.instance_variable_set(i, sub_unmarshalled)
     end
+
+    #handle nil unmarshalled vs anything default
+    if (unmarshalled_instance == nil && default_instance != nil)
+      unmarshalled_instance = default_instance
+    end
+    
+    #handle simpleType
+    if unmarshalled_instance.frozen?
+      unmarshalled_instance.unfreeze
+    end
+    unmarshalled_instance.minoccurs = default_instance.minoccurs
+    unmarshalled_instance.maxoccurs = default_instance.maxoccurs
     unmarshalled_instance
   end
 end  
