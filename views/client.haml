@@ -27,8 +27,25 @@
             - @ancestry = "@input"
             = haml :haml_partial
         %div
-          %input{:type => :text, :id => "endpoint-input", :name => "endpoint", :value => @endpoint}                
-          %input{:type => 'submit', :name => 'Submit',:value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"Submit\";"}
+          %table
+            %tr
+              %td
+                endpoint:
+              %td 
+                %input{:type => :text, :id => "endpoint-input", :name => "endpoint", :value => @endpoint}
+            %tr
+              %td
+                username:
+              %td            
+                %input{:type => :text, :id => "username", :name => "username", :value => @username}
+            %tr
+              %td
+                password:
+              %td              
+                %input{:type => :text, :id => "password", :name => "password", :value => @password}                
+            %tr
+              %td
+                %input{:type => 'submit', :name => 'Submit',:value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"Submit\";"}
         %div
           %label
             filename: 

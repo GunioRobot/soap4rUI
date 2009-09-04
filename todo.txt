@@ -1,19 +1,14 @@
 todo:
   high:  
-  - after add or delete enums should be select boxes not strings
-  - enums when loaded and not set should be default to nil
-  - test cases should not dependent on an internet connection.
   - amazon request response success #signature problem?    
   - demo video
   
   med:
-  - implement ssl passwords
+  - implement ssl cert
     http://s2.diffuse.it/blog/show/62-Consume_SSL_protected_Web_Services_with_soap4r
   - proxy support 
 	  	Default driver needs the following at the end of the init:
-	  	self.options["protocol.http.basic_auth"] << [endpoint_url,'username','password']
 		self.options["protocol.http.proxy"] = "http://yourproxyserver:8080/"
-  - google get an api key and try some requests out.
   - ebay working examples
   - cleanup temporary files on startup
   - serve this as catalina web app (finalize on war or ruby web server) (rake task)
@@ -21,6 +16,10 @@ todo:
     	java -cp "ruby-processing/app.rb:ruby-processing/exporters/applet_exporter.rb:ruby-processing/exporters/application_exporter.rb:ruby-processing/exporters/base_exporter.rb:ruby-processing/exporters/creator.rb:ruby-processing/helpers/numeric.rb:ruby-processing/helpers/string.rb:ruby-processing/runner.rb:ruby-processing/runners/base.rb:ruby-processing/runners/live.rb:ruby-processing/runners/run.rb:ruby-processing/runners/watch.rb:ruby-processing.rb:sand_chaser.rb:core/core.jar:core/jruby-complete.jar:jogl.jar:opengl.jar" org.jruby.Main ruby-processing/runners/run.rb sand_chaser.rb
      
   low:
+  - after add or delete enums should be select boxes not strings
+  - after load the add and delete buttons need to come back
+  - remaining namespace issue test_min_max_empty_with_complext_type_and_subtypes_and_arrays line 253
+  - enums when loaded and not set should be default to nil
   - simple fault responses should have a better ui.
   - bug for backslashes for local files on windows systems
   - empty request. service alive without type
@@ -29,6 +28,9 @@ todo:
   - create a gui to do a visual diff of expected responses vs actual responses. 
    
 done: 
+  - google get an api key and try some requests out. soap service discontinued
+  - test cases should not dependent on an network connection.
+  - implement password authentication
   - enums when loaded and set should be select boxes not strings
   - ICmfindInventory build default instance with SchemaSequenceDefinition bug (i think this is already fixed)
   - findInventory array build default instance with Array of complextype bug (i think this is already fixed)

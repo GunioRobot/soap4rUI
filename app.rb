@@ -87,12 +87,14 @@ post '/update' do
   @namespace = @params[:namespace]
   @service_method = @params[:service_method]
   @endpoint = @params[:endpoint]
+  @username = @params[:username]
+  @password = @params[:password]
   @params = SinatraAppHelpers::update @params
   @input = @params['input']
   update_saved_forms
   
   if @params[:action] == 'Submit'
-    @input = SinatraAppHelpers::send_request(@input,@service_method, @client, @namespace, @wsdl, @endpoint)
+    @input = SinatraAppHelpers::send_request(@input,@service_method, @client, @namespace, @wsdl, @endpoint, @username, @password)
     return haml :result
   elsif @params[:action] == 'SaveRequest'
     SaveLoadConvertHelpers::save_request_xml(@input, "public/saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
