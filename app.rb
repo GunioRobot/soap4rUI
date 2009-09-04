@@ -109,11 +109,11 @@ post '/update' do
     update_saved_forms
     return haml :result
   elsif @params[:action] == 'LoadRequest'
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/"+@params["file_name"], @client, @namespace, @wsdl, @service_method)
     @input = @params['input']
   elsif @params[:action] == 'Upload'
     File.open("public/saved_forms/requests/#{@params['datafile'][:filename]}", "w+").syswrite(@params["datafile"][:tempfile].readlines)
-    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/#{@params['datafile'][:filename]}", @client, @namespace, @wsdl)
+    @params['input'] = SaveLoadConvertHelpers::load_request_xml("public/saved_forms/requests/#{@params['datafile'][:filename]}", @client, @namespace, @wsdl, @service_method)
     update_saved_forms
     @input = @params['input']
   elsif @params[:action] == 'Add'

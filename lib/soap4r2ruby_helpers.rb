@@ -179,4 +179,53 @@ module Soap4r2RubyHelpers
     end
     result += '@'+array.last[1]+'='+array.last[1]+';end;'
   end
+  
+  def self.mergeDefaultInstanceWithUnMarshalledValues(default_instance, unmarshalled_instance)
+    if (unmarshalled_instance == nil && default_instance != nil)
+      unmarshalled_instance = default_instance
+    end
+    unmarshalled_instance.minoccurs = default_instance.minoccurs
+    unmarshalled_instance.maxoccurs = default_instance.maxoccurs    
+    if(unmarshalled_instance.class == Array && default_instance.class == Array)
+      unmarshalled_instance.each do |e|
+        e = mergeDefaultInstanceWithUnMarshalledValues(default_instance.first, e)
+      end
+    end
+    if(unmarshalled_instance.class == String && default_instance.class.ancestors[2] == Enumerable)
+      puts "const getting #{unmarshalled_instance} at top level"
+      if unmarshalled_instance == "" or unmarshalled_instance == nil
+        unmarshalled_instance = (default_instance.class.constants - ['Enumerator'])[0]
+      else  
+        unmarshalled_instance = default_instance.class.const_get(unmarshalled_instance)
+      end
+    end
+      
+    (default_instance.instance_variables- ["@minoccurs", "@maxoccurs"]).each do |i|
+      sub_unmarshalled = unmarshalled_instance.instance_variable_get(i)
+      sub_default = default_instance.instance_variable_get(i)
+      sub_unmarshalled.minoccurs = sub_default.minoccurs
+      sub_unmarshalled.maxoccurs = sub_default.maxoccurs
+      if sub_unmarshalled == nil && sub_default != nil
+        unmarshalled_instance.instance_variable_set(i, sub_default)
+      end
+      if(sub_unmarshalled.class == Array && sub_default.class == Array)
+        sub_unmarshalled.each do |e|
+          e = mergeDefaultInstanceWithUnMarshalledValues(sub_default.first, e)
+        end
+      end
+      
+      if(sub_unmarshalled.class == String && sub_default.class.ancestors[2] == Enumerable)
+        if sub_unmarshalled == "" or sub_unmarshalled == nil
+          sub_unmarshalled = (sub_default.class.constants - ['Enumerator'])[0]
+        else  
+          sub_unmarshalled = sub_default.class.const_get(sub_unmarshalled)
+        end
+      end      
+      (sub_default.instance_variables- ["@minoccurs", "@maxoccurs"]).each do |d|
+        sub_unmarshalled.instance_variable_set(d , mergeDefaultInstanceWithUnMarshalledValues(sub_default.instance_variable_get(d), sub_unmarshalled.instance_variable_get(d)))
+      end
+      unmarshalled_instance.instance_variable_set(i, sub_unmarshalled)
+    end
+    unmarshalled_instance
+  end
 end  

@@ -196,12 +196,12 @@ class Soap4r2Ruby
       #simple types - (no subelements)
       # default to empty ruby string
       object = ""
-    elsif (e.mapped_class.ancestors.include?(String))
+    elsif (e.mapped_class.ancestors.include?(Enumerable))
       #enums - (grab the first constant as the default value)
-      object = nil#e.mapped_class.class_eval((e.mapped_class.constants - ['Enumerator'])[0])
+      object = e.mapped_class.class_eval((e.mapped_class.constants - ['Enumerator'])[0])
     elsif (e.mapped_class.ancestors.include?(Array))
       # args -schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
-      #todo may need to implement this
+      #todo may need to implement this differently
       object = [nil]
     else
       #complex types

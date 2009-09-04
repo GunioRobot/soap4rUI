@@ -38,8 +38,15 @@
     - if field.minoccurs == 0
       %small [optional]  
     %td
-      - if (field_type.ancestors.include?(String))
-        %input{ :name => "#{@ancestry}.#{field_name.gsub('@','')}", :type => :text, :value => field}
+      - if (field_type.ancestors[2]==Enumerable)
+        %select{ :name => "#{@ancestry}.#{field_name.gsub('@','')}" }
+          - for m in (field.class.constants - ['Enumerator'] + [nil])
+            - if field == m
+              %option{ :selected => "", :value => m }=m
+            - elsif field == "" && m == nil
+              %option{ :value => m }=m
+            - else
+              %option{ :value => m }=m           
       - else
         %table
           - @parent = field

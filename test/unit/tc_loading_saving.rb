@@ -11,7 +11,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl"
-    
+    @service_method = "applyDiscount"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
     @params = {}
@@ -101,7 +101,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
   def test_load_request_from_xml
     #create the sample input
     myfile = Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml"
-    @input = SaveLoadConvertHelpers::load_request_xml(myfile, @client_folder, @namespace, @wsdl)
+    @input = SaveLoadConvertHelpers::load_request_xml(myfile, @client_folder, @namespace, @wsdl, @service_method)
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
     assert_equal(1, @input.orderRequest.promotions.size)
@@ -123,7 +123,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
   def test_save_request_as_xml
     #load a request example
     xml = (File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml")).readlines.to_s
-    @input = SaveLoadConvertHelpers::xml2obj(@tool, xml)
+    @input = SaveLoadConvertHelpers::xml2obj(@tool, xml, @service_method)
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
     assert_equal(1, @input.orderRequest.promotions.size)
@@ -145,7 +145,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     xml = nil
     @input = nil
     #reload the file and assert that the changes were saved
-    @input = SaveLoadConvertHelpers::load_request_xml(@file, @client_folder, @namespace, @wsdl)
+    @input = SaveLoadConvertHelpers::load_request_xml(@file, @client_folder, @namespace, @wsdl, @service_method)
     assert_not_nil @input
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @input.class)
     assert_equal(1, @input.orderRequest.promotions.size)

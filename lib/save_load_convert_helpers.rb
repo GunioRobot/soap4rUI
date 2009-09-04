@@ -12,10 +12,10 @@ module SaveLoadConvertHelpers
     YAML.load(File.open(file))
   end
 
-  def self.load_request_xml(filename, client, namespace, wsdl)
+  def self.load_request_xml(filename, client, namespace, wsdl, service_method)
     xml = File.open(filename).readlines.to_s
     driver = Soap4r2Ruby.new(client, namespace, wsdl)
-    SaveLoadConvertHelpers::xml2obj(driver, xml)
+    SaveLoadConvertHelpers::xml2obj(driver, xml, service_method)
   end
 
   def self.save_request_xml(obj, file, client_folder, namespace, wsdl)
@@ -44,15 +44,15 @@ module SaveLoadConvertHelpers
     xml = SOAP::Processor.marshal(env)
   end  
 
-  def self.xml2obj(driver, xml)
+  def self.xml2obj(driver, xml, service_method)
     env = SOAP::Processor.unmarshal(xml)
     body = env.body
     soap_element = body.root_node  
     schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(soap_element.elename.name, driver.mapping_registry, driver.literal_mapping_registry)
     my_klass_type = schemadef.first 
     obj = SOAP::Mapping.soap2obj(soap_element, driver.literal_mapping_registry, my_klass_type)
-    Soap4r2RubyHelpers::min_max_tagger(obj, driver)
-    obj
+    default_instance = driver.build_default_input_instance_for_method(service_method) 
+    Soap4r2RubyHelpers::mergeDefaultInstanceWithUnMarshalledValues(default_instance, obj);
   end
 
 end

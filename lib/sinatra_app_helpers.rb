@@ -46,14 +46,8 @@ module SinatraAppHelpers
     @input
   end
       
-  #convert the form into a request to the server
+  #convert the form into a request to the server and send it
   def self.send_request(input,service_method, client, namespace, wsdl, endpoint=nil)
-    #take the form fields and create a wsdl request.
-    # driver = Soap4r2Ruby.new(client, namespace, wsdl).rpc_driver
-    # driver.endpoint_url= endpoint if endpoint != nil
-    # driver.wiredump_dev = STDERR
-    # @result = driver.send(service_method,input)
-    #take the form fields and create a wsdl request.
     driver = Soap4r2Ruby.new(client, namespace, wsdl)
     port_type = driver.port_type
     obj = eval(namespace+"::"+port_type.name.name).send(:new, endpoint)
@@ -67,13 +61,6 @@ module SinatraAppHelpers
     else
       @result = obj.send(service_method,input)      
     end
-    # require 'ruby-debug'; debugger
-    # errors = File.open("err.log", "w+").readlines
-    # if (errors.size!=0)
-      # require 'ruby-debug'; debugger
-      # @result = SinatraAppHelpers.load_request_xml("err.log", client, namespace, wsdl)
-      # File.delete("err.log")
-    # end
   end
 
 

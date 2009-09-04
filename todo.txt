@@ -1,6 +1,8 @@
 todo:
   high:  
-  - make enums work as select boxes need to figure a way to make nil preserve the enum type dynamically  
+  - after add or delete enums should be select boxes not strings
+  - enums when loaded and not set should be default to nil
+  - test cases should not dependent on an internet connection.
   - amazon request response success #signature problem?    
   - demo video
   
@@ -21,17 +23,20 @@ todo:
   low:
   - simple fault responses should have a better ui.
   - bug for backslashes for local files on windows systems
-  - loading bug optional fields missing should build default instance then populate it.
   - empty request. service alive without type
-  - ICmfindInventory build default instance with SchemaSequenceDefinition bug (i think this is already fixed)
-  - findInventory array build default instance with Array of complextype bug (i think this is already fixed)
-  - receipt messages bug missing on load.
-  - min max occurs disappears on reload. 
   - mouse over table highlight
   - create a quick driver to generate ruby tests
   - create a gui to do a visual diff of expected responses vs actual responses. 
    
 done: 
+  - enums when loaded and set should be select boxes not strings
+  - ICmfindInventory build default instance with SchemaSequenceDefinition bug (i think this is already fixed)
+  - findInventory array build default instance with Array of complextype bug (i think this is already fixed)
+  - loading bug optional fields missing should build default instance then populate it.
+  - make enums work as select boxes need to figure a way to make nil preserve the enum type dynamically
+  - fix arrays of arrays not getting sub arrays on xml load
+  - receipt messages bug missing on load.
+  - min max occurs disappears on reload. 
   - remove other loads and saves
   - save and load wsdl
   - local save and load for requests and responses.

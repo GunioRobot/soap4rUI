@@ -9,7 +9,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @namespace = "MySoap::InterfaceOne"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.wsdl"
-    
+    @service_method = "applyDiscount"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
     @params = {}
@@ -118,7 +118,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
   def test_convert_instance_to_xml
     #load the object
     expected_xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
-    expected_obj = SaveLoadConvertHelpers::xml2obj(@tool, expected_xml)    
+    expected_obj = SaveLoadConvertHelpers::xml2obj(@tool, expected_xml, @service_method)    
 
     #test the object has what it needs
     assert_not_nil(expected_obj)
@@ -133,7 +133,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
     
     #reload the object
     xml = SaveLoadConvertHelpers::obj2xml(@tool, expected_obj)
-    result_obj = SaveLoadConvertHelpers::xml2obj(@tool, xml)
+    result_obj = SaveLoadConvertHelpers::xml2obj(@tool, xml, @service_method)
     
     #test that everything is still kosher
     assert_not_nil(result_obj)
@@ -152,7 +152,7 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
     expected_result = ""
     xml = File.open(Dir.pwd + "/test/fixtures/sample_xmls/working_vdev_sample_request.xml").readlines.to_s
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType,@tool.default_instance.class)
-    result = SaveLoadConvertHelpers::xml2obj(@tool, xml)
+    result = SaveLoadConvertHelpers::xml2obj(@tool, xml, @service_method)
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, result.class)
   end
   
