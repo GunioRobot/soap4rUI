@@ -34,8 +34,9 @@ class TC_LoadingSaving < Test::Unit::TestCase
     @params = {}#YAML.load(File.open(File.dirname(File.expand_path(__FILE__)) + "/test/fixtures/params/params.yaml"))
     @params['input'] = File.open(Dir.pwd + "/test/fixtures/params/input.yaml")
     @params['client'] = Dir.pwd + '/test/fixtures/client_namespace'
+    @params['service_method'] = @service_method
     @result = nil
-    @result = SinatraAppHelpers::update(@params)
+    @result = SinatraAppHelpers::update(@params, @tool)
     assert_not_nil(@result)
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @result['input'].class)
     assert_not_nil(@result['input'].orderRequest)
@@ -52,8 +53,9 @@ class TC_LoadingSaving < Test::Unit::TestCase
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
     @tool = Soap4r2Ruby.new(@params['client'], @params['namespace'], @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
+    @params['service_method'] = @service_method
     @result = nil
-    @result = SinatraAppHelpers::update(@params)
+    @result = SinatraAppHelpers::update(@params, @tool)
     assert_not_nil(@result)
     assert_equal(MySoap::InterfaceTwo::DiscountServiceRequestType, @result['input'].class)
     assert_not_nil(@result['input'].orderRequest)

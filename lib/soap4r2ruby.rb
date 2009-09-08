@@ -189,17 +189,23 @@ class Soap4r2Ruby
       # tag min and max values on the object.
       # if a simple type instantiate the object. (primitives) 
       # if a complex type recursively instantiate elements of that object 
-    if (e.class == SOAP::Mapping::SchemaSequenceDefinition)
-      #todo implement this
+#      p e.varname
+#      p e.mapped_class
+#      p e.class
+    if (e.class == SOAP::Mapping::SchemaSequenceDefinition && e.mapped_class == nil)
+      #assume any SchemaSequenceDefinition without a mapped class is can be handled as an Array
       object = [nil]
+    elsif (e.class == SOAP::Mapping::SchemaElementDefinition && e.mapped_class == nil)
+      #assume any element without a mapped class can be handled as a String
+      object = ""  
     elsif (::SOAP.constants.grep(/^SOAP/).include?(e.mapped_class.to_s.gsub('::SOAP','')))
       #simple types - (no subelements)
       # default to empty ruby string
       object = ""
-    elsif (e.mapped_class.ancestors.include?(Enumerable))
+    elsif (e.mapped_class.ancestors.first.to_s.include?(@namespace) && e.mapped_class.ancestors.include?(Enumerable) && !e.mapped_class.ancestors.include?(Array))
       #enums - (grab the first constant as the default value)
       object = e.mapped_class.class_eval((e.mapped_class.constants - ['Enumerator'])[0])
-    elsif (e.mapped_class.ancestors.include?(Array))
+    elsif (e.mapped_class.ancestors.include?(Array) && !e.mapped_class.ancestors.first.to_s.include?(@namespace))
       # args -schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
       #todo may need to implement this differently
       object = [nil]
@@ -208,6 +214,19 @@ class Soap4r2Ruby
       sub_schemadef = Soap4r2RubyHelpers::get_schemadef_for_type_name(e.mapped_class, @mapping_registry, @literal_mapping_registry)
       sub_args = sub_schemadef.last.elements.entries.map{|s| build_default_instance_for_element_and_schemadef(s, sub_schemadef)}
       object = e.mapped_class.new(*sub_args)
+#      #workaround for soap4r trac bug 515 http://dev.ctor.org/soap4r/ticket/515
+#      for v in sub_schemadef.last.elements.entries
+#        if !object.respond_to?(v.varname)
+#          object.class.class_eval("attr_accessor :#{v.varname}_")
+#        end        
+#      end
+#      object = e.mapped_class.new(*sub_args)
+#      for v in sub_schemadef.last.elements.entries
+#        if !object.respond_to?(v.varname) && object.respond_to?("#{v.varname}_") 
+#          object.send("#{v.varname}_=", build_default_instance_for_element_and_schemadef(v, sub_schemadef))
+#        end        
+#        
+#      end
     end
     Soap4r2RubyHelpers::tag_minoccurs_maxoccurs(object, e.minoccurs, e.maxoccurs)
     if object.maxoccurs != 1

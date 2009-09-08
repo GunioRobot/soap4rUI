@@ -35,7 +35,7 @@ class Object
 
     Internal::RObject.new(DL::PtrData.new(self.object_id * 2)).flags &= ~ Internal::FL_FREEZE
     self
-  end
+  end  
 end
 
   

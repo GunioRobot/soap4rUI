@@ -161,12 +161,13 @@ class TC_SinatraAppHelpers < Test::Unit::TestCase
     @params['client']= Dir.pwd + "/test/fixtures/latest_client"
     @params['namespace'] = "MySoap::InterfaceTwo"
     @params['wsdl'] = Dir.pwd + "/test/fixtures/sample_wsdls/latest-discountService-V1-0.wsdl"
-    @params = SinatraAppHelpers::update @params
+    @params['service_method'] = @service_method
+    @params = SinatraAppHelpers::update(@params, @tool)
     @input = @params['input']
     assert_not_nil(@input)
     assert_not_nil(@input.orderRequest)
     assert_equal(true, @input.orderRequest.respond_to?("qualifyType"))
-    assert_equal(nil, @input.orderRequest.qualifyType)
+    assert_equal("QUALIFY_WITH_TENDER", @input.orderRequest.qualifyType)
     assert_not_nil(@input.orderRequest.promotions)
     assert_equal(1, @input.orderRequest.promotions.size)
     assert_equal(true, @input.orderRequest.promotions[0].respond_to?("appliedStatus"))

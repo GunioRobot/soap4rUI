@@ -4,7 +4,7 @@ require 'yaml'
 
 module SinatraAppHelpers
 
-  def self.update(params)
+  def self.update(params, driver)
     folder = params['client']
     curr = Dir.pwd
     begin
@@ -15,7 +15,9 @@ module SinatraAppHelpers
       Dir.chdir curr
     end
       @input = YAML.load params['input'] #prepopulate with original values
-      (params.keys - ["input", :splat, "namespace", "client", "action", "Submit", "Save", "Load", "file_name"]).sort.each do |e|      
+      default_instance = driver.build_default_input_instance_for_method(params['service_method']) 
+      @input = Soap4r2RubyHelpers::mergeDefaultInstanceWithUnMarshalledValues(default_instance, @input)
+      (params.keys - ["input", :splat, "action"]).sort.each do |e|      
         es = e.to_array
         #since yaml turns everything to strings make sure occurences turn back into Numbers properly
         # to_i on nil gives zero not nil

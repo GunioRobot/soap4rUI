@@ -89,7 +89,8 @@ post '/update' do
   @endpoint = @params[:endpoint]
   @username = @params[:username]
   @password = @params[:password]
-  @params = SinatraAppHelpers::update @params
+  driver = Soap4r2Ruby.new(@client, @namespace, @wsdl)
+  @params = SinatraAppHelpers::update(@params, driver)
   @input = @params['input']
   update_saved_forms
   

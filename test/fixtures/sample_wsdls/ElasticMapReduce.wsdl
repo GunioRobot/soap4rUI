@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<wsdl:definitions
+  targetNamespace="http://elasticmapreduce.amazonaws.com/doc/2009-03-31"
+  xmlns:tns="http://elasticmapreduce.amazonaws.com/doc/2009-03-31"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:wsa="http://www.w3.org/2005/08/addressing/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <wsdl:types>
+
+    <xs:schema
+      targetNamespace="http://elasticmapreduce.amazonaws.com/doc/2009-03-31"
+      elementFormDefault="qualified">
+
+      <xs:element name="ResponseMetadata">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RequestId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="Error">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Type">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="Receiver"/>
+                  <xs:enumeration value="Sender"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Code" type="xs:string"/>
+            <xs:element name="Message" type="xs:string"/>
+            <xs:element name="Detail">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+                </xs:sequence>
+                <xs:anyAttribute namespace="##other" processContents="lax"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="ErrorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:Error" maxOccurs="unbounded"/>
+            <xs:element name="RequestId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="AddJobFlowSteps">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="JobFlowId" type="xs:string"/>
+          <xs:element name="Steps" type="tns:StepConfigList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="AddJobFlowStepsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:ResponseMetadata" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="TerminateJobFlows">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="JobFlowIds" type="tns:StringList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="TerminateJobFlowsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:ResponseMetadata" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="DescribeJobFlows">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="CreatedAfter" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="CreatedBefore" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="JobFlowIds" type="tns:StringList" minOccurs="0"/>
+          <xs:element name="JobFlowStates" type="tns:JobFlowExecutionStateList" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="DescribeJobFlowsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:DescribeJobFlowsResult"/>
+            <xs:element ref="tns:ResponseMetadata" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="DescribeJobFlowsResult">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="JobFlows" type="tns:JobFlowDetailList" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="RunJobFlow">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="Name" type="tns:RunJobFlowInputName"/>
+          <xs:element name="LogUri" type="xs:string" minOccurs="0"/>
+          <xs:element name="Instances" type="tns:JobFlowInstancesConfig"/>
+          <xs:element name="Steps" type="tns:StepConfigList" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="RunJobFlowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:RunJobFlowResult"/>
+            <xs:element ref="tns:ResponseMetadata" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="RunJobFlowResult">
+        <xs:complexType>
+          <xs:sequence>
+          <xs:element name="JobFlowId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:simpleType name="StepExecutionState">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="PENDING|RUNNING|COMPLETED|CANCELLED|FAILED|INTERRUPTED"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:complexType name="JobFlowExecutionStatusDetail">
+        <xs:sequence>
+          <xs:element name="State" type="tns:JobFlowExecutionState"/>
+          <xs:element name="CreationDateTime" type="xs:dateTime"/>
+          <xs:element name="StartDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="EndDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="LastStateChangeReason" type="tns:StateChangeReason" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="JobFlowDetailList">
+        <xs:sequence>
+          <xs:element name="member" type="tns:JobFlowDetail" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StepConfig">
+        <xs:sequence>
+          <xs:element name="Name" type="tns:StepConfigName"/>
+          <xs:element name="ActionOnFailure" type="tns:ActionOnFailure" minOccurs="0"/>
+          <xs:element name="HadoopJarStep" type="tns:HadoopJarStepConfig"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StepExecutionStatusDetail">
+        <xs:sequence>
+          <xs:element name="State" type="tns:StepExecutionState"/>
+          <xs:element name="CreationDateTime" type="xs:dateTime"/>
+          <xs:element name="StartDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="EndDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="LastStateChangeReason" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StringList">
+        <xs:sequence>
+          <xs:element name="member" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:simpleType name="RunJobFlowInputName">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:maxLength value="256"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="StateChangeReason">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="MASTER_TERMINATED|START_FAILED|STEP_FAILED"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="JobFlowExecutionState">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="COMPLETED|FAILED|TERMINATED|RUNNING|SHUTTING_DOWN|STARTING|WAITING"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:complexType name="JobFlowExecutionStateList">
+        <xs:sequence>
+          <xs:element name="member" type="tns:JobFlowExecutionState" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="JobFlowDetail">
+        <xs:sequence>
+          <xs:element name="JobFlowId" type="xs:string"/>
+          <xs:element name="Name" type="xs:string"/>
+          <xs:element name="LogUri" type="xs:string" minOccurs="0"/>
+          <xs:element name="ExecutionStatusDetail" type="tns:JobFlowExecutionStatusDetail"/>
+          <xs:element name="Instances" type="tns:JobFlowInstancesDetail"/>
+          <xs:element name="Steps" type="tns:StepDetailList" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:simpleType name="JobFlowInstancesConfigEc2KeyName">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:maxLength value="256"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:complexType name="StepDetail">
+        <xs:sequence>
+          <xs:element name="StepConfig" type="tns:StepConfig"/>
+          <xs:element name="ExecutionStatusDetail" type="tns:StepExecutionStatusDetail"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="PlacementType">
+        <xs:sequence>
+          <xs:element name="AvailabilityZone" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="KeyValueList">
+        <xs:sequence>
+          <xs:element name="member" type="tns:KeyValue" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="JobFlowInstancesConfig">
+        <xs:sequence>
+          <xs:element name="MasterInstanceType" type="xs:string"/>
+          <xs:element name="SlaveInstanceType" type="xs:string"/>
+          <xs:element name="InstanceCount" type="xs:integer"/>
+          <xs:element name="Ec2KeyName" type="tns:JobFlowInstancesConfigEc2KeyName" minOccurs="0"/>
+          <xs:element name="Placement" type="tns:PlacementType" minOccurs="0"/>
+          <xs:element name="KeepJobFlowAliveWhenNoSteps" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StepConfigList">
+        <xs:sequence>
+          <xs:element name="member" type="tns:StepConfig" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:simpleType name="ActionOnFailure">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="TERMINATE_JOB_FLOW|CANCEL_AND_WAIT|CONTINUE"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="StepConfigName">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:maxLength value="256"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:complexType name="HadoopJarStepConfig">
+        <xs:sequence>
+          <xs:element name="Properties" type="tns:KeyValueList" minOccurs="0"/>
+          <xs:element name="Jar" type="xs:string"/>
+          <xs:element name="MainClass" type="xs:string" minOccurs="0"/>
+          <xs:element name="Args" type="tns:StringList" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StepDetailList">
+        <xs:sequence>
+          <xs:element name="member" type="tns:StepDetail" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="JobFlowInstancesDetail">
+        <xs:sequence>
+          <xs:element name="MasterInstanceType" type="xs:string"/>
+          <xs:element name="MasterPublicDnsName" type="xs:string" minOccurs="0"/>
+          <xs:element name="MasterInstanceId" type="xs:string" minOccurs="0"/>
+          <xs:element name="SlaveInstanceType" type="xs:string"/>
+          <xs:element name="InstanceCount" type="xs:integer"/>
+          <xs:element name="Ec2KeyName" type="xs:string" minOccurs="0"/>
+          <xs:element name="Placement" type="tns:PlacementType" minOccurs="0"/>
+          <xs:element name="KeepJobFlowAliveWhenNoSteps" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="KeyValue">
+        <xs:sequence>
+          <xs:element name="Key" type="xs:string" minOccurs="0"/>
+          <xs:element name="Value" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+    </xs:schema>
+
+  </wsdl:types>
+
+  <wsdl:message name="AddJobFlowStepsRequestMsg">
+    <wsdl:part element="tns:AddJobFlowSteps" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="AddJobFlowStepsResponseMsg">
+    <wsdl:part element="tns:AddJobFlowStepsResponse" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="TerminateJobFlowsRequestMsg">
+    <wsdl:part element="tns:TerminateJobFlows" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="TerminateJobFlowsResponseMsg">
+    <wsdl:part element="tns:TerminateJobFlowsResponse" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="DescribeJobFlowsRequestMsg">
+    <wsdl:part element="tns:DescribeJobFlows" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="DescribeJobFlowsResponseMsg">
+    <wsdl:part element="tns:DescribeJobFlowsResponse" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="RunJobFlowRequestMsg">
+    <wsdl:part element="tns:RunJobFlow" name="body"/>
+  </wsdl:message>
+
+  <wsdl:message name="RunJobFlowResponseMsg">
+    <wsdl:part element="tns:RunJobFlowResponse" name="body"/>
+  </wsdl:message>
+
+  <wsdl:portType name="ElasticMapReducePortType">
+
+    <wsdl:operation name="AddJobFlowSteps">
+      <wsdl:input message="tns:AddJobFlowStepsRequestMsg" wsa:Action="urn:AddJobFlowSteps"/>
+      <wsdl:output message="tns:AddJobFlowStepsResponseMsg" wsa:Action="urn:AddJobFlowSteps:Response"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="TerminateJobFlows">
+      <wsdl:input message="tns:TerminateJobFlowsRequestMsg" wsa:Action="urn:TerminateJobFlows"/>
+      <wsdl:output message="tns:TerminateJobFlowsResponseMsg" wsa:Action="urn:TerminateJobFlows:Response"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="DescribeJobFlows">
+      <wsdl:input message="tns:DescribeJobFlowsRequestMsg" wsa:Action="urn:DescribeJobFlows"/>
+      <wsdl:output message="tns:DescribeJobFlowsResponseMsg" wsa:Action="urn:DescribeJobFlows:Response"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="RunJobFlow">
+      <wsdl:input message="tns:RunJobFlowRequestMsg" wsa:Action="urn:RunJobFlow"/>
+      <wsdl:output message="tns:RunJobFlowResponseMsg" wsa:Action="urn:RunJobFlow:Response"/>
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+  <wsdl:binding name="ElasticMapReduceBinding" type="tns:ElasticMapReducePortType">
+
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <wsdl:operation name="AddJobFlowSteps">
+      <soap:operation soapAction="AddJobFlowSteps"/>
+      <wsdl:input><soap:body use="literal"/></wsdl:input>
+      <wsdl:output><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="TerminateJobFlows">
+      <soap:operation soapAction="TerminateJobFlows"/>
+      <wsdl:input><soap:body use="literal"/></wsdl:input>
+      <wsdl:output><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="DescribeJobFlows">
+      <soap:operation soapAction="DescribeJobFlows"/>
+      <wsdl:input><soap:body use="literal"/></wsdl:input>
+      <wsdl:output><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="RunJobFlow">
+      <soap:operation soapAction="RunJobFlow"/>
+      <wsdl:input><soap:body use="literal"/></wsdl:input>
+      <wsdl:output><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+  <wsdl:service name="ElasticMapReduce">
+    <wsdl:port name="ElasticMapReducePort" binding="tns:ElasticMapReduceBinding">
+      <soap:address location="https://elasticmapreduce.amazonaws.com/"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

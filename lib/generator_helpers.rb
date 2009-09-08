@@ -24,7 +24,6 @@ module GeneratorHelpers
       i.run
       #  
       # command = "wsdl2ruby.rb --module_path #{namespace} --wsdl #{wsdl} --classdef --mapping_registry --driver --force"
-      # require 'ruby-debug';debugger   
       # result = %x{command}
       make_unique_name_for_generated_ruby_classes(Dir.pwd)
       driver_file = Dir.entries(Dir.pwd).grep(/Driver.rb/).first

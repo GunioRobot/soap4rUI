@@ -4,7 +4,7 @@
 - field_name = @child
 %tr
 - #if this is a collection then iterate over the elements/
--if (field_type == Array) 
+-if (field_type.ancestors.include?(Array)) 
   - array = field
   - ancestry = @ancestry + ".#{@child.gsub('@','')}"
   %td
@@ -38,7 +38,7 @@
     - if field.minoccurs == 0
       %small [optional]  
     %td
-      - if (field_type.ancestors[2]==Enumerable)
+      - if (field_type.ancestors[2]==Enumerable && field_type.ancestors[1]==String)
         %select{ :name => "#{@ancestry}.#{field_name.gsub('@','')}" }
           - for m in (field.class.constants - ['Enumerator'] + [nil])
             - if field == m
