@@ -31,7 +31,7 @@ class TestAnonymous < Test::Unit::TestCase
       )
       self.literal_mapping_registry = LpMappingRegistry::LiteralRegistry
     end
-  
+
     def login(arg)
       req = arg.loginRequest
       sess = [req.username, req.password, req.timezone].join

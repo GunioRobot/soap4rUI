@@ -22,7 +22,7 @@ class TestEcho < Test::Unit::TestCase
         XSD::QName.new(Namespace, 'echo')
       )
     end
-  
+
     def echo(arg)
       arg
     end

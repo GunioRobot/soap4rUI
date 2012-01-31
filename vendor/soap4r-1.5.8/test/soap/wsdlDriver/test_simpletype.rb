@@ -12,7 +12,7 @@ class TestSimpleType < Test::Unit::TestCase
     def on_init
       add_method(self, 'echo_version', 'version')
     end
-  
+
     def echo_version(version)
       # "2.0" is out of range.
       Version_struct.new(version || "2.0", 'checked')

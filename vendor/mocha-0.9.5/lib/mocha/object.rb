@@ -6,28 +6,28 @@ require 'mocha/any_instance_method'
 require 'mocha/argument_iterator'
 
 module Mocha
-  
+
   # Methods added all objects to allow mocking and stubbing on real objects.
   #
   # Methods return a Mocha::Expectation which can be further modified by methods on Mocha::Expectation.
   module ObjectMethods
-  
+
     def mocha # :nodoc:
       @mocha ||= Mocha::Mockery.instance.mock_impersonating(self)
     end
-  
+
     def reset_mocha # :nodoc:
       @mocha = nil
     end
-  
+
     def stubba_method # :nodoc:
       Mocha::InstanceMethod
     end
-  
+
     def stubba_object # :nodoc:
       self
     end
-  
+
     # :call-seq: expects(method_name) -> expectation
     #            expects(method_names_vs_return_values) -> last expectation
     #
@@ -64,7 +64,7 @@ module Mocha
       }
       expectation
     end
-  
+
     # :call-seq: stubs(method_name) -> expectation
     #            stubs(method_names_vs_return_values) -> last expectation
     #
@@ -101,7 +101,7 @@ module Mocha
       }
       expectation
     end
-  
+
     def method_exists?(method, include_public_methods = true) # :nodoc:
       if include_public_methods
         return true if public_methods(include_superclass_methods = true).include?(method)
@@ -111,30 +111,30 @@ module Mocha
       return true if private_methods(include_superclass_methods = true).include?(method)
       return false
     end
-  
+
   end
-  
+
   module ModuleMethods # :nodoc:
-    
+
     def stubba_method
       Mocha::ModuleMethod
     end
-    
+
   end
-  
+
   # Methods added all classes to allow mocking and stubbing on real objects.
   module ClassMethods
-    
+
     def stubba_method # :nodoc:
       Mocha::ClassMethod
     end
 
     class AnyInstance # :nodoc:
-    
+
       def initialize(klass)
         @stubba_object = klass
       end
-    
+
       def mocha
         @mocha ||= Mocha::Mockery.instance.mock_impersonating_any_instance_of(@stubba_object)
       end
@@ -142,11 +142,11 @@ module Mocha
       def stubba_method
         Mocha::AnyInstanceMethod
       end
-    
+
       def stubba_object
         @stubba_object
       end
-    
+
       def method_exists?(method, include_public_methods = true)
         if include_public_methods
           return true if @stubba_object.public_instance_methods(include_superclass_methods = true).include?(method)
@@ -155,9 +155,9 @@ module Mocha
         return true if @stubba_object.private_instance_methods(include_superclass_methods = true).include?(method)
         return false
       end
-    
+
     end
-  
+
     # :call-seq: any_instance -> mock object
     #
     # Returns a mock object which will detect calls to any instance of this class.
@@ -169,9 +169,9 @@ module Mocha
     def any_instance
       @any_instance ||= AnyInstance.new(self)
     end
-  
+
   end
-  
+
 end
 
 class Object # :nodoc:

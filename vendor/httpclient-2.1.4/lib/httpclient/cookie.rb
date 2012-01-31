@@ -37,7 +37,7 @@ class WebAgent
       case domain
       when /\d+\.\d+\.\d+\.\d+/
 	return (hostname == domainname)
-      when '.' 
+      when '.'
 	return true
       when /^\./
         # allows; host == rubyforge.org, domain == .rubyforge.org
@@ -144,7 +144,7 @@ class WebAgent
 	  else
 	    ret << elem
 	    old_elem = nil
-	  end  
+	  end
 	else
 	  if old_elem
 	    old_elem << sep << elem
@@ -326,11 +326,11 @@ class WebAgent
     def add(cookie)
       url = cookie.url
       name, value = cookie.name, cookie.value
-      expires, domain, path = 
+      expires, domain, path =
 	cookie.expires, cookie.domain, cookie.path
-      secure, domain_orig, path_orig = 
+      secure, domain_orig, path_orig =
 	cookie.secure?, cookie.domain_orig?, cookie.path_orig?
-      discard, override = 
+      discard, override =
 	cookie.discard?, cookie.override?
 
       domainname = url.host

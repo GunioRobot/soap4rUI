@@ -3,12 +3,12 @@ require 'mocha/mockery'
 require 'mocha/sequence'
 
 module Mocha # :nodoc:
-  
+
   # Methods added to Test::Unit::TestCase or equivalent.
   module Standalone
-    
+
     include ParameterMatchers
-    
+
     # :call-seq: mock(name, &block) -> mock object
     #            mock(expected_methods = {}, &block) -> mock object
     #            mock(name, expected_methods = {}, &block) -> mock object
@@ -25,7 +25,7 @@ module Mocha # :nodoc:
     #     assert_equal 'ipod', product.manufacturer
     #     assert_equal 100, product.price
     #     # an error will be raised unless both Product#manufacturer and Product#price have been called
-    #   end 
+    #   end
     #
     # +block+ is an optional block to be evaluated against the mock object instance, giving an alernative way to set up expectations & stubs.
     #   def test_product
@@ -36,7 +36,7 @@ module Mocha # :nodoc:
     #     assert_equal 'ipod', product.manufacturer
     #     assert_equal 100, product.price
     #     # an error will be raised unless both Product#manufacturer and Product#price have been called
-    #   end 
+    #   end
     def mock(*arguments, &block)
       name = arguments.shift if arguments.first.is_a?(String)
       expectations = arguments.shift || {}
@@ -44,7 +44,7 @@ module Mocha # :nodoc:
       mock.expects(expectations)
       mock
     end
-    
+
     # :call-seq: stub(name, &block) -> mock object
     #            stub(stubbed_methods = {}, &block) -> mock object
     #            stub(name, stubbed_methods = {}, &block) -> mock object
@@ -79,7 +79,7 @@ module Mocha # :nodoc:
       stub.stubs(expectations)
       stub
     end
-    
+
     # :call-seq: stub_everything(name, &block) -> mock object
     #            stub_everything(stubbed_methods = {}, &block) -> mock object
     #            stub_everything(name, stubbed_methods = {}, &block) -> mock object
@@ -105,7 +105,7 @@ module Mocha # :nodoc:
       stub.stubs(expectations)
       stub
     end
-    
+
     # :call-seq: sequence(name) -> sequence
     #
     # Returns a new sequence that is used to constrain the order in which expectations can occur.
@@ -122,7 +122,7 @@ module Mocha # :nodoc:
     def sequence(name)
       Sequence.new(name)
     end
-    
+
     # :call-seq: states(name) -> state_machine
     #
     # Returns a new +state_machine+ that is used to constrain the order in which expectations can occur.
@@ -148,19 +148,19 @@ module Mocha # :nodoc:
     def states(name)
       Mockery.instance.new_state_machine(name)
     end
-    
+
     def mocha_setup # :nodoc:
     end
-    
+
     def mocha_verify(assertion_counter = nil) # :nodoc:
       Mockery.instance.verify(assertion_counter)
     end
-    
+
     def mocha_teardown # :nodoc:
       Mockery.instance.teardown
       Mockery.reset_instance
     end
-    
+
   end
-  
+
 end

@@ -2,25 +2,25 @@ require File.join(File.dirname(__FILE__), "acceptance_test_helper")
 require 'mocha'
 
 class SequenceTest < Test::Unit::TestCase
-  
+
   include AcceptanceTest
-  
+
   def setup
     setup_acceptance_test
   end
-  
+
   def teardown
     teardown_acceptance_test
   end
-  
+
   def test_should_constrain_invocations_to_occur_in_expected_order
     test_result = run_test do
       mock = mock()
       sequence = sequence('one')
-      
+
       mock.expects(:first).in_sequence(sequence)
       mock.expects(:second).in_sequence(sequence)
-      
+
       mock.second
     end
     assert_failed(test_result)
@@ -30,10 +30,10 @@ class SequenceTest < Test::Unit::TestCase
     test_result = run_test do
       mock = mock()
       sequence = sequence('one')
-      
+
       mock.expects(:first).in_sequence(sequence)
       mock.expects(:second).in_sequence(sequence)
-      
+
       mock.first
       mock.second
     end
@@ -45,10 +45,10 @@ class SequenceTest < Test::Unit::TestCase
       mock_one = mock('1')
       mock_two = mock('2')
       sequence = sequence('one')
-      
+
       mock_one.expects(:first).in_sequence(sequence)
       mock_two.expects(:second).in_sequence(sequence)
-      
+
       mock_two.second
     end
     assert_failed(test_result)
@@ -59,10 +59,10 @@ class SequenceTest < Test::Unit::TestCase
       mock_one = mock('1')
       mock_two = mock('2')
       sequence = sequence('one')
-      
+
       mock_one.expects(:first).in_sequence(sequence)
       mock_two.expects(:second).in_sequence(sequence)
-      
+
       mock_one.first
       mock_two.second
     end
@@ -74,10 +74,10 @@ class SequenceTest < Test::Unit::TestCase
       partial_mock_one = "1"
       partial_mock_two = "2"
       sequence = sequence('one')
-      
+
       partial_mock_one.expects(:first).in_sequence(sequence)
       partial_mock_two.expects(:second).in_sequence(sequence)
-      
+
       partial_mock_two.second
     end
     assert_failed(test_result)
@@ -88,10 +88,10 @@ class SequenceTest < Test::Unit::TestCase
       partial_mock_one = "1"
       partial_mock_two = "2"
       sequence = sequence('one')
-      
+
       partial_mock_one.expects(:first).in_sequence(sequence)
       partial_mock_two.expects(:second).in_sequence(sequence)
-      
+
       partial_mock_one.first
       partial_mock_two.second
     end
@@ -102,11 +102,11 @@ class SequenceTest < Test::Unit::TestCase
     test_result = run_test do
       mock = mock()
       sequence = sequence('one')
-      
+
       mock.expects(:first).in_sequence(sequence)
       mock.stubs(:second).in_sequence(sequence)
       mock.expects(:third).in_sequence(sequence)
-      
+
       mock.first
       mock.third
     end
@@ -118,13 +118,13 @@ class SequenceTest < Test::Unit::TestCase
       mock = mock()
       sequence_one = sequence('one')
       sequence_two = sequence('two')
-      
+
       mock.expects(:first).in_sequence(sequence_one)
       mock.expects(:second).in_sequence(sequence_one)
-      
+
       mock.expects(:third).in_sequence(sequence_two)
       mock.expects(:fourth).in_sequence(sequence_two)
-      
+
       mock.first
       mock.third
       mock.second
@@ -132,15 +132,15 @@ class SequenceTest < Test::Unit::TestCase
     end
     assert_passed(test_result)
   end
-  
+
   def test_should_include_sequence_in_failure_message
     test_result = run_test do
       mock = mock()
       sequence = sequence('one')
-      
+
       mock.expects(:first).in_sequence(sequence)
       mock.expects(:second).in_sequence(sequence)
-      
+
       mock.second
     end
     assert_failed(test_result)
@@ -152,11 +152,11 @@ class SequenceTest < Test::Unit::TestCase
       mock = mock()
       sequence_one = sequence('one')
       sequence_two = sequence('two')
-      
+
       mock.expects(:first).in_sequence(sequence_one)
       mock.expects(:second).in_sequence(sequence_two)
       mock.expects(:three).in_sequence(sequence_one).in_sequence(sequence_two)
-      
+
       mock.first
       mock.three
     end
@@ -170,11 +170,11 @@ class SequenceTest < Test::Unit::TestCase
       mock = mock()
       sequence_one = sequence('one')
       sequence_two = sequence('two')
-      
+
       mock.expects(:first).in_sequence(sequence_one)
       mock.expects(:second).in_sequence(sequence_two)
       mock.expects(:three).in_sequence(sequence_one, sequence_two)
-      
+
       mock.first
       mock.three
     end

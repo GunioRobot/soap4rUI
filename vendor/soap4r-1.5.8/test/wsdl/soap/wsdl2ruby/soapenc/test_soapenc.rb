@@ -14,7 +14,7 @@ class TestSOAPENC < Test::Unit::TestCase
     def on_init
       add_rpc_method(self, 'echo_version', 'version')
     end
-  
+
     def echo_version(version)
       Version_struct.new(version, "hello")
     end

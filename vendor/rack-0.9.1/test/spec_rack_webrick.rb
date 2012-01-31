@@ -9,7 +9,7 @@ Thread.abort_on_exception = true
 
 context "Rack::Handler::WEBrick" do
   include TestRequest::Helpers
-  
+
   setup do
     @server = WEBrick::HTTPServer.new(:Host => @host='0.0.0.0',
                                       :Port => @port=9202,

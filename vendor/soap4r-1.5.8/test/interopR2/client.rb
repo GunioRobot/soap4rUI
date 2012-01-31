@@ -536,7 +536,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s3 = SOAPStruct.new(3, 3.3, "c")
     arg = SOAPStructArray[s1, s2, s3]
     var = drv.echoStructArray(arg)
-    assert_equal(arg, var) 
+    assert_equal(arg, var)
   end
 
   def test_echoStructArray_anyType_Array
@@ -546,7 +546,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s3 = SOAPStruct.new(3, 3.3, "c")
     arg = [s1, s2, s3]
     var = drv.echoStructArray(arg)
-    assert_equal(arg, var) 
+    assert_equal(arg, var)
   end
 
   def test_echoStructArray_multi_ref
@@ -555,7 +555,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = SOAPStructArray[s1, s1, s2]
     var = drv.echoStructArray(arg)
-    assert_equal(arg, var) 
+    assert_equal(arg, var)
   end
 
   def test_echoStructArray_multi_ref_idmatch
@@ -564,7 +564,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = SOAPStructArray[s1, s1, s2]
     var = drv.echoStructArray(arg)
-    assert_equal(inspect_with_id(var[0]), inspect_with_id(var[1])) 
+    assert_equal(inspect_with_id(var[0]), inspect_with_id(var[1]))
   end
 
   def test_echoStructArray_anyType_Array_multi_ref_idmatch
@@ -573,7 +573,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = [s1, s2, s2]
     var = drv.echoStructArray(arg)
-    assert_equal(inspect_with_id(var[1]), inspect_with_id(var[2])) 
+    assert_equal(inspect_with_id(var[1]), inspect_with_id(var[2]))
   end
 
   def test_echoStructArray_multi_ref_idmatch_varString_of_elem1_varString_of_elem2
@@ -585,7 +585,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s3 = SOAPStruct.new(3, 3.3, str2)
     arg = SOAPStructArray[s1, s2, s3]
     var = drv.echoStructArray(arg)
-    assert_equal(inspect_with_id(var[0].varString), inspect_with_id(var[1].varString)) 
+    assert_equal(inspect_with_id(var[0].varString), inspect_with_id(var[1].varString))
   end
 
   def test_echoStructArray_anyType_Array_multi_ref_idmatch_varString_of_elem2_varString_of_elem3
@@ -597,7 +597,7 @@ class SOAPBuildersTest < Test::Unit::TestCase
     s3 = SOAPStruct.new(3, 3.3, str1)
     arg = [s1, s2, s3]
     var = drv.echoStructArray(arg)
-    assert_equal(inspect_with_id(var[1].varString), inspect_with_id(var[2].varString)) 
+    assert_equal(inspect_with_id(var[1].varString), inspect_with_id(var[2].varString))
   end
 
   def test_echoDate_now

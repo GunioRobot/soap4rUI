@@ -27,7 +27,7 @@ class TestAbstract < Test::Unit::TestCase
       self.mapping_registry = AbstractMappingRegistry::EncodedRegistry
       self.literal_mapping_registry = AbstractMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(name, author)
       Book.new(name, author)
     end

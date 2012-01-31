@@ -22,7 +22,7 @@ class TestList < Test::Unit::TestCase
         XSD::QName.new(Namespace, 'echo_response')
       )
     end
-  
+
     def echo(arg)
       arg
     end

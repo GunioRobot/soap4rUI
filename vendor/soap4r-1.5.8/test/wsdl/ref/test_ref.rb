@@ -25,7 +25,7 @@ class TestRef < Test::Unit::TestCase
       )
       self.literal_mapping_registry = ProductMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(arg)
       content = [
         arg.bag[0].name,

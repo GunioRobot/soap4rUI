@@ -33,9 +33,9 @@ class Deflater
 
     case encoding
     when "gzip"
-      mtime = if headers.key?("Last-Modified") 
-                Time.httpdate(headers["Last-Modified"]) 
-              else 
+      mtime = if headers.key?("Last-Modified")
+                Time.httpdate(headers["Last-Modified"])
+              else
                 Time.now
               end
       [status,

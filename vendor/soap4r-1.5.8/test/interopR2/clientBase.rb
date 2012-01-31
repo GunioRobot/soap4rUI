@@ -747,7 +747,7 @@ def doTestBase(drv)
 #  dumpTitle(title)
 #  begin
 #    arg = [nil, nil, 0.0001, 1000.0, 0.0, nil, nil]
-#    soapAry = SOAP::Mapping.ary2soap(arg, XSD::Namespace, XSD::FloatLiteral, SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, XSD::Namespace, XSD::FloatLiteral, SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoFloatArray(soapAry)
 #    dumpNormal(title, arg, var)
@@ -783,7 +783,7 @@ def doTestBase(drv)
     s3 = SOAPStruct.new(3, 3.3, "c")
     arg = SOAPStructArray[s1, s2, s3]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, arg, var) 
+    dumpNormal(title, arg, var)
   rescue Exception
     dumpException(title)
   end
@@ -796,7 +796,7 @@ def doTestBase(drv)
     s3 = SOAPStruct.new(3, 3.3, "c")
     arg = [s1, s2, s3]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, arg, var) 
+    dumpNormal(title, arg, var)
   rescue Exception
     dumpException(title)
   end
@@ -808,10 +808,10 @@ def doTestBase(drv)
 #    s2 = SOAPStruct.new(2, 2.2, "b")
 #    s3 = SOAPStruct.new(3, 3.3, "c")
 #    arg = [nil, s1, s2, s3]
-#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoStructArray(soapAry)
-#    dumpNormal(title, arg, var) 
+#    dumpNormal(title, arg, var)
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -823,7 +823,7 @@ def doTestBase(drv)
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = SOAPStructArray[s1, s1, s2]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, arg, var) 
+    dumpNormal(title, arg, var)
   rescue Exception
     dumpException(title)
   end
@@ -835,7 +835,7 @@ def doTestBase(drv)
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = SOAPStructArray[s1, s1, s2]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, getIdObj(var[0]), getIdObj(var[1])) 
+    dumpNormal(title, getIdObj(var[0]), getIdObj(var[1]))
   rescue Exception
     dumpException(title)
   end
@@ -847,7 +847,7 @@ def doTestBase(drv)
     s2 = SOAPStruct.new(2, 2.2, "b")
     arg = [s1, s2, s2]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, getIdObj(var[1]), getIdObj(var[2])) 
+    dumpNormal(title, getIdObj(var[1]), getIdObj(var[2]))
   rescue Exception
     dumpException(title)
   end
@@ -858,10 +858,10 @@ def doTestBase(drv)
 #    s1 = SOAPStruct.new(1, 1.1, "a")
 #    s2 = SOAPStruct.new(2, 2.2, "b")
 #    arg = [nil, s1, nil, nil, s2, nil, s2]
-#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoStructArray(soapAry)
-#    dumpNormal(title, arg, var) 
+#    dumpNormal(title, arg, var)
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -872,10 +872,10 @@ def doTestBase(drv)
 #    s1 = SOAPStruct.new(1, 1.1, "a")
 #    s2 = SOAPStruct.new(2, 2.2, "b")
 #    arg = [nil, s1, nil, nil, s2, nil, s2]
-#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoStructArray(soapAry)
-#    dumpNormal(title, getIdObj(var[4]), getIdObj(var[6])) 
+#    dumpNormal(title, getIdObj(var[4]), getIdObj(var[6]))
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -890,7 +890,7 @@ def doTestBase(drv)
     s3 = SOAPStruct.new(3, 3.3, str2)
     arg = SOAPStructArray[s1, s2, s3]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, getIdObj(var[0].varString), getIdObj(var[1].varString)) 
+    dumpNormal(title, getIdObj(var[0].varString), getIdObj(var[1].varString))
   rescue Exception
     dumpException(title)
   end
@@ -905,7 +905,7 @@ def doTestBase(drv)
     s3 = SOAPStruct.new(3, 3.3, str1)
     arg = [s1, s2, s3]
     var = drv.echoStructArray(arg)
-    dumpNormal(title, getIdObj(var[1].varString), getIdObj(var[2].varString)) 
+    dumpNormal(title, getIdObj(var[1].varString), getIdObj(var[2].varString))
   rescue Exception
     dumpException(title)
   end
@@ -919,10 +919,10 @@ def doTestBase(drv)
 #    s2 = SOAPStruct.new(2, 2.2, str1)
 #    s3 = SOAPStruct.new(3, 3.3, str1)
 #    arg = [nil, s1, nil, nil, s2, nil, s3]
-#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, TypeNS, "SOAPStruct", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoStructArray(soapAry)
-#    dumpNormal(title, getIdObj(var[4].varString), getIdObj(var[6].varString)) 
+#    dumpNormal(title, getIdObj(var[4].varString), getIdObj(var[6].varString))
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -940,7 +940,7 @@ def doTestBase(drv)
 #    md = SOAP::Mapping.ary2md(arg, 2, XSD::Namespace, XSD::AnyTypeLiteral, SOAPBuildersInterop::MappingRegistry)
 #
 #    var = drv.echoStructArray(md)
-#    dumpNormal(title, arg, var) 
+#    dumpNormal(title, arg, var)
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -959,7 +959,7 @@ def doTestBase(drv)
 ##    md.sparse = true
 #
 #    var = drv.echoStructArray(md)
-#    dumpNormal(title, arg, var) 
+#    dumpNormal(title, arg, var)
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -978,7 +978,7 @@ def doTestBase(drv)
 #    md.sparse = true
 #
 #    var = drv.echoStructArray(md)
-#    dumpNormal(title, arg, var) 
+#    dumpNormal(title, arg, var)
 #  rescue Exception
 #    dumpException(title)
 #  end
@@ -1605,7 +1605,7 @@ if false # unless $noEchoMap
 #    map2 = { "a" => 1, "b" => 2 }
 #    map3 = { "a" => 1, "b" => 2 }
 #    arg = [nil, nil, map1, nil, map2, nil, map3, nil, nil]
-#    soapAry = SOAP::Mapping.ary2soap(arg, ApacheNS, "Map", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, ApacheNS, "Map", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoMapArray(soapAry)
 #    dumpNormal(title, arg, var)
@@ -1632,7 +1632,7 @@ if false # unless $noEchoMap
 #    map1 = { "a" => 1, "b" => 2 }
 #    map2 = { "a" => 1, "b" => 2 }
 #    arg = [nil, nil, map1, nil, map2, nil, map1, nil, nil]
-#    soapAry = SOAP::Mapping.ary2soap(arg, ApacheNS, "Map", SOAPBuildersInterop::MappingRegistry) 
+#    soapAry = SOAP::Mapping.ary2soap(arg, ApacheNS, "Map", SOAPBuildersInterop::MappingRegistry)
 #    soapAry.sparse = true
 #    var = drv.echoMapArray(soapAry)
 #    dumpNormal(title, arg, var)
@@ -1954,7 +1954,7 @@ def doTestGroupB(drv)
 #  begin
 #    str = "!"
 #    subAry = [nil, nil, str, nil, str, nil]
-#    ary = SOAP::Mapping.ary2soap(subAry, XSD::Namespace, XSD::StringLiteral, SOAPBuildersInterop::MappingRegistry) 
+#    ary = SOAP::Mapping.ary2soap(subAry, XSD::Namespace, XSD::StringLiteral, SOAPBuildersInterop::MappingRegistry)
 #    ary.sparse = true
 #    arg = SOAPArrayStruct.new(1, 1.1, str, ary)
 #    argNormalized = SOAPArrayStruct.new(1, 1.1, str, subAry)

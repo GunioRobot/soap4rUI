@@ -3,7 +3,7 @@ require 'test/unit/ui/console/testrunner'
 require 'vendor/frozen'
 
 test_folders = [File.dirname(File.expand_path(__FILE__)) + '/unit']
-curr = Dir.pwd 
+curr = Dir.pwd
 test_folders.each do |folder|
   Dir.chdir(folder)
   Dir.entries(folder).select{|e| e.to_s.include?('tc_')}.each do |f|

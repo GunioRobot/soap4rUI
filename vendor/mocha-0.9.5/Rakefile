@@ -11,7 +11,7 @@ desc "Run all tests"
 task 'default' => ['test:units', 'test:acceptance', 'test:performance']
 
 namespace 'test' do
-  
+
   unit_tests = FileList['test/unit/**/*_test.rb']
   acceptance_tests = FileList['test/acceptance/*_test.rb']
 
@@ -30,7 +30,7 @@ namespace 'test' do
     t.verbose = true
     t.warning = true
   end
-  
+
   # require 'rcov/rcovtask'
   # Rcov::RcovTask.new('coverage') do |t|
   #   t.libs << 'test'

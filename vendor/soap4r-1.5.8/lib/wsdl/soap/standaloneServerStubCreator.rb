@@ -55,7 +55,7 @@ private
 
     wsdl_name = @definitions.name ? @definitions.name.name : 'default'
     mrname = safeconstname(wsdl_name + 'MappingRegistry')
-    
+
     c1 = XSD::CodeGen::ClassDef.new(class_name)
     c1.def_require("soap/rpc/standaloneServer")
     c1.def_code <<-EOD

@@ -64,7 +64,7 @@ require 'httpclient/cookie'
 #
 # === Invoking other HTTP methods
 #
-# See head, get, post, put, delete, options, propfind, proppatch and trace.  
+# See head, get, post, put, delete, options, propfind, proppatch and trace.
 # It returns a HTTP::Message instance as a response.
 #
 # 1. Do HEAD request.
@@ -610,12 +610,12 @@ class HTTPClient
   def propfind(uri, extheader = PROPFIND_DEFAULT_EXTHEADER, &block)
     request(:propfind, uri, nil, nil, extheader, &block)
   end
-  
+
   # Sends PROPPATCH request to the specified URL.  See request for arguments.
   def proppatch(uri, body = nil, extheader = {}, &block)
     request(:proppatch, uri, nil, body, extheader, &block)
   end
-  
+
   # Sends TRACE request to the specified URL.  See request for arguments.
   def trace(uri, query = nil, body = nil, extheader = {}, &block)
     request('TRACE', uri, query, body, extheader, &block)
@@ -704,13 +704,13 @@ class HTTPClient
   def propfind_async(uri, extheader = PROPFIND_DEFAULT_EXTHEADER)
     request_async(:propfind, uri, nil, nil, extheader)
   end
-  
+
   # Sends PROPPATCH request in async style.  See request_async for arguments.
   # It immediately returns a HTTPClient::Connection instance as a result.
   def proppatch_async(uri, body = nil, extheader = {})
     request_async(:proppatch, uri, nil, body, extheader)
   end
-  
+
   # Sends TRACE request in async style.  See request_async for arguments.
   # It immediately returns a HTTPClient::Connection instance as a result.
   def trace_async(uri, query = nil, body = nil, extheader = {})

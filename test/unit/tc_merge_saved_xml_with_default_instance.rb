@@ -5,16 +5,16 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/soap4r2ruby'
 require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpers'
 
 class TC_MergeSavedXmlWithDefaultInstance < Test::Unit::TestCase
-  
+
   def setup
     @namespace = "MySoap::InterfaceOne"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/discountService-V1-0.2009.09.03.wsdl"
     @service_method = "applyDiscount"
     @test_client_folder = Dir.pwd + "/test/fixtures/temp_test_client"
     @previously_saved_xml = Dir.pwd + "/test/fixtures/sample_xmls/my_default_discount_2009.09.03.xml"
-    
+
     file_cleanup
-    
+
     GeneratorHelpers::generate_ruby_classes(@test_client_folder, @namespace, @wsdl)
     result = Soap4r2Ruby.new(@test_client_folder, @namespace, @wsdl)
     assert_not_nil(result)
@@ -24,17 +24,17 @@ class TC_MergeSavedXmlWithDefaultInstance < Test::Unit::TestCase
     assert_equal(expected_root_node,result.build_default_input_instance_for_root_node(expected_root_node).class)
 
     @default_instance = result.build_default_input_instance_for_method(@service_method)
-    
+
   end
 
   def teardown
     file_cleanup
-  end  
-  
+  end
+
   def file_cleanup
     GeneratorHelpers::cleanup_generated_ruby_classes(@test_client_folder)
   end
-  
+
   def test_merge_discount_service_with_string
     @unmarshalled_instance = SaveLoadConvertHelpers::load_request_xml(@previously_saved_xml, @test_client_folder, @namespace, @wsdl, @service_method)
 
@@ -87,5 +87,5 @@ class TC_MergeSavedXmlWithDefaultInstance < Test::Unit::TestCase
     assert_equal(MySoap::InterfaceOne::PromoUsageType,@unmarshalled_instance.orderRequest.promotions.first.promoUsages.first.class)
 
   end
-  
+
 end

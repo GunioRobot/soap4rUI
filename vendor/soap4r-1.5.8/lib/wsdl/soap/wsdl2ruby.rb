@@ -41,7 +41,7 @@ class WSDL2Ruby
     # puts "@name = #{@name}"
     # puts "@classdef_filename = #{@classdef_filename}"
     # puts "@mr_filename = #{@mr_filename}"
-    
+
     unless @location
       raise RuntimeError, "WSDL location not given"
     end
@@ -223,7 +223,7 @@ private
     # puts "@name = #{@name}"
     # puts "@classdef_filename = #{@classdef_filename}"
     # puts "@mr_filename = #{@mr_filename}"
-    
+
     name ? XSD::QName.new(@wsdl.targetnamespace, name) : nil
   end
 

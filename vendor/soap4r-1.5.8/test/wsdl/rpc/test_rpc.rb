@@ -17,7 +17,7 @@ class TestRPC < Test::Unit::TestCase
       add_rpc_method(self, 'echo_err', 'arg1', 'arg2')
       self.mapping_registry = Prefix::EchoMappingRegistry::EncodedRegistry
     end
-  
+
     DummyPerson = Struct.new("family-name".intern, :Given_name)
     def echo(arg1, arg2)
       if arg1.given_name == 'typed'
@@ -47,7 +47,7 @@ class TestRPC < Test::Unit::TestCase
       raise unless arg1.is_a?(Date)
       arg1
     end
-  
+
     ErrPerson = Struct.new(:Given_name, :no_such_element)
     def echo_err(arg1, arg2)
       self.generate_explicit_type = false

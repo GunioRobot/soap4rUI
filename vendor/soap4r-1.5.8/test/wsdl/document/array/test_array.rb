@@ -37,11 +37,11 @@ class TestArray < Test::Unit::TestCase
       )
       self.literal_mapping_registry = DoubleMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(arg)
       arg
     end
-  
+
     def echo2(arg)
       arg
     end

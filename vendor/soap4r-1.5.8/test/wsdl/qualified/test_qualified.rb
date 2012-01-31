@@ -23,7 +23,7 @@ class TestQualified < Test::Unit::TestCase
         XSD::QName.new(Namespace, 'GetPrimeNumbersResponse')
       )
     end
-  
+
     def GetPrimeNumbers(arg)
       nil
     end

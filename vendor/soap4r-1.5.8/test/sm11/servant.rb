@@ -14,7 +14,7 @@ require 'classDef'
 #   /\.set\([^(]*\)(\([^)]*\))/.\1 = \2/
 #   /E_/e_/
 #   /\.get\([^(]*\)()/.\1/
-#   /(short)//   
+#   /(short)//
 #   /\.V/.v/
 #
 class Sm11PortType
@@ -36,7 +36,7 @@ class Sm11PortType
     STDOUT.puts("op0\n")
     return
   end
-  
+
   # SYNOPSIS
   #   op1( arg0 )
   #
@@ -54,7 +54,7 @@ class Sm11PortType
     if (!(arg0 == false)); STDOUT.puts("arg0 value error in op1\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op4( arg0 )
   #
@@ -72,7 +72,7 @@ class Sm11PortType
     if (!(arg0 == -100)); STDOUT.puts("arg0 value error in op4\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op5( arg0 )
   #
@@ -90,7 +90,7 @@ class Sm11PortType
     if (!(arg0 == -100000)); STDOUT.puts("arg0 value error in op5\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op6( arg0 )
   #
@@ -108,7 +108,7 @@ class Sm11PortType
     if (!(arg0 == -10000000000)); STDOUT.puts("arg0 value error in op6\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op7( arg0 )
   #
@@ -126,7 +126,7 @@ class Sm11PortType
     if (!(arg0 == 0.123)); STDOUT.puts("arg0 value error in op7\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op8( arg0 )
   #
@@ -144,7 +144,7 @@ class Sm11PortType
     if (!(arg0 == 0.12e3)); STDOUT.puts("arg0 value error in op8\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op9( arg0 )
   #
@@ -162,7 +162,7 @@ class Sm11PortType
     if (!(arg0 == "abc")); STDOUT.puts("arg0 value error in op9\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op11
   #
@@ -180,7 +180,7 @@ class Sm11PortType
     _ret = true
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op14
   #
@@ -198,7 +198,7 @@ class Sm11PortType
     _ret = SOAPShort.new(-200)
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op15
   #
@@ -216,7 +216,7 @@ class Sm11PortType
     _ret = SOAPInt.new( -200000 )
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op16
   #
@@ -234,7 +234,7 @@ class Sm11PortType
     _ret = SOAPLong.new( -20000000000 )
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op17
   #
@@ -252,7 +252,7 @@ class Sm11PortType
     _ret = SOAPFloat.new(1.234)
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op18
   #
@@ -270,7 +270,7 @@ class Sm11PortType
     _ret = 1.23e4
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op19
   #
@@ -288,7 +288,7 @@ class Sm11PortType
     _ret = "def"
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op21( arg0 )
   #
@@ -307,7 +307,7 @@ class Sm11PortType
     _ret = true
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op24( arg0, arg1, arg2 )
   #
@@ -330,7 +330,7 @@ class Sm11PortType
     _ret = SOAPShort.new(-200)
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op25( arg0, arg1, arg2 )
   #
@@ -353,7 +353,7 @@ class Sm11PortType
     _ret = SOAPInt.new( -200000 )
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op26( arg0, arg1, arg2 )
   #
@@ -376,7 +376,7 @@ class Sm11PortType
     _ret = SOAPLong.new( -20000000000 )
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op27( arg0, arg1, arg2 )
   #
@@ -399,7 +399,7 @@ class Sm11PortType
     _ret = SOAPFloat.new(1.234)
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op28( arg0, arg1, arg2 )
   #
@@ -422,7 +422,7 @@ class Sm11PortType
     _ret = 1.23e4
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op29( arg0, arg1 )
   #
@@ -443,7 +443,7 @@ class Sm11PortType
     _ret = "def"
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op30( arg0 )
   #
@@ -462,7 +462,7 @@ class Sm11PortType
     _ret = cons_0007()
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op31( arg0 )
   #
@@ -481,7 +481,7 @@ class Sm11PortType
     _ret = ArrayOfboolean[true, true]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op34( arg0 )
   #
@@ -500,7 +500,7 @@ class Sm11PortType
     _ret = ArrayOfshort[-200, -200]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op35( arg0 )
   #
@@ -519,7 +519,7 @@ class Sm11PortType
     _ret = ArrayOfint[-200000, -200000]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op36( arg0 )
   #
@@ -538,7 +538,7 @@ class Sm11PortType
     _ret = ArrayOflong[-20000000000, -20000000000]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op37( arg0 )
   #
@@ -557,7 +557,7 @@ class Sm11PortType
     _ret = ArrayOffloat[1.234, 1.234]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op38( arg0 )
   #
@@ -576,7 +576,7 @@ class Sm11PortType
     _ret = ArrayOfdouble[1.23e4, 1.23e4]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op39( arg0 )
   #
@@ -595,7 +595,7 @@ class Sm11PortType
     _ret = ArrayOfstring["def", "def"]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op40( arg0, arg1, arg2, arg3, arg4 )
   #
@@ -621,7 +621,7 @@ class Sm11PortType
     if (!(true && (arg4[0] == "abc") && (arg4[1] == "abc"))); STDOUT.puts("arg4 value error in op40\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   op41( arg0 )
   #
@@ -640,7 +640,7 @@ class Sm11PortType
     _ret = cons_0008()
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op42( arg0 )
   #
@@ -659,7 +659,7 @@ class Sm11PortType
     _ret = ArrayOfC_struct[cons_0010(), cons_0010()]
     return(_ret)
   end
-  
+
   # SYNOPSIS
   #   op43( arg0, arg1 )
   #
@@ -679,7 +679,7 @@ class Sm11PortType
     if (!(true && comp_0018(arg1[0]) && comp_0018(arg1[1]))); STDOUT.puts("arg1 value error in op43\n"); end
     return
   end
-  
+
   # SYNOPSIS
   #   excop1
   #
@@ -697,7 +697,7 @@ class Sm11PortType
     _exc = cons_0011()
     raise(_exc)
   end
-  
+
   # SYNOPSIS
   #   excop2
   #
@@ -715,7 +715,7 @@ class Sm11PortType
     _exc = cons_0012()
     raise(_exc)
   end
-  
+
   # SYNOPSIS
   #   excop3
   #
@@ -733,7 +733,7 @@ class Sm11PortType
     _exc = cons_0014()
     raise(_exc)
   end
-  
+
   # SYNOPSIS
   #   excop4
   #
@@ -751,11 +751,11 @@ class Sm11PortType
     _exc = cons_0017()
     raise(_exc)
   end
-  
+
 
   require 'soap/rpcUtils'
   MappingRegistry = SOAP::RPCUtils::MappingRegistry.new
-  
+
   MappingRegistry.set(
     C_struct,
     ::SOAP::SOAPStruct,
@@ -816,7 +816,7 @@ class Sm11PortType
     ::SOAP::RPCUtils::MappingRegistry::TypedArrayFactory,
     [ "http://dopg.gr.jp/sm11.xsd", "C_struct" ]
   )
-  
+
   Methods = [
     [ "op0", "op0", [  ], "http://dopg.gr.jp/sm11", "http://dopg.gr.jp/sm11" ],
     [ "op1", "op1", [ [ "in", "arg0" ] ], "http://dopg.gr.jp/sm11", "http://dopg.gr.jp/sm11" ],
@@ -860,7 +860,7 @@ class Sm11PortType
 
 private
 
-  def comp_0012(_v1) 
+  def comp_0012(_v1)
     return(true &&
        	(! _v1.e_boolean()) &&
 	(_v1.e_short == -100) &&
@@ -871,7 +871,7 @@ private
 	(_v1.e_String == "abc")
     )
   end
-  def cons_0007() 
+  def cons_0007()
     _v1 = C_struct.new()
     _v1.e_boolean = true
     _v1.e_short = SOAPShort.new(-200)
@@ -882,7 +882,7 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def comp_0013(_v1) 
+  def comp_0013(_v1)
     return(true &&
 	(! _v1.e_boolean()) &&
 	(_v1.e_short == -100) &&
@@ -893,7 +893,7 @@ private
 	(_v1.e_String == "abc")
     )
   end
-  def comp_0015(_v1) 
+  def comp_0015(_v1)
     return(true &&
 	(! _v1.e_boolean()) &&
 	(_v1.e_short == -100) &&
@@ -904,7 +904,7 @@ private
 	(_v1.e_String == "abc")
     )
   end
-  def comp_0014(_v1) 
+  def comp_0014(_v1)
     return(true &&
 	comp_0015(_v1.e_c_struct) &&
 	(true && (_v1.e_c_array_e_boolean[0] == false) && (_v1.e_c_array_e_boolean[1] == false)) &&
@@ -916,7 +916,7 @@ private
 	(true && (_v1.e_c_array_e_String[0] == "abc") && (_v1.e_c_array_e_String[1] == "abc"))
     )
   end
-  def cons_0009() 
+  def cons_0009()
     _v1 = C_struct.new()
     _v1.e_boolean = true
     _v1.e_short = SOAPShort.new(-200)
@@ -927,7 +927,7 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def cons_0008() 
+  def cons_0008()
     _v1 = F_struct.new()
     _v1.e_c_struct = cons_0009()
     _v1.e_c_array_e_boolean = ArrayOfboolean[true, true]
@@ -939,7 +939,7 @@ private
     _v1.e_c_array_e_String = ArrayOfstring["def", "def"]
     return(_v1)
   end
-  def comp_0016(_v1) 
+  def comp_0016(_v1)
     return(true &&
 	(! _v1.e_boolean()) &&
 	(_v1.e_short == -100) &&
@@ -950,7 +950,7 @@ private
 	(_v1.e_String == "abc")
     )
   end
-  def cons_0010() 
+  def cons_0010()
     _v1 = C_struct.new()
     _v1.e_boolean = true
     _v1.e_short = SOAPShort.new(-200)
@@ -961,7 +961,7 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def comp_0018(_v1) 
+  def comp_0018(_v1)
     return(true &&
 	(! _v1.e_boolean()) &&
 	(_v1.e_short == -100) &&
@@ -972,7 +972,7 @@ private
 	(_v1.e_String == "abc")
     )
   end
-  def comp_0017(_v1) 
+  def comp_0017(_v1)
     return(true &&
 	comp_0018(_v1.e_c_struct) &&
 	(true && (_v1.e_c_array_e_boolean[0] == false) && (_v1.e_c_array_e_boolean[1] == false)) &&
@@ -984,7 +984,7 @@ private
 	(true && (_v1.e_c_array_e_String[0] == "abc") && (_v1.e_c_array_e_String[1] == "abc"))
     )
   end
-  def cons_0011() 
+  def cons_0011()
     _v1 = A_except.new()
     _v1.v1 = true
     _v1.v4 = SOAPShort.new(-200)
@@ -995,7 +995,7 @@ private
     _v1.v9 = "def"
     return(_v1)
   end
-  def cons_0013() 
+  def cons_0013()
     _v1 = C_struct.new()
     _v1.e_boolean = true
     _v1.e_short = SOAPShort.new(-200)
@@ -1006,7 +1006,7 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def cons_0012() 
+  def cons_0012()
     _v1 = C_except.new()
     _v1.v10 = cons_0013()
     _v1.v21 = ArrayOfboolean[true, true]
@@ -1029,7 +1029,7 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def cons_0015() 
+  def cons_0015()
     _v1 = F_struct.new()
     _v1.e_c_struct = cons_0016()
     _v1.e_c_array_e_boolean = ArrayOfboolean[true, true]
@@ -1041,12 +1041,12 @@ private
     _v1.e_c_array_e_String = ArrayOfstring["def", "def"]
     return(_v1)
   end
-  def cons_0014() 
+  def cons_0014()
     _v1 = F_except1.new()
     _v1.v40 = cons_0015()
     return(_v1)
   end
-  def cons_0018() 
+  def cons_0018()
     _v1 = C_struct.new()
     _v1.e_boolean = true
     _v1.e_short = SOAPShort.new(-200)
@@ -1057,11 +1057,11 @@ private
     _v1.e_String = "def"
     return(_v1)
   end
-  def cons_0017() 
+  def cons_0017()
     _v1 = F_except2.new()
     _v1.v50 = ArrayOfC_struct[cons_0018(), cons_0018()]
     return(_v1)
   end
-  
+
 end
 

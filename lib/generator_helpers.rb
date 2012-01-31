@@ -22,7 +22,7 @@ module GeneratorHelpers
       opt["module_path"] = namespace
       i.instance_variable_set("@opt", opt)
       i.run
-      #  
+      #
       # command = "wsdl2ruby.rb --module_path #{namespace} --wsdl #{wsdl} --classdef --mapping_registry --driver --force"
       # result = %x{command}
       make_unique_name_for_generated_ruby_classes(Dir.pwd)
@@ -49,7 +49,7 @@ module GeneratorHelpers
     files.each do |file|
       new_file_names_map[file.to_s] = file.to_s.sub(lcs, lcs+unikstr.to_s)
     end
-  
+
     new_file_names_map.each do |old_file, new_file|
       #rename all files adding a unique timestamp
 	  old_f = File.open(old_file)
@@ -65,7 +65,7 @@ module GeneratorHelpers
 	  new_f.close
       File.delete(old_file)
     end
-  end  
+  end
 
   def self.cleanup_generated_ruby_classes(folder_name)
     #generate the ruby classes with wsdl2ruby

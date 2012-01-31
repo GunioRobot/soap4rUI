@@ -179,7 +179,7 @@ public
   def encode_tag(elename, attrs = nil)
     if attrs.nil? or attrs.empty?
       @buf << "\n#{ @indent }<#{ elename }>"
-      return 
+      return
     end
     ary = []
     attrs.each do |key, value|

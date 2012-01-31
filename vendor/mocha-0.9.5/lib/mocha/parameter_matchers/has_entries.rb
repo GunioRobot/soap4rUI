@@ -3,7 +3,7 @@ require 'mocha/parameter_matchers/all_of'
 require 'mocha/parameter_matchers/has_entry'
 
 module Mocha
-  
+
   module ParameterMatchers
 
     # :call-seq: has_entries(entries) -> parameter_matcher
@@ -21,25 +21,25 @@ module Mocha
     def has_entries(entries)
       HasEntries.new(entries)
     end
-    
+
     class HasEntries < Base # :nodoc:
-      
+
       def initialize(entries)
         @entries = entries
       end
-      
+
       def matches?(available_parameters)
         parameter = available_parameters.shift
         has_entry_matchers = @entries.map { |key, value| HasEntry.new(key, value) }
         AllOf.new(*has_entry_matchers).matches?([parameter])
       end
-      
+
       def mocha_inspect
         "has_entries(#{@entries.mocha_inspect})"
       end
-      
+
     end
-    
+
   end
-  
+
 end

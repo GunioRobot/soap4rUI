@@ -20,7 +20,7 @@ class Sm11Caller
   end
 
 private
-  def cons_0000() 
+  def cons_0000()
     _v1 = C_struct.new()
     _v1.e_boolean = false
     _v1.e_short = SOAPShort.new(-100)
@@ -31,7 +31,7 @@ private
     _v1.e_String = "abc"
     return(_v1)
   end
-  def comp_0000(_v1) 
+  def comp_0000(_v1)
     return(true &&
 	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -42,7 +42,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def cons_0001() 
+  def cons_0001()
     _v1 = C_struct.new()
     _v1.e_boolean = false
     _v1.e_short = SOAPShort.new(-100)
@@ -53,7 +53,7 @@ private
     _v1.e_String = "abc"
     return(_v1)
   end
-  def cons_0003() 
+  def cons_0003()
     _v1 = C_struct.new()
     _v1.e_boolean = false
     _v1.e_short = SOAPShort.new(-100)
@@ -64,7 +64,7 @@ private
     _v1.e_String = "abc"
     return(_v1)
   end
-  def cons_0002() 
+  def cons_0002()
     _v1 = F_struct.new()
     _v1.e_c_struct = cons_0003()
     _v1.e_c_array_e_boolean = ArrayOfboolean[false, false]
@@ -76,7 +76,7 @@ private
     _v1.e_c_array_e_String = ArrayOfstring["abc", "abc"]
     return(_v1)
   end
-  def comp_0002(_v1) 
+  def comp_0002(_v1)
     return(true &&
 	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -87,7 +87,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def comp_0001(_v1) 
+  def comp_0001(_v1)
     return(true &&
 	comp_0002(_v1.e_c_struct) &&
 	(true && (_v1.e_c_array_e_boolean[0] == true) && (_v1.e_c_array_e_boolean[1] == true)) &&
@@ -99,7 +99,7 @@ private
 	(true && (_v1.e_c_array_e_String[0] == "def") && (_v1.e_c_array_e_String[1] == "def"))
     )
   end
-  def cons_0004() 
+  def cons_0004()
     _v1 = C_struct.new()
     _v1.e_boolean = false
     _v1.e_short = SOAPShort.new(-100)
@@ -110,7 +110,7 @@ private
     _v1.e_String = "abc"
     return(_v1)
   end
-  def comp_0003(_v1) 
+  def comp_0003(_v1)
     return(true &&
 	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -121,7 +121,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def cons_0006() 
+  def cons_0006()
     _v1 = C_struct.new()
     _v1.e_boolean = false
     _v1.e_short = SOAPShort.new(-100)
@@ -132,7 +132,7 @@ private
     _v1.e_String = "abc"
     return(_v1)
   end
-  def cons_0005() 
+  def cons_0005()
     _v1 = F_struct.new()
     _v1.e_c_struct = cons_0006()
     _v1.e_c_array_e_boolean = ArrayOfboolean[false, false]
@@ -144,7 +144,7 @@ private
     _v1.e_c_array_e_String = ArrayOfstring["abc", "abc"]
     return(_v1)
   end
-  def comp_0004(_v1) 
+  def comp_0004(_v1)
     return(true &&
        	(_v1.v1()) &&
 	(_v1.v4 == -200) &&
@@ -155,7 +155,7 @@ private
 	(_v1.v9 == "def")
     )
   end
-  def comp_0006(_v1) 
+  def comp_0006(_v1)
     return(true &&
 	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -166,7 +166,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def comp_0005(_v1) 
+  def comp_0005(_v1)
     return(true &&
 	comp_0006(_v1.v10) &&
 	(true && (_v1.v21[0] == true) && (_v1.v21[1] == true)) &&
@@ -178,7 +178,7 @@ private
 	(true && (_v1.v29[0] == "def") && (_v1.v29[1] == "def"))
     )
   end
-  def comp_0009(_v1) 
+  def comp_0009(_v1)
     return(true &&
        	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -189,7 +189,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def comp_0008(_v1) 
+  def comp_0008(_v1)
     return(true &&
        	comp_0009(_v1.e_c_struct) &&
 	(true && (_v1.e_c_array_e_boolean[0] == true) && (_v1.e_c_array_e_boolean[1] == true)) &&
@@ -201,12 +201,12 @@ private
 	(true && (_v1.e_c_array_e_String[0] == "def") && (_v1.e_c_array_e_String[1] == "def"))
     )
   end
-  def comp_0007(_v1) 
+  def comp_0007(_v1)
     return(true &&
 	comp_0008(_v1.v40)
     )
   end
-  def comp_0011(_v1) 
+  def comp_0011(_v1)
     return(true &&
        	(_v1.e_boolean()) &&
 	(_v1.e_short == -200) &&
@@ -217,7 +217,7 @@ private
 	(_v1.e_String == "def")
     )
   end
-  def comp_0010(_v1) 
+  def comp_0010(_v1)
     return(true &&
 	(true && comp_0011(_v1.v50[0]) && comp_0011(_v1.v50[1]))
     )
@@ -265,7 +265,7 @@ private
   def call_op11()
     STDOUT.puts("op11\n")
     _ret = target.op11()
-    raise unless _ret.is_a?( TrueClass ) 
+    raise unless _ret.is_a?( TrueClass )
     if (!(_ret == true)); STDOUT.puts("_ret value error in op11\n"); end
   end
   def call_op14()

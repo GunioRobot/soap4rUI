@@ -43,13 +43,13 @@ class TestInteropR4 < Test::Unit::TestCase
     end
 
     def method_def(drv, soap_action = nil)
-      drv.add_method("EchoAttachment", 
+      drv.add_method("EchoAttachment",
 	[['in', 'In', nil], ['retval', 'Out', nil]])
-      drv.add_method("EchoAttachments", 
+      drv.add_method("EchoAttachments",
 	[['in', 'In', nil], ['retval', 'Out', nil]])
-      drv.add_method("EchoAttachmentAsBase64", 
+      drv.add_method("EchoAttachmentAsBase64",
 	[['in', 'In', nil], ['retval', 'Out', nil]])
-      drv.add_method("EchoBase64AsAttachment", 
+      drv.add_method("EchoBase64AsAttachment",
 	[['in', 'In', nil], ['retval', 'Out', nil]])
     end
   end

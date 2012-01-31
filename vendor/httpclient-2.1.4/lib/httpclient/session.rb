@@ -66,7 +66,7 @@ class HTTPClient
     def to_s # :nodoc:
       addr
     end
-    
+
     # Returns true if scheme, host and port of the given URI matches with this.
     def match(uri)
       (@scheme == uri.scheme) and (@host == uri.host) and (@port == uri.port.to_i)

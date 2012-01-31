@@ -35,7 +35,7 @@ class TestAny < Test::Unit::TestCase
         XSD::QName.new(TypeNamespace, 'foo.bar'),
         XSD::QName.new(TypeNamespace, 'foo.bar')
       )
-      add_rpc_operation(self, 
+      add_rpc_operation(self,
         XSD::QName.new("urn:example.com:echo", "echoAny"),
         "urn:example.com:echoAny",
         "echoAny",
@@ -45,7 +45,7 @@ class TestAny < Test::Unit::TestCase
           :faults => {} }
       )
     end
-  
+
     def echo(arg)
       res = FooBar.new(arg.before, arg.after)
       res.set_any([

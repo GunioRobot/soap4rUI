@@ -64,10 +64,10 @@ class TestClassDefCreator < Test::Unit::TestCase
       require 'foo/bar'
 
       # foo
-      # 
+      #
       #   bar
       #  baz
-      # 
+      #
       class Foo
       end
     EOD

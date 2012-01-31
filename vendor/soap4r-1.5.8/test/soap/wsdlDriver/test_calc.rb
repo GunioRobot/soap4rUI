@@ -12,7 +12,7 @@ class TestCalc < Test::Unit::TestCase
     def on_init
       add_method(self, 'add', 'x', 'y')
     end
-  
+
     def add(x, y)
       x.to_f + y.to_f
     end

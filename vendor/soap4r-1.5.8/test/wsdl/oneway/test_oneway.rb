@@ -29,7 +29,7 @@ class TestOneway < Test::Unit::TestCase
       self.mapping_registry = OnewayMappingRegistry::EncodedRegistry
       self.literal_mapping_registry = OnewayMappingRegistry::LiteralRegistry
     end
-  
+
     def initiate(payload)
       raise unless payload.msg
     end

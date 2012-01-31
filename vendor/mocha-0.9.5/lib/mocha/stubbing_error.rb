@@ -1,7 +1,7 @@
 require 'mocha/backtrace_filter'
 
 module Mocha # :nodoc:
-  
+
   # Exception raised when an action prevented by Configuration#prevent is attempted.
   class StubbingError < StandardError
 
@@ -12,5 +12,5 @@ module Mocha # :nodoc:
     end
 
   end
-  
+
 end

@@ -1,6 +1,6 @@
 #
 # Copyright (c) 2008 James M. Lawrence
-# 
+#
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
 # (the "Software"), to deal in the Software without restriction,
@@ -8,10 +8,10 @@
 # publish, distribute, sublicense, and/or sell copies of the Software,
 # and to permit persons to whom the Software is furnished to do so,
 # subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@ end
 
 #
 # Alternate implementations of system() and backticks `` for Windows.
-# 
+#
 module Rake::RepairedSystem
   class << self
     def define_module_function(name, &block)
@@ -120,7 +120,7 @@ module Rake::RepairedSystem
 
     def system(cmd, *args)
       file = cmd.to_s
-      repaired_args = 
+      repaired_args =
         if args.empty?
           [repair_command(file)]
         elsif file =~ BATCHFILE_PATTERN

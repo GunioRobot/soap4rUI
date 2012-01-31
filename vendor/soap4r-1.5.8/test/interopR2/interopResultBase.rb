@@ -21,7 +21,7 @@ class Endpoint
     @uri = uri
     @wsdl = wsdl
   end
-  
+
   def name
     if @endpointName
       @endpointName

@@ -137,7 +137,7 @@ private
     case element
     when XMLSchema::Element
       if element.type
-        element.type 
+        element.type
       elsif element.local_simpletype
         element.local_simpletype.base
       else

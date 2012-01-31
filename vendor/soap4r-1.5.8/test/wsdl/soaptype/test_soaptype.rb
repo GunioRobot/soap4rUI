@@ -19,7 +19,7 @@ class TestSOAPTYPE < Test::Unit::TestCase
       #self.generate_explicit_type = false
       add_rpc_method(self, 'echo_soaptype', 'arg')
     end
-  
+
     def echo_soaptype(arg)
       res = Wrapper.new
       res.short = SOAPShort.new(arg.short)

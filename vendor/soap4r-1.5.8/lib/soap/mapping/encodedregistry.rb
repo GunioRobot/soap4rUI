@@ -337,7 +337,7 @@ private
       return base2soap(obj, type)
     end
     cause = nil
-    begin 
+    begin
       if definition = schema_definition_from_class(obj.class)
         return stubobj2soap(obj, definition)
       end

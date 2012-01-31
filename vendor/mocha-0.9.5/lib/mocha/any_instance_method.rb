@@ -3,17 +3,17 @@ require 'mocha/class_method'
 module Mocha
 
   class AnyInstanceMethod < ClassMethod
-  
+
     def unstub
       remove_new_method
       restore_original_method
       stubbee.any_instance.reset_mocha
     end
-    
+
     def mock
       stubbee.any_instance.mocha
     end
-   
+
     def hide_original_method
       if method_exists?(method)
         begin
@@ -49,7 +49,7 @@ module Mocha
       return true if stubbee.private_instance_methods(false).include?(method)
       return false
     end
-    
+
   end
-  
+
 end

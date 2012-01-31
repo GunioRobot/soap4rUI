@@ -35,7 +35,7 @@ class WSDLDriverFactory
     @methoddefcreator =
       WSDL::SOAP::MethodDefCreator.new(@wsdl, name_creator, @modulepath, {})
   end
-  
+
   def inspect
     sprintf("#<%s:%s:0x%x\n\n%s>", self.class.name, @wsdl.name, __id__, dump_method_signatures)
   end

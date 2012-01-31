@@ -24,7 +24,7 @@ class TestGroup < Test::Unit::TestCase
       )
       self.literal_mapping_registry = EchoMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(arg)
       # arg
       # need to convert for 'any'

@@ -15,9 +15,9 @@ module SinatraAppHelpers
       Dir.chdir curr
     end
       @input = YAML.load params['input'] #prepopulate with original values
-      default_instance = driver.build_default_input_instance_for_method(params['service_method']) 
+      default_instance = driver.build_default_input_instance_for_method(params['service_method'])
       @input = Soap4r2RubyHelpers::mergeDefaultInstanceWithUnMarshalledValues(default_instance, @input)
-      (params.keys - ["input", :splat, "action"]).sort.each do |e|      
+      (params.keys - ["input", :splat, "action"]).sort.each do |e|
         es = e.to_array
         #since yaml turns everything to strings make sure occurences turn back into Numbers properly
         # to_i on nil gives zero not nil
@@ -27,27 +27,27 @@ module SinatraAppHelpers
           eval("#{es} = nil")
         else
           eval("#{es} = params[e]")
-        end 
+        end
       end
       params['input'] = @input #restore updated values
       params
   end
-  
+
   def self.create_element(input, element)
     @input = input
-    # free deep copy using marshal 
+    # free deep copy using marshal
     eval "#{element} += [Marshal.load(Marshal.dump(#{element}.first))]"
     @input
   end
-  
+
   def self.remove_element(input, element)
     @input = input
     if(eval "#{element}.size > 1")
       eval "#{element} -= [#{element}.last]"
-    end  
+    end
     @input
   end
-      
+
   #convert the form into a request to the server and send it
   def self.send_request(input,service_method, client, namespace, wsdl, endpoint="", username="", password="")
     driver = Soap4r2Ruby.new(client, namespace, wsdl)
@@ -59,13 +59,13 @@ module SinatraAppHelpers
     inputs = io_methods.select{|e| e.first == "in"}.map{|e| e[1]}
     # obj.wiredump_dev = File.new("err.log", "w+")
     if(endpoint != "" && username != "" && password != "")
-      obj.options["protocol.http.basic_auth"] << [endpoint, username, password]     
+      obj.options["protocol.http.basic_auth"] << [endpoint, username, password]
     end
 
     if input.class.constants.include?("RUNTIME_GEN")
-      @result = obj.send(service_method,*(inputs.map{|e| input.instance_variable_get("@"+e)}))      
+      @result = obj.send(service_method,*(inputs.map{|e| input.instance_variable_get("@"+e)}))
     else
-      @result = obj.send(service_method,input)      
+      @result = obj.send(service_method,input)
     end
   end
 

@@ -20,7 +20,7 @@ def save_wsdls
   f = File.open(Dir.pwd + "/public/saved_forms/saved_wsdls.txt", "w+")
   @saved_wsdls.each do |wsdl|
     f.syswrite(wsdl.to_s + "\n")
-  end  
+  end
 end
 
 get '/**' do
@@ -61,7 +61,7 @@ post '/generate' do
 
   @client = @curr + "/" + @folder_name
   @ast = Soap4r2Ruby.new(@client, @namespace, @wsdl)
-  #show drop down list to select the method to test  
+  #show drop down list to select the method to test
   haml :select
 end
 
@@ -72,8 +72,8 @@ post '/build' do
   @service_method = @params[:method]
   @wsdl = @params[:wsdl]
   tool = Soap4r2Ruby.new(@params[:client],@params[:namespace],@params[:wsdl])
-  
-  @input = tool.build_default_input_instance_for_method(@params[:method]) 
+
+  @input = tool.build_default_input_instance_for_method(@params[:method])
   @endpoint = tool.default_endpoint
   @saved_requests = Dir.entries(Dir.pwd + "/public/saved_forms/requests/").grep(/\.xml$/)
   @saved_responses = Dir.entries(Dir.pwd + "/public/saved_forms/responses/").grep(/\.xml$/)
@@ -93,7 +93,7 @@ post '/update' do
   @params = SinatraAppHelpers::update(@params, driver)
   @input = @params['input']
   update_saved_forms
-  
+
   if @params[:action] == 'Submit'
     @input = SinatraAppHelpers::send_request(@input,@service_method, @client, @namespace, @wsdl, @endpoint, @username, @password)
     return haml :result

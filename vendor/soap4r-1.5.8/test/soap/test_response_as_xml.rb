@@ -14,7 +14,7 @@ class TestResponseAsXml < Test::Unit::TestCase
     def on_init
       add_method(self, 'hello', 'name')
     end
-  
+
     def hello(name)
       "hello #{name}"
     end

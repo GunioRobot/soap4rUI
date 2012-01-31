@@ -43,7 +43,7 @@ class NetHttpClient
     @no_proxy = @ssl_config = @protocol_version = nil
     @connect_timeout = @send_timeout = @receive_timeout = nil
   end
-  
+
   def proxy=(proxy)
     if proxy.nil?
       @proxy = nil
@@ -137,10 +137,10 @@ private
       http.post(url.request_uri, req_body, extra)
     }
     case res
-    when Net::HTTPRedirection 
+    when Net::HTTPRedirection
       if redirect_count > 0
         post_redirect(res['location'], req_body, header,
-          redirect_count - 1) 
+          redirect_count - 1)
       else
        raise ArgumentError.new("Too many redirects")
       end

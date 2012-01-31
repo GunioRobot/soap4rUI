@@ -19,7 +19,7 @@ class TestOverload < Test::Unit::TestCase
         ["in", "in1", ["::SOAP::SOAPString"]],
         ["in", "in2", ["::SOAP::SOAPString"]],
         ["retval", "methodAlphaReturn", ["::SOAP::SOAPLong"]] ]
-    ], 
+    ],
     [
       XSD::QName.new(TNS, 'methodAlpha'), "methodAlpha2", "method_alpha_2",
       [ ["in", "in0", ["::SOAP::SOAPString"]],
@@ -34,11 +34,11 @@ class TestOverload < Test::Unit::TestCase
         add_rpc_operation(self, *definition)
       end
     end
-  
+
     def method_alpha_1(in0, in1, in2)
       3
     end
-  
+
     def method_alpha_2(in0, in1)
       2
     end

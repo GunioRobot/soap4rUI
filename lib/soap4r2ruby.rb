@@ -1,22 +1,22 @@
 require 'rubygems'
 gem 'soap4r'
-#require 'diff/lcs' 
+#require 'diff/lcs'
 require File.dirname(File.expand_path(__FILE__)) + '/soap4r2ruby_helpers'
 require File.dirname(File.expand_path(__FILE__)) + '/generator_helpers'
 require File.dirname(File.expand_path(__FILE__)) + '/save_load_convert_helpers'
 require 'soap/wsdlDriver'
 
-# this class is intended to take a folder where wsdl2ruby generated classes live 
+# this class is intended to take a folder where wsdl2ruby generated classes live
 # the optional module name added to keep the namespace uniq and clean
-# the wsdl used to create those classes 
+# the wsdl used to create those classes
 # as parameters to the init
 # then return a default empty ruby object representing the Model to be used to populate the form fields of the test client
 # fields that can occur more than once are arrays based on maxoccurs
-# it will also tag the optional fields fields based on minoccurs 
+# it will also tag the optional fields fields based on minoccurs
 
 class Soap4r2Ruby
   attr_accessor :root_node, :default_instance, :mapping_registry, :literal_mapping_registry
-  attr_accessor :service_method_descriptors, :port_type, :folder, :namespace, :driver_file 
+  attr_accessor :service_method_descriptors, :port_type, :folder, :namespace, :driver_file
   attr_accessor :default_endpoint, :service_method_names, :rpc_driver
   def initialize(client_folder, i_namespace, wsdl)
     @folder = client_folder
@@ -30,11 +30,11 @@ class Soap4r2Ruby
       require @folder+"/"+@driver_file
     ensure
       Dir.chdir curr
-    end  
-        
-    @factory = SOAP::WSDLDriverFactory.new(@wsdl)    
+    end
+
+    @factory = SOAP::WSDLDriverFactory.new(@wsdl)
     @port_type = @factory.wsdl.porttypes[0]
-    # @service_method_names = @port_type.operations.map{|op| op}    
+    # @service_method_names = @port_type.operations.map{|op| op}
     # @service_method_names.uniq!
 
     @rpc_driver = @factory.create_rpc_driver
@@ -44,16 +44,16 @@ class Soap4r2Ruby
     driver = eval(@namespace+"::"+@port_type.name.name).new
     @literal_mapping_registry = driver.literal_mapping_registry
     @mapping_registry = driver.mapping_registry
-    # @service_methods = eval( ns + '::' + @port_type)::Methods    
+    # @service_methods = eval( ns + '::' + @port_type)::Methods
 
   end
 
-  
+
   def find_root_node_for_method(service_method_name)
-    driver = eval(@namespace+"::"+@port_type.name.name).new    
+    driver = eval(@namespace+"::"+@port_type.name.name).new
     @mapping_registry = driver.mapping_registry
     @literal_mapping_registry = driver.literal_mapping_registry
-    # sample of what the Methods constant looks like 
+    # sample of what the Methods constant looks like
     # Methods = [
     #       [ "serviceAlive",
     #         "serviceAlive",
@@ -81,7 +81,7 @@ class Soap4r2Ruby
     # [["in", "key", ["::SOAP::SOAPString"]], ["in", "url", ["::SOAP::SOAPString"]], ["retval", "return", ["::SOAP::SOAPBase64"]]]
 
     inputs = io_methods.select{|e| e.first == "in"}
-    if inputs.size == 1  
+    if inputs.size == 1
       input = inputs.first
       if input == nil || input.last == nil
         #hack hack hack
@@ -98,7 +98,7 @@ class Soap4r2Ruby
         @root_node = schemadef
       end
     else
-      # this is a multipart message so 
+      # this is a multipart message so
       # create a class in this namespace that has instance variables for each part
       #basically it should take on the following form
       #module MySoap; module Interface
@@ -151,25 +151,25 @@ class Soap4r2Ruby
       @root_node = (eval(@namespace+'::'+class_name))
     end
    end
-  
-    # 
+
+    #
     # def find_root_node_for_method(service_method_name)
     #   m = @port_type.operations.select{|e| e.operationname.name == service_method_name}.first
-    #   root_node_name = m.input.name.name 
+    #   root_node_name = m.input.name.name
     #   # driver = eval(@namespace+"::"+@port_type.name.name).new
     #   # name = driver.literal_mapping_registry.elename_schema_definition_from_class(obj.class).elename.name
     #   schemadef = Soap4r2RubyHelpers::get_schemadef_for_class_name(root_node_name, @mapping_registry, @literal_mapping_registry)
     #   @root_node = schemadef.last.class_for
     # end
-  
+
   def build_default_input_instance_for_method(service_method_name)
     root_node = find_root_node_for_method(service_method_name)
-    build_default_input_instance_for_root_node(root_node)  
-  end    
-  
+    build_default_input_instance_for_root_node(root_node)
+  end
+
   def build_default_input_instance_for_root_node(root_node)
     driver = eval(@namespace+"::"+@port_type.name.name).new
-    if(root_node.constants.include?("RUNTIME_GEN")) 
+    if(root_node.constants.include?("RUNTIME_GEN"))
       args = []
       root_node.const_get("NUM_INSTANCE_VARS").times do
         args += [nil]
@@ -179,16 +179,16 @@ class Soap4r2Ruby
       schemadef = driver.literal_mapping_registry.schema_definition_from_class(root_node)
       args = schemadef.elements.entries.map{|e| build_default_instance_for_element_and_schemadef(e, schemadef)}
       @default_instance = eval(root_node.name).new(*args)
-    end  
-    
+    end
+
   end
-  
+
   def build_default_instance_for_element_and_schemadef(e, schemadef)
       # for each of the instance variables in this object
       # get the type of the object
       # tag min and max values on the object.
-      # if a simple type instantiate the object. (primitives) 
-      # if a complex type recursively instantiate elements of that object 
+      # if a simple type instantiate the object. (primitives)
+      # if a complex type recursively instantiate elements of that object
 #      p e.varname
 #      p e.mapped_class
 #      p e.class
@@ -197,7 +197,7 @@ class Soap4r2Ruby
       object = [nil]
     elsif (e.class == SOAP::Mapping::SchemaElementDefinition && e.mapped_class == nil)
       #assume any element without a mapped class can be handled as a String
-      object = ""  
+      object = ""
     elsif (::SOAP.constants.grep(/^SOAP/).include?(e.mapped_class.to_s.gsub('::SOAP','')))
       #simple types - (no subelements)
       # default to empty ruby string
@@ -218,21 +218,21 @@ class Soap4r2Ruby
 #      for v in sub_schemadef.last.elements.entries
 #        if !object.respond_to?(v.varname)
 #          object.class.class_eval("attr_accessor :#{v.varname}_")
-#        end        
+#        end
 #      end
 #      object = e.mapped_class.new(*sub_args)
 #      for v in sub_schemadef.last.elements.entries
-#        if !object.respond_to?(v.varname) && object.respond_to?("#{v.varname}_") 
+#        if !object.respond_to?(v.varname) && object.respond_to?("#{v.varname}_")
 #          object.send("#{v.varname}_=", build_default_instance_for_element_and_schemadef(v, sub_schemadef))
-#        end        
-#        
+#        end
+#
 #      end
     end
     Soap4r2RubyHelpers::tag_minoccurs_maxoccurs(object, e.minoccurs, e.maxoccurs)
     if object.maxoccurs != 1
       object = [object]
-    end  
+    end
     object
   end
-  
+
 end

@@ -19,7 +19,7 @@ class TestSimpleContent < Test::Unit::TestCase
       self.literal_mapping_registry =
         SimpleContentMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(address)
       address
     end

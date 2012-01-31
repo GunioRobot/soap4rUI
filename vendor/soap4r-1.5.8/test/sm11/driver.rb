@@ -5,7 +5,7 @@ require 'soap/streamHandler'
 
 class Sm11PortType
   MappingRegistry = SOAP::RPCUtils::MappingRegistry.new
-  
+
   MappingRegistry.set(
     C_struct,
     ::SOAP::SOAPStruct,
@@ -66,7 +66,7 @@ class Sm11PortType
     ::SOAP::RPCUtils::MappingRegistry::TypedArrayFactory,
     [ "http://dopg.gr.jp/sm11.xsd", "C_struct" ]
   )
-  
+
   Methods = [
     [ "op0", "op0", [  ], "http://dopg.gr.jp/sm11", "http://dopg.gr.jp/sm11" ],
     [ "op1", "op1", [ [ "in", "arg0" ] ], "http://dopg.gr.jp/sm11", "http://dopg.gr.jp/sm11" ],
@@ -162,7 +162,7 @@ class Sm11PortType
     end
   end
 
-private 
+private
 
   def addMethod
     Methods.each do | methodNameAs, methodName, params, soapAction, namespace |

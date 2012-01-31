@@ -37,7 +37,7 @@ class TestChoice < Test::Unit::TestCase
       )
       @router.literal_mapping_registry = ChoiceMappingRegistry::LiteralRegistry
     end
-  
+
     def echo(arg)
       arg
     end

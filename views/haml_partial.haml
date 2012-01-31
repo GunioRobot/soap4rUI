@@ -4,7 +4,7 @@
 - field_name = @child
 %tr
 - #if this is a collection then iterate over the elements/
--if (field_type.ancestors.include?(Array)) 
+-if (field_type.ancestors.include?(Array))
   - array = field
   - ancestry = @ancestry + ".#{@child.gsub('@','')}"
   %td
@@ -16,7 +16,7 @@
       %tr
         %td
           %input{:type => 'submit', :name => "Submit", :value => "Add", :onclick => "document.getElementById(\"action\").value = \"Add\";document.getElementById(\"element\").value = \"#{ancestry}\";"}
-          %input{:type => 'submit', :name => "Submit", :value => "Del", :onclick => "document.getElementById(\"action\").value = \"Del\";document.getElementById(\"element\").value = \"#{ancestry}\";"}          
+          %input{:type => 'submit', :name => "Submit", :value => "Del", :onclick => "document.getElementById(\"action\").value = \"Del\";document.getElementById(\"element\").value = \"#{ancestry}\";"}
           - array.each_with_index do |@parent, i|
             - @ancestry = ancestry + ".slice(#{i})"
             %table
@@ -29,14 +29,14 @@
                     %input{ :name => "#{@ancestry}", :type => :text, :value => @parent}
                     - if field.minoccurs == 0
                       %small [optional]
-               
-- else  
+
+- else
   - #if this object is one of our domain's complex types iterate over the instance variables/
   - if (field_type.to_s.include?(@namespace+'::'))
     %td
-      = "#{field_name.gsub('@','')}"# is a complexType:#{field_type}"#, parent is #{@parent.class.to_s}"    
+      = "#{field_name.gsub('@','')}"# is a complexType:#{field_type}"#, parent is #{@parent.class.to_s}"
     - if field.minoccurs == 0
-      %small [optional]  
+      %small [optional]
     %td
       - if (field_type.ancestors[2]==Enumerable && field_type.ancestors[1]==String)
         %select{ :name => "#{@ancestry}.#{field_name.gsub('@','')}" }
@@ -46,7 +46,7 @@
             - elsif field == "" && m == nil
               %option{ :value => m }=m
             - else
-              %option{ :value => m }=m           
+              %option{ :value => m }=m
       - else
         %table
           - @parent = field
@@ -54,8 +54,8 @@
           - for @child in @parent.instance_variables
             = haml :haml_partial
   - else
-    - #simple types should be text input fields/                
-    - if !field_name.include?('@minoccurs') && !field_name.include?('@maxoccurs') 
+    - #simple types should be text input fields/
+    - if !field_name.include?('@minoccurs') && !field_name.include?('@maxoccurs')
       %td
         %pre
           = "#{field_name.gsub('@','')}"# is a simpleType #{field_type}"#, parent is #{@parent.class.to_s}"

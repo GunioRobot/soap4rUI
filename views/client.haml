@@ -6,8 +6,8 @@
       client
   %body
     %hr
-      %h3 
-        WebClient Generated From Wsdl 
+      %h3
+        WebClient Generated From Wsdl
       = @params[:method]
     %div
       %form{ :enctype => "multipart/form-data", :method => "post", :action => "update" }
@@ -19,7 +19,7 @@
         %input{:type => :hidden, :name => :service_method, :value => @service_method}
         %input{:type => :hidden, :id => :action, :name => :action, :value => ''}
         %input{:type => :hidden, :id => :element, :name => :element, :value => ''}
-        
+
         %h4= @input.class.to_s.gsub(@namespace+"::", '')
         %table
           - for @child in @input.instance_variables
@@ -31,42 +31,42 @@
             %tr
               %td
                 endpoint:
-              %td 
+              %td
                 %input{:type => :text, :id => "endpoint-input", :name => "endpoint", :value => @endpoint}
             %tr
               %td
                 username:
-              %td            
+              %td
                 %input{:type => :text, :id => "username", :name => "username", :value => @username}
             %tr
               %td
                 password:
-              %td              
-                %input{:type => :text, :id => "password", :name => "password", :value => @password}                
+              %td
+                %input{:type => :text, :id => "password", :name => "password", :value => @password}
             %tr
               %td
                 %input{:type => 'submit', :name => 'Submit',:value => 'Submit', :onclick => "document.getElementById(\"action\").value = \"Submit\";"}
         %div
           %label
-            filename: 
-            %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}  
+            filename:
+            %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}
           %input{:type => 'submit', :name => 'SaveRequestAs',:value => 'SaveRequestAs', :onclick => "document.getElementById(\"action\").value = \"SaveRequest\";"}
         %div
           %label
-            file upload: 
+            file upload:
             %input{ :name => "datafile", :size => "40", :type => "file" }
           %input{:type => 'submit', :name => 'Upload',:value => 'Upload', :onclick => "document.getElementById(\"action\").value = \"Upload\";"}
         %div
-          %h4 
+          %h4
             previously saved requests:
-          %table 
+          %table
             - for file in @saved_requests
               %tr
                 %td
                   %a{:title => "saved_forms/requests/#{file}", :href => "saved_forms/requests/#{file}"} download
                 %td
-                  %input{:type => 'submit', :name => 'LoadRequest',:value => 'LoadRequest', :onclick => "document.getElementById(\"action\").value = \"LoadRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %input{:type => 'submit', :name => 'LoadRequest',:value => 'LoadRequest', :onclick => "document.getElementById(\"action\").value = \"LoadRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}
                 %td
-                  %input{:type => 'submit', :name => 'DeleteRequest',:value => 'DeleteRequest', :onclick => "document.getElementById(\"action\").value = \"DeleteRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %input{:type => 'submit', :name => 'DeleteRequest',:value => 'DeleteRequest', :onclick => "document.getElementById(\"action\").value = \"DeleteRequest\";document.getElementById(\"file_name\").value = \"#{file}\""}
                 %td
                   = file

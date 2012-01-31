@@ -9,12 +9,12 @@ require 'mocha/unexpected_invocation'
 require 'mocha/argument_iterator'
 
 module Mocha # :nodoc:
-  
+
   # Traditional mock object.
   #
   # Methods return an Expectation which can be further modified by methods on Expectation.
   class Mock
-    
+
     # :call-seq: expects(method_name) -> expectation
     #            expects(method_names_vs_return_values) -> last expectation
     #
@@ -49,7 +49,7 @@ module Mocha # :nodoc:
         @expectations.add(expectation)
       }
     end
-    
+
     # :call-seq: stubs(method_name) -> expectation
     #            stubs(method_names_vs_return_values) -> last expectation
     #
@@ -82,7 +82,7 @@ module Mocha # :nodoc:
         @expectations.add(expectation)
       }
     end
-    
+
     # :call-seq: responds_like(responder) -> mock
     #
     # Constrains the +mock+ so that it can only expect or stub methods to which +responder+ responds. The constraint is only applied at method invocation time.
@@ -127,9 +127,9 @@ module Mocha # :nodoc:
       @responder = object
       self
     end
-    
+
     # :stopdoc:
-    
+
     def initialize(name = nil, &block)
       @name = name || DefaultName.new(self)
       @expectations = ExpectationList.new
@@ -143,13 +143,13 @@ module Mocha # :nodoc:
     alias_method :__expects__, :expects
 
     alias_method :__stubs__, :stubs
-    
+
     alias_method :quacks_like, :responds_like
 
     def stub_everything
       @everything_stubbed = true
     end
-    
+
     def method_missing(symbol, *arguments, &block)
       if @responder and not @responder.respond_to?(symbol)
         raise NoMethodError, "undefined method `#{symbol}' for #{self.mocha_inspect} which responds like #{@responder.mocha_inspect}"
@@ -164,7 +164,7 @@ module Mocha # :nodoc:
         end
       end
     end
-    
+
     def respond_to?(symbol, include_private = false)
       if @responder then
         if @responder.method(:respond_to?).arity > 1
@@ -176,19 +176,19 @@ module Mocha # :nodoc:
         @everything_stubbed || @expectations.matches_method?(symbol)
       end
     end
-    
+
     def __verified__?(assertion_counter = nil)
       @expectations.verified?(assertion_counter)
     end
-    
+
     def mocha_inspect
       @name.mocha_inspect
     end
-    
+
     def inspect
       mocha_inspect
     end
-    
+
     def ensure_method_not_already_defined(method_name)
       self.__metaclass__.send(:undef_method, method_name) if self.__metaclass__.method_defined?(method_name)
     end

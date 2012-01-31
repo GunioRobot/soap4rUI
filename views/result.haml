@@ -6,20 +6,20 @@
       client
   %body
     %hr
-      %h3 
-        Response for Method 
+      %h3
+        Response for Method
       = @service_method
     %div
-      %form{:action => '/update', :method => 'post'}  
+      %form{:action => '/update', :method => 'post'}
         /Store the old state/
         %input{:type => :hidden, :name => :input, :value => @input.to_yaml}
         %input{:type => :hidden, :name => :client, :value => @client}
-        %input{:type => :hidden, :name => :wsdl, :value => @wsdl}          
+        %input{:type => :hidden, :name => :wsdl, :value => @wsdl}
         %input{:type => :hidden, :name => :namespace, :value => @namespace}
         %input{:type => :hidden, :name => :service_method, :value => @service_method}
         %input{:type => :hidden, :id => :action, :name => :action, :value => ''}
         %input{:type => :hidden, :id => :element, :name => :element, :value => ''}
-        
+
         %h4= @input.class
         %table
           - for @child in @input.instance_variables
@@ -28,21 +28,21 @@
             = haml :haml_partial
         %div
           %label
-            filename: 
-            %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}    
+            filename:
+            %input{:type => :text, :id => "file_name", :name => "file_name", :value => ''}
           %input{:type => 'submit', :name => 'SaveResponse',:value => 'SaveResponse', :onclick => "document.getElementById(\"action\").value = \"SaveResponse\";"}
         %div
-          %h4 
+          %h4
             previously saved responses:
-          %table 
+          %table
             - for file in @saved_responses
               %tr
                 %td
                   %a{:title => "saved_forms/responses/#{file}", :href => "saved_forms/responses/#{file}"} download
                 %td
-                  %input{:type => 'submit', :name => 'LoadResponse',:value => 'LoadResponse', :onclick => "document.getElementById(\"action\").value = \"LoadResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %input{:type => 'submit', :name => 'LoadResponse',:value => 'LoadResponse', :onclick => "document.getElementById(\"action\").value = \"LoadResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}
                 %td
-                  %input{:type => 'submit', :name => 'DeleteResponse',:value => 'DeleteResponse', :onclick => "document.getElementById(\"action\").value = \"DeleteResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}            
+                  %input{:type => 'submit', :name => 'DeleteResponse',:value => 'DeleteResponse', :onclick => "document.getElementById(\"action\").value = \"DeleteResponse\";document.getElementById(\"file_name\").value = \"#{file}\""}
                 %td
                   = file
-        
+

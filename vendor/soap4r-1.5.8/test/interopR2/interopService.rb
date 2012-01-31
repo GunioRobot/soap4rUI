@@ -227,7 +227,7 @@ private
     result.varFloat = SOAPFloat.new(struct.varFloat) if struct.varFloat
     result
   end
-  
+
   def clone_StructArray(structArray)
     result = clone(structArray)
     result.map { |ele|
@@ -235,7 +235,7 @@ private
     }
     result
   end
-  
+
   def clone_StructStruct(structStruct)
     result = clone(structStruct)
     result.varFloat = SOAPFloat.new(structStruct.varFloat) if structStruct.varFloat

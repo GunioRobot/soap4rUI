@@ -5,7 +5,7 @@ require File.dirname(File.expand_path(__FILE__)) + '/../../lib/sinatra_app_helpe
 
 
 class TC_LoadingSaving < Test::Unit::TestCase
-  
+
   def setup
     @client_folder = Dir.pwd + "/test/fixtures/client_namespace"
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
@@ -18,10 +18,10 @@ class TC_LoadingSaving < Test::Unit::TestCase
     @file = "temp32847ifuy87yu"
     file_cleanup
   end
-  
+
   def teardown
     file_cleanup
-  end  
+  end
 
   def file_cleanup
     #clean up the files left over from tests
@@ -63,7 +63,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     assert_equal(1, @result['input'].orderRequest.minoccurs)
     assert_not_nil(@result['input'].orderRequest.maxoccurs)
     assert_equal(1, @result['input'].orderRequest.maxoccurs)
-  end  
+  end
 
   def test_save_request_to_yaml
     #load a request example
@@ -76,7 +76,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     #save the request
     SaveLoadConvertHelpers::save_request_as_yaml(@input, @file)
     #assert that the yaml was saved
-    assert_not_nil(File.open(@file))    
+    assert_not_nil(File.open(@file))
   end
 
   def test_load_request_from_yaml
@@ -92,7 +92,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     #assert that the yaml was saved
     assert_not_nil(File.open(@file))
     #load the yaml
-    @result = SaveLoadConvertHelpers::load_request_from_yaml(@file)    
+    @result = SaveLoadConvertHelpers::load_request_from_yaml(@file)
     #assert that nothing has changed
     assert_not_nil @result
     assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @result.class)
@@ -113,7 +113,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
     #   #assert that the yaml was saved
     #   assert_not_nil(File.open(@file))
     #   #load the yaml
-    #   @result = SaveLoadConvertHelpers::load_request_from_yaml(@file)    
+    #   @result = SaveLoadConvertHelpers::load_request_from_yaml(@file)
     #   #assert that nothing has changed
     #   assert_not_nil @result
     #   assert_equal(MySoap::InterfaceOne::DiscountServiceRequestType, @result.class)
@@ -136,7 +136,7 @@ class TC_LoadingSaving < Test::Unit::TestCase
 
     SaveLoadConvertHelpers::save_request_xml(@input, @file, @client_folder, @namespace, @wsdl)
     #assert that the xml was saved
-    assert_not_nil(File.open(@file))    
+    assert_not_nil(File.open(@file))
     #assert that the xml we saved matches the original
 
     # diff = String.diff(xml, File.open(@file).readlines.to_s)
@@ -153,5 +153,5 @@ class TC_LoadingSaving < Test::Unit::TestCase
     assert_equal(1, @input.orderRequest.promotions.size)
     assert_equal("something", @input.orderRequest.promotions[0].discountReasonCode)
   end
-  
+
 end

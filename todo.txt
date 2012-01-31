@@ -1,12 +1,12 @@
 todo:
-  high:  
-  - amazon request response success #signature problem?    
+  high:
+  - amazon request response success #signature problem?
   - demo video
-  
+
   med:
   - implement ssl cert
     http://s2.diffuse.it/blog/show/62-Consume_SSL_protected_Web_Services_with_soap4r
-  - proxy support 
+  - proxy support
 	  	Default driver needs the following at the end of the init:
 		self.options["protocol.http.proxy"] = "http://yourproxyserver:8080/"
   - ebay working examples
@@ -14,7 +14,7 @@ todo:
   - serve this as catalina web app (finalize on war or ruby web server) (rake task)
   - create a java executable that works for mac osx and windows xp (rake task)
     	java -cp "ruby-processing/app.rb:ruby-processing/exporters/applet_exporter.rb:ruby-processing/exporters/application_exporter.rb:ruby-processing/exporters/base_exporter.rb:ruby-processing/exporters/creator.rb:ruby-processing/helpers/numeric.rb:ruby-processing/helpers/string.rb:ruby-processing/runner.rb:ruby-processing/runners/base.rb:ruby-processing/runners/live.rb:ruby-processing/runners/run.rb:ruby-processing/runners/watch.rb:ruby-processing.rb:sand_chaser.rb:core/core.jar:core/jruby-complete.jar:jogl.jar:opengl.jar" org.jruby.Main ruby-processing/runners/run.rb sand_chaser.rb
-     
+
   low:
   - after add or delete enums should be select boxes not strings
   - after load the add and delete buttons need to come back
@@ -25,9 +25,9 @@ todo:
   - empty request. service alive without type
   - mouse over table highlight
   - create a quick driver to generate ruby tests
-  - create a gui to do a visual diff of expected responses vs actual responses. 
-   
-done: 
+  - create a gui to do a visual diff of expected responses vs actual responses.
+
+done:
   - google get an api key and try some requests out. soap service discontinued
   - test cases should not dependent on an network connection.
   - implement password authentication
@@ -38,7 +38,7 @@ done:
   - make enums work as select boxes need to figure a way to make nil preserve the enum type dynamically
   - fix arrays of arrays not getting sub arrays on xml load
   - receipt messages bug missing on load.
-  - min max occurs disappears on reload. 
+  - min max occurs disappears on reload.
   - remove other loads and saves
   - save and load wsdl
   - local save and load for requests and responses.
@@ -48,7 +48,7 @@ done:
   - investigate awardMethodENum bug
   - add nillable to the attributes of each element
   - fix for nillable false minoccurs = 0
-  - nil PromotionId, AppliedStatus, and QualifyType bugs. 
+  - nil PromotionId, AppliedStatus, and QualifyType bugs.
   - fix for booleans
   - submission bugs (soap faults should be displayed)
   - fix for errors requiring a restard due to chdir
@@ -61,7 +61,7 @@ done:
   - appliedstatus bug result display bug enum must get text
   - findInventory service name bug
   - coloring of sub tables
-  - qualifingTenders visibility bug  
+  - qualifingTenders visibility bug
   - (service name methods bug)
   - patch jruby openssl hex digit
   - patch jruby yaml load
@@ -69,18 +69,18 @@ done:
   - store minoccurs maxoccurs in marshaller (alternative was to look it up at runtime from schemadef)
   - fix namespace issue for generated code with same name
   - save service descriptor locally so that tests are really unit tests.
-  - add a button to save the response xml for later comparison 
+  - add a button to save the response xml for later comparison
   - the response should be displayed on the screen.
-  - ui generate a ui that indents subelements correctly. 
-  - convert from obj to xml and from xml to obj 
-  - the submit button should gather all the inputs from the form and generate the request and send it to the server defined in the endpoint. 
+  - ui generate a ui that indents subelements correctly.
+  - convert from obj to xml and from xml to obj
+  - the submit button should gather all the inputs from the form and generate the request and send it to the server defined in the endpoint.
   - optional fields should be marked as such
   - there should be a save button that allows you to store the request for later
   - there should be a load button to load a previously saved request.
   - the add button should send a request to the server and the response should reflect this change
   - map from soap4r object graph to form fields
   - translate from form fields and data to a soap4r object representing the tree.
-  - fields that can occur more than once should have an "add field" button next to them to duplicate the input forms.  
+  - fields that can occur more than once should have an "add field" button next to them to duplicate the input forms.
   - create a default empty instance of a soap4r object from the wsdl
   - accept a local(saved on hard drive) or remote (http:) copy of the wsdl and give a drop down of all methods the service handles.
   - after selecting a method a web form should be generated according to the required and optional fields.

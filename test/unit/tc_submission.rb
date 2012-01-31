@@ -10,7 +10,7 @@ class TC_Submission < Test::Unit::TestCase
     @client_folder = Dir.pwd + "/test/fixtures/client_namespace"
     @test_client_folder = Dir.pwd + "/test/fixtures/test_client"
     @wsdl = Dir.pwd + "/test/fixtures/sample_wsdls/latest_discountService-V1-0.wsdl"
-    
+
     @namespace = "MySoap::InterfaceOne"
     @tool = Soap4r2Ruby.new(@client_folder, @namespace, @wsdl)
     @tool.build_default_input_instance_for_method("applyDiscount")
@@ -18,10 +18,10 @@ class TC_Submission < Test::Unit::TestCase
     @file = "temp32847ifuy87yu.xml"
     file_cleanup
   end
-  
+
   def teardown
     file_cleanup
-  end  
+  end
 
   def file_cleanup
     #clean up the files left over from tests

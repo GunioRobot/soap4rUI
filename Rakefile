@@ -18,7 +18,7 @@ namespace :maintenance do
        throw FailedCleanException.new
      end
    end
-   
+
  desc "run a full clean"
  task :all => [ :clean ]
 end
@@ -29,17 +29,17 @@ namespace :test do
   task :run do
     %x{ruby test/ts_master.rb}
   end
-  
+
   desc "run rcov code coverage report"
   task :coverage do
     %x{rcov test/unit/*.rb}
   end
-  
+
   desc "run saikuro cyclomatic complexity report"
   task :complexity do
     %x{saikuro -c -t -i lib -y 0 -w 11 -e 16 -o complexity/}
   end
-   
+
  desc "run all test tasks"
  task :all => [ :run , :coverage, :complexity ]
 end

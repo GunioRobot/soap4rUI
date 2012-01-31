@@ -236,9 +236,9 @@ __EOD__
 
   def type2str(type)
     if type.size == 1
-      "[#{ndq(type[0])}]" 
+      "[#{ndq(type[0])}]"
     else
-      "[#{ndq(type[0])}, #{ndq(type[1])}, #{dq(type[2])}]" 
+      "[#{ndq(type[0])}, #{ndq(type[1])}, #{dq(type[2])}]"
     end
   end
 
